@@ -1,45 +1,45 @@
 declare namespace data {
   /**
-   * 变量转换为Json字符串
-   * @param _var 要转换为Json字符串的变量
-   * @param space （可选参数）如果要格式化输出的字符串
-   * @returns string|null 转换成的Json字符串
+   * JSONへの変換
+   * @param _var JSON化する変数
+   * @param space オプション: 数値の空白を指定する。 
+   * @returns {string|null} JSON化された文字列
    */
   function toJson(_var: any, space: number): string | null;
 
   /**
-   * Json字符串解析为变量
-   * @param json 要转换为变量的Json字符串
-   * @returns any|null 转换成的变量
+   * JSONの解析
+   * @param json オブジェクト化されるJSON
+   * @returns {any|null} 変換後のオブジェクト
    */
   function parseJson(json: string): any | null;
 
   /**
-   * MD5计算
-   * @param str 要计算MD5的字符串 / 字节数组
-   * @returns 原数据的MD5摘要字符串
+   * MD5の計算
+   * @param str MD5を計算する文字列またはバイト列
+   * @returns {string} MD5ダイジェスト文字列
    */
   function toMD5(str: string | ArrayBuffer): string;
 
   /**
-   * SHA1计算
-   * @param str 要计算SHA1的字符串 / 字节数组
-   * @returns string 原数据的SHA1摘要字符串
+   * SHA1の計算
+   * @param str SHA1を計算する文字列またはバイト列
+   * @returns {string} SHA1ダイジェスト文字列
    */
   function toSHA1(str: string | ArrayBuffer): string;
 
   /**
-   * 数据转Base64
-   * @param str 要转化为Base64的字符串 / 字节数组
-   * @returns string Base64结果
+   * Base64へのエンコード
+   * @param str Base64に変換する文字列またはバイト列
+   * @returns {string} Base64への変換結果
    */
   function toBase64(str: string | ArrayBuffer): string;
 
   /**
-   * Base64解码为数据
-   * @param base64 要解码的base64字符串
-   * @param isBinary 返回数据类型是否为二进制数据，默认为 false
-   * @returns string|ArrayBuffer 解码后的数据
+   * Base64のデコード
+   * @param base64 Base64文字列
+   * @param isBinary 戻り値がバイト列かどうか。デフォルトはfalse
+   * @returns {string|ArrayBuffer} エンコードされた文字列またはバイト列
    */
   function fromBase64(base64: string, isBinary: boolean): string | ArrayBuffer;
 }
