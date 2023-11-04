@@ -1,49 +1,49 @@
 /// <reference path="../index.d.ts" />
 
 declare namespace mc {
-  /** 玩家金额增加前事件 */
+  /** プレイヤーの金額が増加する前のイベント */
   function listen(
     event: "beforeMoneyAdd",
     listener: (xuid: string, money: number) => boolean | void
   ): boolean;
 
-  /** 玩家金额增加事件 */
+  /** プレイヤーの金額が増加したときのイベント */
   function listen(
     event: "onMoneyAdd",
     listener: (xuid: string, money: number) => void
   ): boolean;
 
-  /** 玩家金额减少前事件 */
+  /** プレイヤーの金額が減少する前のイベント */
   function listen(
     event: "beforeMoneyReduce",
     listener: (xuid: string, money: number) => boolean | void
   ): boolean;
 
-  /** 玩家金额减少事件 */
+  /** プレイヤーの金額が減少したときのイベント */
   function listen(
     event: "onMoneyReduce",
     listener: (xuid: string, money: number) => boolean | void
   ): boolean;
 
-  /** 玩家转账前事件 */
+  /** プレイヤー間の金額転送が行われる前のイベント */
   function listen(
     event: "beforeMoneyTrans",
     listener: (xuid: string, money: number) => boolean | void
   ): boolean;
 
-  /** 玩家转账事件 */
+  /** プレイヤー間の金額転送が行われたときのイベント */
   function listen(
     event: "onMoneyTrans",
     listener: (xuid: string, money: number) => boolean | void
   ): boolean;
 
-  /** 设置玩家金额前事件 */
+  /** プレイヤーの金額が設定される前のイベント */
   function listen(
     event: "beforeMoneySet",
     listener: (xuid: string, money: number) => boolean | void
   ): boolean;
 
-  /** 设置玩家金额事件 */
+  /** プレイヤーの金額が設定されたときのイベント */
   function listen(
     event: "onMoneySet",
     listener: (xuid: string, money: number) => boolean | void
