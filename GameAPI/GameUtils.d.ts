@@ -1,48 +1,48 @@
-declare enum Format{
-    // 黑色	§0
-    Black="§0",
-    // 深蓝色	§1
-    DarkBlue="§1",
-    // 深绿色	§2
-    DarkGreen="§2",
-    // 湖蓝色	§3
-    DarkAqua="§3"	,
-    // 深红色	§4
-    DarkRed="§4",
-    // 紫色	§5
-    DarkPurple="§5",
-    // 金色	§6
-    Gold="§6",
-    // 灰色	§7
-    Gray="§7",
-    // 深灰色	§8
-    DarkGray="§8",
-    // 蓝色	§9
-    Blue="§9",
-    // 浅绿色	§a
-    Green="§a",
-    // 天蓝色	§b
-    Aqua="§b",
-    // 浅红色	§c
-    Red="§c",
-    // 浅紫色	§d
-    LightPurple="§d",
-    // 浅黄色	§e
-    Yellow="§e",
-    // 白色	§f
-    White="§f",
-    // 硬币金色	§g
-    MinecoinGold="§g",
-    // 加粗 §l
-    Bold="§l",
-    // 斜体§o
-    Italics="§o",
-    // 下划线 §n
-    Underline="§n",
-    // 删除线 §m
-    StrikeThrough="§m",
-    // 随机闪烁的乱码字符 §k
-    Random="§k",
-    // 清除所有格式 §r
-    Clear="§r",
+declare enum Format {
+    // 黒色 §0
+    Black = "§0",
+    // 深い青色 §1
+    DarkBlue = "§1",
+    // 深緑色 §2
+    DarkGreen = "§2",
+    // シアン色 §3
+    DarkAqua = "§3",
+    // 深い赤色 §4
+    DarkRed = "§4",
+    // 紫色 §5
+    DarkPurple = "§5",
+    // 金色 §6
+    Gold = "§6",
+    // 灰色 §7
+    Gray = "§7",
+    // 濃い灰色 §8
+    DarkGray = "§8",
+    // 青色 §9
+    Blue = "§9",
+    // 明るい緑色 §a
+    Green = "§a",
+    // 水色 §b
+    Aqua = "§b",
+    // 明るい赤色 §c
+    Red = "§c",
+    // 明るい紫色 §d
+    LightPurple = "§d",
+    // 明るい黄色 §e
+    Yellow = "§e",
+    // 白色 §f
+    White = "§f",
+    // マインコインの金色 §g
+    MinecoinGold = "§g",
+    // 太字テキスト設定 §l
+    Bold = "§l",
+    // イタリック体テキスト設定 §o
+    Italics = "§o",
+    // 下線テキスト設定 §n
+    Underline = "§n",
+    // 取り消し線テキスト設定 §m
+    StrikeThrough = "§m",
+    // ランダム点滅文字テキスト設定 §k
+    Random = "§k",
+    // すべてのフォーマットをクリア §r
+    Clear = "§r",
 }
