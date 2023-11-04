@@ -1,191 +1,188 @@
-/** 创建 / 打开一个键值对数据库 */
-declare class KVDatabase{
-    constructor(dir:string);
+/** キー値データベースを作成または開きます。 */
+declare class KVDatabase {
+    constructor(dir: string);
 
-    /** 数据库的储存目录路径，以BDS根目录为基准 */
-    dir: string
+    /** データベースの保存ディレクトリのパスです。BDSルートディレクトリを基準とします。 */
+    dir: string;
 
     /**
-     * 写入数据项
-     * @param name 数据项名字
-     * @param data 要写入的数据
-     * @returns boolean 是否写入成功
+     * データ項目を書き込みます。
+     * @param name データ項目の名前
+     * @param data 書き込むデータ
+     * @returns {boolean} 書き込みが成功したかどうか
      */
-    set(name:string,data:any): boolean;
+    set(name: string, data: any): boolean;
 
     /**
-     * 读取数据项
-     * @param name 数据项名字
-     * @returns any|null 数据库中储存的这个项的数据
+     * データ項目を読み込みます。
+     * @param name データ項目の名前
+     * @returns {any|null} データベースに保存されているこの項目のデータ
      */
-    get(name:string): any|null;
+    get(name: string): any | null;
 
     /**
-     * 删除数据项
-     * @param name 数据库名字
+     * データ項目を削除します。
+     * @param name データベース名
      */
-    delete(name:string): boolean;
+    delete(name: string): boolean;
 
     /**
-     * 获取所有数据项名字
-     * @returns Array 所有的数据项名字数组
+     * すべてのデータ項目の名前を取得します。
+     * @returns {Array<string>} すべてのデータ項目の名前の配列
      */
     listKey(): Array<string>;
 
     /**
-     * 关闭数据库
-     * @returns boolean 是否成功关闭
+     * データベースを閉じます。
+     * @returns {boolean} 閉じるのに成功したかどうか
      */
     close(): boolean;
 }
 
-declare class DataBase_Params{
-    /** 指定数据库所在路径 */
-    path:string;
+declare class DataBase_Params {
+    /** データベースの場所を指定します。 */
+    path: string;
 
-    /** 数据库不存在是否自动创建 */
-    create:boolean;
+    /** データベースが存在しない場合に自動的に作成するかどうか。 */
+    create: boolean;
 
-    /** 以只读模式打开 */
-    readonly:boolean;
+    /** 読み取り専用モードで開くかどうか。 */
+    readonly: boolean;
 
-    /** 以读写模式打开 */
-    readwrite:boolean;
+    /** 読み書きモードで開くかどうか。 */
+    readwrite: boolean;
 }
 
-/** 打开一个SQL数据库会话 */
-declare class DBSession{
+/** SQLデータベースセッションを開始します。 */
+declare class DBSession {
     /**
-     * 打开一个SQL数据库会话
-     * @param type 数据库的类型，目前仅支持
-     * @param params DataBase_Params 连接参数
+     * SQLデータベースセッションを開始します。
+     * @param type データベースのタイプ。現在は
+     * @param params DataBase_Params 接続パラメータ
      */
-    constructor(type:"sqlite3",params:DataBase_Params);
+    constructor(type: "sqlite3", params: DataBase_Params);
 
     /**
-     * 打开一个SQL数据库会话
-     * @param str 形如file:///mydb.db?k=v, mysql://root:password@localhost:3306/db的连接字符串
+     * SQLデータベースセッションを開始します。
+     * @param str "file:///mydb.db?k=v, mysql://root:password@localhost:3306/db"のような接続文字列
      */
-    constructor(str:string);
+    constructor(str: string);
 
     /**
-     * 执行SQL并获取结果集
-     * @param sql 要查询的SQL语句
-     * @returns Array<Array> 查询的结果(结果集)
-     * @tips 返回数组的第1行(`result[0]`)为结果集的表头(列名)，剩余行为结果数据
+     * SQLを実行し、結果セットを取得します。
+     * @param sql クエリするSQL文
+     * @returns {Array<Array<any>>} クエリの結果（結果セット）
+     * @tips 配列の最初の行(`result[0]`)は結果セットのヘッダー（列名）で、残りの行は結果データです。
      */
-    query(sql:string):Array<Array<any>>
+    query(sql: string): Array<Array<any>>;
 
     /**
-     * 执行SQL但不获取结果
-     * @param sql 要执行的SQL语句
-     * @returns DBSession 处理完毕的会话对象（便于连锁进行其他操作）
+     * SQLを実行しますが、結果を取得しません。
+     * @param sql 実行するSQL文
+     * @returns {DBSession} 処理が完了したセッションオブジェクト（他の操作を連鎖的に行うのに便利です）
      */
-    exec(sql:string):DBSession;
+    exec(sql: string): DBSession;
 
     /**
-     * 执行SQL但不获取结果
-     * @param sql 要执行的SQL语句
-     * @returns DBSession 处理完毕的会话对象（便于连锁进行其他操作）
+     * SQLを実行しますが、結果を取得しません。
+     * @param sql 実行するSQL文
+     * @returns {DBSession} 処理が完了したセッションオブジェクト（他の操作を連鎖的に行うのに便利です）
      */
-    execute(sql:string):DBSession;
+    execute(sql: string): DBSession;
 
     /**
-     * 获取当前会话是否为打开状态
-     * @returns boolean 是否为打开状态
+     * 現在のセッションがオープン状態かどうかを取得します。
+     * @returns {boolean} オープン状態かどうか
      */
-    isOpen():boolean;
+    isOpen(): boolean;
 
     /**
-     * 关闭数据库会话
-     * @returns boolean 是否成功关闭
+     * データベースセッションを閉じます。
+     * @returns {boolean} 閉じるのに成功したかどうか
      */
-    close():boolean;
+    close(): boolean;
 
     /**
-     * 准备一个预准备语句
-     * @param sql 要准备的SQL语句
-     * @returns DBStmt 预准备语句，失败抛出错误
+     * プリペアドステートメントを準備します。
+     * @param sql 準備するSQL文
+     * @returns {DBStmt} プリペアドステートメント。失敗した場合にエラーがスローされます
      */
-    prepare(sql:string):DBStmt
+    prepare(sql: string): DBStmt;
 }
 
-
-
-/** SQL预准备语句 */
-declare class DBStmt{
+/** SQLプリペアドステートメント。 */
+declare class DBStmt {
     /**
-     * 绑定参数到一个SQL语句
-     * @param val 要绑定的值
-     * @tips 本重载将会将值绑定到第一个未绑定的参数上
+     * SQL文にパラメータをバインドします。
+     * @param val バインドする値
+     * @tips このオーバーロードは、未バインドの最初のパラメータに値をバインドします
      */
-    bind(val:any): void;
+    bind(val: any): void;
 
     /**
-     * 绑定参数到一个SQL语句
-     * @param val 要绑定的值
-     * @tips 要绑定的对象，等同于遍历此对象并执行
-     * @tips 对于Object:bind(val, key) 对于Array:bind(val)
+     * SQL文にパラメータをバインドします。
+     * @param val バインドする値
+     * @tips バインドするオブジェクト、このオブジェクトを反復処理して実行する
+     * @tips オブジェクトの場合: bind(val, key) 配列の場合: bind(val)
      */
-    bind(val:any|Array<any>): void;
+    bind(val: any | Array<any>): void;
 
     /**
-     * 绑定参数到一个SQL语句
-     * @param val 要绑定的值
-     * @param index 要绑定到的参数索引(从`0`开始)
+     * SQL文にパラメータをバインドします。
+     * @param val バインドする値
+     * @param index バインドするパラメータのインデックス（0から始まります）
      */
-    bind(val:any,index:number): void;
+    bind(val: any, index: number): void;
 
     /**
-     * 绑定参数到一个SQL语句
-     * @param val 要绑定的值
-     * @param name 要绑定到的参数的参数名
+     * SQL文にパラメータをバインドします。
+     * @param val バインドする値
+     * @param name バインドするパラメータの名前
      */
-    bind(val:any,name:string): void;
+    bind(val: any, name: string): void;
 
     /**
-     * 步进到下一行结果
-     * @returns boolean 执行成功与否
+     * 次の結果行に進みます。
+     * @returns {boolean} 成功したかどうか
      */
-    step():boolean;
+    step(): boolean;
 
     /**
-     * 步进到下一行结果
-     * @returns boolean 执行成功与否
+     * 次の結果行に進みます。
+     * @returns {boolean} 成功したかどうか
      */
-    next():boolean;
+    next(): boolean;
 
     /**
-     * 获取当前结果行
-     * @returns Object 当前结果行，形如`{col1: "value", col2: 2333}`
+     * 現在の結果行を取得します。
+     * @returns {Object} 現在の結果行、{col1: "value", col2: 2333}のような形式です
      */
-    fetch(): {[key:string]:any};
+    fetch(): { [key: string]: any };
 
     /**
-     * 获取所有结果行
-     * @returns Array<Array>
-     * @tips 返回数组的第1行(`result[0]`)为结果集的表头(列名)，剩余行为结果数据
+     * すべての結果行を取得します。
+     * @returns {Array<Array<any>>} 結果のすべての行
+     * @tips 配列の最初の行(`result[0]`)は結果セットのヘッダー（列名）で、残りの行は結果データです。
      */
-    fetchAll(): Array<Array<any>>
+    fetchAll(): Array<Array<any>>;
 
     /**
-     * 重置当前语句状态至“待执行”
-     * @returns DBStmt 处理完毕的语句对象（便于连锁进行其他操作）
-     * @tips 本函数不会清除已绑定的参数
+     * 現在のステートメントの状態を「実行待ち」にリセットします。
+     * @returns {DBStmt} 処理が完了したステートメントオブジェクト（他の操作を連鎖的に行うのに便利です）
+     * @tips この関数はバインドされたパラメータをクリアしません
      */
-    reset():DBStmt;
+    reset(): DBStmt;
 
     /**
-     * 重新执行预准备语句
-     * @returns DBStmt 处理完毕的语句对象（便于连锁进行其他操作）
-     * @tips 本函数是一个便捷函数，等同于执行`stmt.reset()`和`stmt.execute()`
+     * プリペアドステートメントを再実行します。
+     * @returns {DBStmt} 処理が完了したステートメントオブジェクト（他の操作を連鎖的に行うのに便利です）
+     * @tips この関数は`stmt.reset()`および`stmt.execute()`を実行するのと同じです
      */
-    reexec():DBStmt;
+    reexec(): DBStmt;
 
     /**
-     * 清除所有已绑定的参数
-     * @returns DBStmt 处理完毕的语句对象（便于连锁进行其他操作）
+     * すべてのバインドされたパラメータをクリアします。
+     * @returns {DBStmt} 処理が完了したステートメントオブジェクト（他の操作を連鎖的に行うのに便利です）
      */
-    clear():DBStmt;
+    clear(): DBStmt;
 }
-
