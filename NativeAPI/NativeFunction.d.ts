@@ -18,31 +18,32 @@ declare enum NativeTypes {
   Pointer,
 }
 
-declare class NativeHook{
-	/**
-	 * call功能
-	 * @param params 对应NativeFunction所描述的函数参数
-	 * @returns any 对应NativeFunction所描述的返回类型
-	 */
-	call(...params:any[]):any;
+declare class NativeHook {
+  /**
+   * 関数を呼び出すための機能
+   * @param params - NativeFunctionで定義された関数のパラメータに対応するもの
+   * @returns any - NativeFunctionで定義された戻り値に対応するもの
+   */
+  call(...params: any[]): any;
 
-	/** 函数指针的指针值 */
-	address:NativePointer|number;
+  /** 関数ポインタのポインタ値 */
+  address: NativePointer | number;
 
 }
 
 declare class NativeFunction {
   /**
-   * Symbol获得函数
-   * @param symbol 需要解析的函数
-   * @returns NativeFunction 原生函数实例
+   * シンボルから関数を取得します。
+   * @param symbol - 解析する関数のシンボル
+   * @returns {NativeFunction} - ネイティブ関数のインスタンス
    */
   static fromSymbol(symbol: string): NativeFunction;
 
   /**
-   * Describe获得函数
-   * @param ReturnValue 返回值类型
-   * @param Params 参数类型，从左到右直接传递
+   * 説明から関数を取得します。
+   * @param ReturnValue - 戻り値の型
+   * @param Params - パラメータの型、左から右に直接渡します
+   * @returns {NativeFunction} - ネイティブ関数のインスタンス
    */
   static fromDescription(
     ReturnValue: NativeTypes,
@@ -50,10 +51,11 @@ declare class NativeFunction {
   ): NativeFunction;
 
   /**
-   *
-   * @param ReturnValue
-   * @param Params
-   * @param Callback
+   * スクリプトから関数を取得します。
+   * @param ReturnValue - 戻り値の型
+   * @param Params - パラメータの型
+   * @param Callback - コールバック関数
+   * @returns {NativeFunction} - ネイティブ関数のインスタンス
    */
   static fromScript(
     ReturnValue: NativeTypes,
@@ -61,5 +63,10 @@ declare class NativeFunction {
     Callback: (...Params: NativeTypes[]) => any
   ): NativeFunction;
 
-	hook(func:(...params:any[])=>any):NativeHook;
+  /**
+   * 関数をフックします。
+   * @param func - フックしたい関数
+   * @returns {NativeHook} - ネイティブフックのインスタンス
+   */
+  hook(func: (...params: any[]) => any): NativeHook;
 }
