@@ -2,36 +2,36 @@
 
 declare namespace mc {
   /**
-   * ### 获取当前所有已加载的实体
+   * ### 現在読み込まれているすべてのエンティティを取得
    * 
-   * @returns 实体对象列表
+   * @returns エンティティのリスト
    */
   function getAllEntities(): Array<Entity>;
 
   /**
-   * ### 生成新生物并获取
+   * ### 新しいモブを生成して取得
    * 
-   * 通过此函数，在指定的位置生成一个新生物，并获取它对应的实体对象
+   * この関数を使用して、指定した位置に新しいモブを生成し、それに対応するエンティティオブジェクトを取得します。
    * 
-   * @param name 生物的命名空间名称，如 `minectaft:creeper`
-   * @param pos 生成生物的位置的坐标对象
+   * @param name モブの名前空間名、例：`minecraft:creeper`
+   * @param pos モブを生成する位置の座標オブジェクト
    * 
-   * @returns 生成的实体对象（失败返回`null`）
+   * @returns 生成されたエンティティオブジェクト（失敗した場合は`null`）
    */
   function spawnMob(name: string, pos: IntPos | FloatPos): Entity | null;
 
   /**
-   * ### 生成新生物并获取
+   * ### 新しいモブを生成して取得
    * 
-   * 通过此函数，在指定的位置生成一个新生物，并获取它对应的实体对象
+   * この関数を使用して、指定した位置に新しいモブを生成し、それに対応するエンティティオブジェクトを取得します。
    * 
-   * @param name 生物的命名空间名称，如 `minectaft:creeper`
-   * @param x x坐标
-   * @param y y坐标
-   * @param z z坐标
-   * @param dimId 维度Id
+   * @param name モブの名前空間名、例：`minecraft:creeper`
+   * @param x x座標
+   * @param y y座標
+   * @param z z座標
+   * @param dimId ディメンションID
    * 
-   * @returns 生成的实体对象（失败返回`null`）
+   * @returns 生成されたエンティティオブジェクト（失敗した場合は`null`）
    */
   function spawnMob(
     name: string,
@@ -42,25 +42,25 @@ declare namespace mc {
   ): Entity | null;
 
   /**
-   * ### 复制生物并获取
+   * ### モブを複製して取得
    * 
-   * @param entity 需要复制的实体对象
-   * @param pos 生成生物的位置的坐标对象
+   * @param entity 複製するエンティティオブジェクト
+   * @param pos モブを生成する位置の座標オブジェクト
    * 
-   * @returns 复制的实体对象（失败返回`null`）
+   * @returns 複製されたエンティティオブジェクト（失敗した場合は`null`）
    */
   function cloneMob(entity: Entity, pos: IntPos | FloatPos): Entity | null;
 
   /**
-   * ##d 复制生物并获取
+   * モブを複製して取得
    * 
-   * @param entity 需要复制的实体对象
-   * @param x x坐标
-   * @param y y坐标
-   * @param z z坐标
-   * @param dimId 维度Id
+   * @param entity 複製するエンティティオブジェクト
+   * @param x x座標
+   * @param y y座標
+   * @param z z座標
+   * @param dimId ディメンションID
    * 
-   * @returns Entity|null 复制的实体对象（失败返回`null`）
+   * @returns Entity|null 複製されたエンティティオブジェクト（失敗した場合は`null`）
    */
   function cloneMob(
     entity: Entity,
@@ -71,16 +71,16 @@ declare namespace mc {
   ): Entity | null;
 
   /**
-   * ### 在指定位置制造一次爆炸
+   * ### 指定位置で爆発を発生させる
    * 
-   * @param pos 引发爆炸的位置坐标
-   * @param source 设置爆炸来源的实体对象，可以为`Null`
-   * @param power 爆炸的威力值，影响爆炸的伤害大小和破坏范围
-   * @param range 爆炸的范围半径，影响爆炸的波及范围
-   * @param isDestroy 爆炸是否破坏方块
-   * @param isFire 爆炸结束后是否留下燃烧的火焰
+   * @param pos 爆発が発生する位置の座標
+   * @param source 爆発の元となるエンティティオブジェクト、`Null`でも構いません
+   * @param power 爆発の威力値、爆発のダメージと範囲に影響します
+   * @param range 爆発の範囲半径、爆発の拡散範囲に影響します
+   * @param isDestroy 爆発がブロックを破壊するかどうか
+   * @param isFire 爆発後に炎を残すかどうか
    * 
-   * @returns 是否成功制造爆炸
+   * @returns 爆発の発生に成功したかどうか
    */
   function explode(
     pos: IntPos | FloatPos,
@@ -92,19 +92,19 @@ declare namespace mc {
   ): boolean;
 
   /**
-   * ### 在指定位置制造一次爆炸
+   * ### 指定位置で爆発を発生させる
    * 
-   * @param x x坐标
-   * @param y y坐标
-   * @param z z坐标
-   * @param dimId 维度Id
-   * @param source 设置爆炸来源的实体对象，可以为`Null`
-   * @param power 爆炸的威力值，影响爆炸的伤害大小和破坏范围
-   * @param range 爆炸的范围半径，影响爆炸的波及范围
-   * @param isDestroy 爆炸是否破坏方块
-   * @param isFire 爆炸结束后是否留下燃烧的火焰
+   * @param x x座標
+   * @param y y座標
+   * @param z z座標
+   * @param dimId ディメンションID
+   * @param source 爆発の元となるエンティティオブジェクト、`Null`でも構いません
+   * @param power 爆発の威力値、爆発のダメージと範囲に影響します
+   * @param range 爆発の範囲半径、爆発の拡散範囲に影響します
+   * @param isDestroy 爆発がブロックを破壊するかどうか
+   * @param isFire 爆発後に炎を残すかどうか
    * 
-   * @returns 是否成功制造爆炸
+   * @returns 爆発の発生に成功したかどうか
    */
   function explode(
     x: number,
