@@ -1,163 +1,163 @@
 /// <reference path="../index.d.ts" />
 
-declare class Packet{
+declare class Packet {
     /**
-     * 获取数据包名称
-     * @returns string 数据包名称
+     * データパケットの名前を取得
+     * @returns {string} データパケットの名前
      */
     getName(): string;
 
     /**
-     * 获取数据包名称
-     * @returns number 数据包ID
+     * データパケットのIDを取得
+     * @returns {number} データパケットのID
      */
     getId(): number;
 }
 
-declare class BinaryStream{
+declare class BinaryStream {
     /**
-     * 重置二进制流
-     * @returns 是否成功
+     * 二進数ストリームをリセット
+     * @returns {boolean} 成功したかどうか
      */
-    reset():boolean;
+    reset(): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {boolean} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeBool(value:boolean):boolean;
+    writeBool(value: boolean): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeByte(value:number):boolean;
+    writeByte(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeDouble(value:number):boolean;
+    writeDouble(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeFloat(value:number):boolean;
+    writeFloat(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeSignedBigEndianInt(value:number):boolean;
+    writeSignedBigEndianInt(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeSignedInt(value:number):boolean;
+    writeSignedInt(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeSignedInt64(value:number):boolean;
+    writeSignedInt64(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeSignedShort(value:number):boolean;
+    writeSignedShort(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {string} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeString(value:string):boolean;
+    writeString(value: string): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeUnsignedChar(value:number):boolean;
+    writeUnsignedChar(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeUnsignedInt(value:number):boolean;
+    writeUnsignedInt(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeUnsignedInt64(value:number):boolean;
+    writeUnsignedInt64(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeUnsignedShort(value:number):boolean;
+    writeUnsignedShort(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeUnsignedVarInt(value:number):boolean;
+    writeUnsignedVarInt(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeUnsignedVarInt64(value:number):boolean;
+    writeUnsignedVarInt64(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeVarInt(value:number):boolean;
+    writeVarInt(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {number} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeVarInt64(value:number):boolean;
+    writeVarInt64(value: number): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {FloatPos} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeVec3(value:FloatPos):boolean;
+    writeVec3(value: FloatPos): boolean;
 
     /**
-     * 写入二进制流
-     * @param value 参数
-     * @returns boolean 是否成功
+     * 二進数ストリームに書き込む
+     * @param {NbtCompound} value パラメータ
+     * @returns {boolean} 成功したかどうか
      */
-    writeCompountTag(value:NbtCompound):boolean;
+    writeCompoundTag(value: NbtCompound): boolean;
 
     /**
-     * 通过二进制流构建数据包
-     * @param pktid 数据包ID
-     * @returns Pakcet 数据包对象
+     * 二進数ストリームからデータパケットを生成
+     * @param {number} pktid データパケットID
+     * @returns {Packet} データパケットオブジェクト
      */
-    createPacket(pktid:number): Packet;
+    createPacket(pktid: number): Packet;
 }
