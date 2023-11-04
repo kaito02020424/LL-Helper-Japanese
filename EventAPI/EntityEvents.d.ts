@@ -1,111 +1,111 @@
 /// <reference path="../index.d.ts" />
 
 declare enum DamageCause {
-  /** 其他 */
+  /** その他 */
   None = -0x01,
 
-  /** 非正常方式（如脚本直接设置血量为0），这种方式的伤害不会被盔甲与buff吸收 */
+  /** 不正な方法（例: スクリプトが直接体力を0に設定）この種のダメージは防具やバフによって吸収されません */
   Override = 0x00,
 
-  /** 接触伤害（如仙人掌） */
+  /** 接触ダメージ（例: サボテン） */
   Contact = 0x01,
 
-  /** 实体攻击 */
+  /** エンティティによる攻撃 */
   EntityAttack = 0x02,
 
-  /** 抛射物攻击 */
+  /** 弾丸による攻撃 */
   Projectile = 0x03,
 
-  /** 窒息（密封空间） */
+  /** 窒息（密閉空間） */
   Suffocation = 0x04,
 
-  /** 掉落 */
+  /** 落下 */
   Fall = 0x05,
 
-  /** 着火 */
+  /** 火災 */
   Fire = 0x06,
 
-  /** 着火 */
+  /** 火災の継続ダメージ */
   FireTick = 0x07,
 
-  /** 熔岩 */
+  /** 溶岩 */
   Lava = 0x08,
 
-  /** 溺水 */
+  /** 溺れ */
   Drowning = 0x09,
 
-  /** 方块爆炸 */
+  /** ブロックの爆発 */
   BlockExplosion = 0x0a,
 
-  /** 实体爆炸 */
+  /** エンティティの爆発 */
   EntityExplosion = 0x0b,
 
   /** 虚空 */
   Void = 0x0c,
 
-  /** 自杀 */
+  /** 自殺 */
   Suicide = 0x0d,
 
-  /** 尖牙对生物造成的伤害、守卫者对生物造成的魔法伤害和药水伤害等 */
+  /** イリュージョンのダメージ、ガーディアンの魔法ダメージ、ポーションのダメージなど */
   Magic = 0x0e,
 
-  /** 凋零效果 */
+  /** ウィザー効果 */
   Wither = 0x0f,
 
-  /** 饥饿 */
+  /** 飢餓 */
   Starve = 0x10,
 
-  /** 下落的铁砧 */
+  /** 落下する金床 */
   Anvil = 0x11,
 
-  /** 荆棘 */
+  /** 荊棘 */
   Thorns = 0x12,
 
-  /** 下落的方块 */
+  /** 落下するブロック */
   FallingBlock = 0x13,
 
-  /** 活塞 */
+  /** ピストン */
   Piston = 0x14,
 
-  /** 动态能量（滑翔撞墙） */
+  /** 動力エネルギー（滑空して壁にぶつかる） */
   FlyIntoWall = 0x15,
 
-  /** 岩浆块 */
+  /** マグマ */
   Magma = 0x16,
 
-  /** 烟花 */
+  /** ファイヤーワークス */
   Fireworks = 0x17,
 
-  /** 闪电 */
+  /** 稲妻 */
   Lightning = 0x18,
 
-  /** ？？？ */
+  /** ??? */
   Charging = 0x19,
 
-  /** 温度 （雪人？） */
+  /** 温度（雪だるま？） */
   Temperature = 0x1a,
 
-  /** 冰冻 */
+  /** 凍結 */
   Freezing = 0x1b,
 
-  /** 被钟乳石砸到 */
+  /** 鍾乳石による打撃 */
   Stalactite = 0x1c,
 
-  /** 掉落到石笋上 */
+  /** 鍾乳石に落下 */
   Stalagmite = 0x1d,
 
-  /** 所有 */
+  /** すべて */
   All = 0x1f,
 }
 
 declare namespace mc {
-  /** 生物死亡 */
+  /** エンティティの死亡 */
   function listen(
     event: "onMobDie",
     listener: (mob: Entity, source: Entity, cause: number) => void
   ): boolean;
 
-  /** 生物受伤（包括玩家） */
+  /** エンティティの被害（プレイヤーも含む） */
   function listen(
     event: "onMobHurt",
     listener: (
@@ -116,7 +116,7 @@ declare namespace mc {
     ) => boolean | void
   ): boolean;
 
-  /** 发生由实体引起的爆炸 */
+  /** エンティティによる爆発が発生 */
   function listen(
     event: "onEntityExplode",
     listener: (
@@ -129,8 +129,8 @@ declare namespace mc {
     ) => boolean | void
   ): boolean;
 
-  /** 发生于实体生成
-   * @deprecated 请使用 onMobTrySpawn 和 onMobSpawned 事件作为替代
+  /** エンティティのスポーンが発生
+   * @deprecated 代わりにonMobTrySpawnとonMobSpawnedイベントを使用してください
    */
   function listen(
     event: "onMobSpawn",
@@ -138,11 +138,11 @@ declare namespace mc {
   ): boolean;
 
   /**
-   * 发生于实体尝试自然生成
+   * エンティティが自然にスポーンしようとする際に発生
    * 
-   * 在回调函数中:
-   * * `typeName`: 生成实体名称
-   * * `pos`: 生成的坐标
+   * コールバック内で:
+   * * `typeName`: 生成されるエンティティの名前
+   * * `pos`: 生成座標
    */
   function listen(
     event: "onMobTrySpawn",
@@ -150,78 +150,78 @@ declare namespace mc {
   )
 
   /**
-   * 发生于实体自然生成完成
+   * エンティティが自然にスポーンし終わった際に発生
    * 
-   * 在回调函数中:
-   * * `entity`: 生成的实体对象
-   * * `pos`: 生成的坐标
+   * コールバック内で:
+   * * `entity`: 生成されたエンティティのオブジェクト
+   * * `pos`: 生成座標
    */
   function listen(
     event: "onMobSpawned",
     listener: (entity: Entity, pos: FloatPos) => void
   )
 
-  /** 实体被弹射物击中 */
+  /** エンティティが弾丸に当たった */
   function listen(
     event: "onProjectileHitEntity",
     listener: (entity: Entity, source: Entity) => void
   ): boolean;
 
-  /** 凋零破坏方块 */
+  /** ウィザーボスがブロックを破壊 */
   function listen(
     event: "onWitherBossDestroy",
     listener: (witherBoss: Entity, AAbb: IntPos, aaBB: IntPos) => boolean | void
   ): boolean;
 
   /**
-   * 末影龙破坏方块
+   * エンダードラゴンがブロックを破壊
    * 
-   * 在回调函数中:
-   * * `EnderDragon`: 末影龙的实体对象
-   * * `block`: 末影龙破坏的方块对象
+   * コールバック内で:
+   * * `EnderDragon`: エンダードラゴンのエンティティ
+   * * `block`: エンダードラゴンが破壊したブロック
    */
   function listen(
     event: "onEnderDragonDestroy",
     listener: (EnderDragon: Entity, block: Block) => boolean | void
   )
 
-  /** 生物骑乘 */
+  /** エンティティのライド */
   function listen(
     event: "onRide",
     listener: (entity1: Entity, entity2: Entity) => boolean | void
   ): boolean;
 
-  /** 生物踩压力板 */
+  /** エンティティがプレッシャープレートを踏む */
   function listen(
     event: "onStepOnPressurePlate",
     listener: (entity: Entity, pressurePlate: Block) => boolean | void
   ): boolean;
 
-  /** 弹射物创建 */
+  /** 弾丸の作成 */
   function listen(
     event: "onSpawnProjectile",
     listener: (shooter: Entity, type: string) => boolean | void
   ): boolean;
 
-  /** 弹射物创建完毕 */
+  /** 弾丸の作成が完了 */
   function listen(
     event: "onProjectileCreated",
     listener: (shooter: Entity, entity: Entity) => boolean | void
   ): boolean;
 
-  /** NPC执行命令 */
+  /** NPCがコマンドを実行 */
   function listen(
     event: "onNpcCmd",
     listener: (npc: Entity, pl: Player, cmd: string) => boolean | void
   ): boolean;
 
-  /** 操作盔甲架 */
+  /** アーマースタンドの変更 */
   function listen(
     event: "onChangeArmorStand",
     listener: (as: Entity, pl: Player, slot: number) => boolean | void
   ): boolean;
 
-  /** 实体转变 */
+  /** エンティティの変換 */
   function listen(
     event: "onEntityTransformation",
     listener: (uniqueId: string, entity: Entity) => void
