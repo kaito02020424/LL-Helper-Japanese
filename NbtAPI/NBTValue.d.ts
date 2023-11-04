@@ -1,82 +1,98 @@
+/**
+ * NbtEnd クラスの型宣言
+ */
 declare class NbtEnd {
   constructor();
 
   /**
-   * 获取NBT对象储存的数据类型
-   * @returns NBT.enum 此NBT对象储存的数据类型
+   * NBTオブジェクトが格納しているデータ型を取得します。
+   * @returns {any} - このNBTオブジェクトが格納しているデータ型
    */
-  getType():0
+  getType(): 0;
 
   /**
-   * 将NBT对象转换为Json字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをJSON文字列に変換します。
+   * @param {number} space - オプション: 文字列をフォーマットする場合に渡すパラメータ
+   * @returns {string} - 変換されたJSON文字列
    */
   toString(space?: number): string;
 
   /**
-   * 设置对象的数据
-   * @param data 写入对应类型的数据
+   * オブジェクトにデータを設定します。
+   * @param {any} data - 対応する型のデータを書き込みます
+   * @returns {true} - 成功時に true を返します
    */
   set(data: any): true;
 
   /**
-   * 读取对象的数据
-   * @returns 对象中储存的数据
+   * オブジェクトからデータを読み取ります。
+   * @returns {null} - オブジェクトに格納されているデータ
    */
   get(): null;
 }
 
+/**
+ * NbtByte クラスの型宣言
+ */
 declare class NbtByte {
   constructor(data?: number);
 
   /**
-   * 获取NBT对象储存的数据类型
-   * @returns NBT.enum 此NBT对象储存的数据类型
+   * NBTオブジェクトが格納しているデータ型を取得します。
+   * @returns {any} - このNBTオブジェクトが格納しているデータ型
    */
-  getType():1
+  getType(): 1;
 
   /**
-   * 将NBT对象转换为Json字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをJSON文字列に変換します。
+   * @param {number} space - オプション: 文字列をフォーマットする場合に渡すパラメータ
+   * @returns {string} - 変換されたJSON文字列
    */
   toString(space?: number): string;
 
   /**
-   * 设置对象的数据
-   * @param data 写入对应类型的数据
+   * オブジェクトにデータを設定します。
+   * @param {number} data - 対応する型のデータを書き込みます
+   * @returns {boolean} - 成功時に true を返します
    */
   set(data: number): boolean;
 
   /**
-   * 读取对象的数据
-   * @returns 对象中储存的数据
+   * オブジェクトからデータを読み取ります。
+   * @returns {number} - オブジェクトに格納されているデータ
    */
   get(): number;
 }
+/**
+ * NbtShort クラスの型宣言
+ */
 declare class NbtShort {
   constructor(data?: number);
 
   /**
-   * 获取NBT对象储存的数据类型
-   * @returns NBT.enum 此NBT对象储存的数据类型
+   * NBTオブジェクトが格納しているデータ型を取得します。
+   * @returns {any} - このNBTオブジェクトが格納しているデータ型
    */
-  getType():2
+  getType(): 2;
 
   /**
-   * 将NBT对象转换为Json字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをJSON文字列に変換します。
+   * @param {number} space - オプション: 文字列をフォーマットする場合に渡すパラメータ
+   * @returns {string} - 変換されたJSON文字列
    */
+
   toString(space?: number): string;
 
   /**
-   * 设置对象的数据
-   * @param data 写入对应类型的数据
+   * オブジェクトにデータを設定します。
+   * @param {number} data - 対応する型のデータを書き込みます
+   * @returns {boolean} - 成功時に true を返します
    */
   set(data: number): boolean;
 
   /**
-   * 读取对象的数据
-   * @returns 对象中储存的数据
+   * オブジェクトからデータを読み取ります。
+   * @returns {number} - オブジェクトに格納されているデータ
    */
   get(): number;
 }
@@ -84,161 +100,190 @@ declare class NbtInt {
   constructor(data?: number);
 
   /**
-   * 获取NBT对象储存的数据类型
-   * @returns NBT.enum 此NBT对象储存的数据类型
+   * NBTオブジェクトが格納しているデータ型を取得します。
+   * @returns {any} - このNBTオブジェクトが格納しているデータ型
    */
-  getType():3
+  getType(): 3;
 
   /**
-   * 将NBT对象转换为Json字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをJSON文字列に変換します。
+   * @param {number} space - オプション: 文字列をフォーマットする場合に渡すパラメータ
+   * @returns {string} - 変換されたJSON文字列
    */
   toString(space?: number): string;
 
   /**
-   * 设置对象的数据
-   * @param data 写入对应类型的数据
+   * オブジェクトにデータを設定します。
+   * @param {number} data - 対応する型のデータを書き込みます
+   * @returns {boolean} - 成功時に true を返します
    */
   set(data: number): boolean;
 
   /**
-   * 读取对象的数据
-   * @returns 对象中储存的数据
+   * オブジェクトからデータを読み取ります。
+   * @returns {number} - オブジェクトに格納されているデータ
    */
   get(): number;
 }
+/**
+ * NbtLong クラスの型宣言
+ */
 declare class NbtLong {
   constructor(data?: number);
 
   /**
-   * 获取NBT对象储存的数据类型
-   * @returns NBT.enum 此NBT对象储存的数据类型
+   * NBTオブジェクトが格納しているデータ型を取得します。
+   * @returns {any} - このNBTオブジェクトが格納しているデータ型
    */
-  getType():4
+  getType(): 4;
 
   /**
-   * 将NBT对象转换为Json字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをJSON文字列に変換します。
+   * @param {number} space - オプション: 文字列をフォーマットする場合に渡すパラメータ
+   * @returns {string} - 変換されたJSON文字列
    */
+
   toString(space?: number): string;
 
   /**
-   * 设置对象的数据
-   * @param data 写入对应类型的数据
+   * オブジェクトにデータを設定します。
+   * @param {number} data - 対応する型のデータを書き込みます
+   * @returns {boolean} - 成功時に true を返します
    */
   set(data: number): boolean;
 
   /**
-   * 读取对象的数据
-   * @returns 对象中储存的数据
+   * オブジェクトからデータを読み取ります。
+   * @returns {number} - オブジェクトに格納されているデータ
    */
   get(): number;
 }
+/**
+ * NbtFloat クラスの型宣言
+ */
 declare class NbtFloat {
   constructor(data?: number);
 
   /**
-   * 获取NBT对象储存的数据类型
-   * @returns NBT.enum 此NBT对象储存的数据类型
+   * NBTオブジェクトが格納しているデータ型を取得します。
+   * @returns {any} - このNBTオブジェクトが格納しているデータ型
    */
-  getType():5
+  getType(): 5;
 
   /**
-   * 将NBT对象转换为Json字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをJSON文字列に変換します。
+   * @param {number} space - オプション: 文字列をフォーマットする場合に渡すパラメータ
+   * @returns {string} - 変換されたJSON文字列
    */
   toString(space?: number): string;
 
   /**
-   * 设置对象的数据
-   * @param data 写入对应类型的数据
+   * オブジェクトにデータを設定します。
+   * @param {number} data - 対応する型のデータを書き込みます
+   * @returns {boolean} - 成功時に true を返します
    */
   set(data: number): boolean;
 
   /**
-   * 读取对象的数据
-   * @returns 对象中储存的数据
+   * オブジェクトからデータを読み取ります。
+   * @returns {number} - オブジェクトに格納されているデータ
    */
   get(): number;
 }
+/**
+ * NbtDouble クラスの型宣言
+ */
 declare class NbtDouble {
   constructor(data?: number);
 
   /**
-   * 获取NBT对象储存的数据类型
-   * @returns NBT.enum 此NBT对象储存的数据类型
+   * NBTオブジェクトが格納しているデータ型を取得します。
+   * @returns {any} - このNBTオブジェクトが格納しているデータ型
    */
-  getType():6
+  getType(): 6;
 
   /**
-   * 将NBT对象转换为Json字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをJSON文字列に変換します。
+   * @param {number} space - オプション: 文字列をフォーマットする場合に渡すパラメータ
+   * @returns {string} - 変換されたJSON文字列
    */
   toString(space?: number): string;
 
   /**
-   * 设置对象的数据
-   * @param data 写入对应类型的数据
+   * オブジェクトにデータを設定します。
+   * @param {number} data - 対応する型のデータを書き込みます
+   * @returns {boolean} - 成功時に true を返します
    */
   set(data: number): boolean;
 
   /**
-   * 读取对象的数据
-   * @returns 对象中储存的数据
+   * オブジェクトからデータを読み取ります。
+   * @returns {number} - オブジェクトに格納されているデータ
    */
   get(): number;
 }
+/**
+ * NbtByteArray クラスの型宣言
+ */
 declare class NbtByteArray {
   constructor(data?: ArrayBuffer);
 
   /**
-   * 获取NBT对象储存的数据类型
-   * @returns NBT.enum 此NBT对象储存的数据类型
+   * NBTオブジェクトが格納しているデータ型を取得します。
+   * @returns {any} - このNBTオブジェクトが格納しているデータ型
    */
-  getType():7
+  getType(): 7;
 
   /**
-   * 将NBT对象转换为Json字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをJSON文字列に変換します。
+   * @param {number} space - オプション: 文字列をフォーマットする場合に渡すパラメータ
+   * @returns {string} - 変換されたJSON文字列
    */
   toString(space?: number): string;
 
   /**
-   * 设置对象的数据
-   * @param data 写入对应类型的数据
+   * オブジェクトにデータを設定します。
+   * @param {ArrayBuffer} data - 対応する型のデータを書き込みます
+   * @returns {boolean} - 成功時に true を返します
    */
   set(data: ArrayBuffer): boolean;
 
   /**
-   * 读取对象的数据
-   * @returns 对象中储存的数据
+   * オブジェクトからデータを読み取ります。
+   * @returns {ArrayBuffer} - オブジェクトに格納されているデータ
    */
   get(): ArrayBuffer;
 }
+/**
+ * NbtString クラスの型宣言
+ */
 declare class NbtString {
   constructor(data?: string);
 
   /**
-   * 获取NBT对象储存的数据类型
-   * @returns NBT.enum 此NBT对象储存的数据类型
+   * NBTオブジェクトが格納しているデータ型を取得します。
+   * @returns {any} - このNBTオブジェクトが格納しているデータ型
    */
-  getType():8
+  getType(): 8;
 
   /**
-   * 将NBT对象转换为Json字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをJSON文字列に変換します。
+   * @param {number} space - オプション: 文字列をフォーマットする場合に渡すパラメータ
+   * @returns {string} - 変換されたJSON文字列
    */
+
   toString(space?: number): string;
 
   /**
-   * 设置对象的数据
-   * @param data 写入对应类型的数据
+   * オブジェクトにデータを設定します。
+   * @param {string} data - 対応する型のデータを書き込みます
+   * @returns {boolean} - 成功時に true を返します
    */
   set(data: string): boolean;
 
   /**
-   * 读取对象的数据
-   * @returns 对象中储存的数据
+   * オブジェクトからデータを読み取ります。
+   * @returns {string} - オブジェクトに格納されているデータ
    */
   get(): string;
 }
