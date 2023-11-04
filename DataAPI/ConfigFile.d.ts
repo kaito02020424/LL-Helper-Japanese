@@ -1,198 +1,181 @@
-/** 创建或打开一个 Json 配置文件 */
+/** JSON設定ファイルを作成または開きます。 */
 declare class JsonConfigFile {
-  constructor(path:string,_default?:string)
+  constructor(path: string, _default?: string);
 
-  /** 配置文件所在路径，以BDS根目录为基准  
-    如果配置文件路径中有目录尚不存在，LLSE会自动创建 */
+  /** ファイルのパスです。BDSルートディレクトリを基準とします。
+   * パスに存在しないディレクトリが含まれている場合、LLSEは自動的に作成します。
+   */
   path: string;
 
-  /** （可选参数）配置文件的默认内容。  
-    如果初始化时目标文件**不存在**，引擎将新建一个配置文件并将此处的默认内容写入文件中。  
-    如果不传入此参数，新建时的配置文件将为空 */
+  /** オプション: ファイルのデフォルトコンテンツ。
+   * ターゲットファイルが**存在しない**場合、エンジンは新しい設定ファイルを作成し、ここにデフォルトコンテンツを書き込みます。
+   * このパラメータを指定しない場合、新しい設定ファイルは空になります。
+   */
   default?: string;
 
   /**
-   * 初始化配置项（方便函数）
-   * @param name 配置项名字
-   * @param _default 配置项初始化时写入的值
-   * @returns any 以具体储存的数据类型为准
-   * 这里提供了一种简便的方法来初始化配置文件，避免了需要手写默认配置文件内容的麻烦
+   * 設定項目を初期化します（関数を便利に使用）。
+   * @param name 設定項目の名前
+   * @param _default 設定項目の初期値
+   * @returns {any} 具体的なデータ型に基づく
+   * 設定ファイルを初期化する便利な方法を提供し、デフォルトの設定ファイルコンテンツを手動で記述する手間を省略します。
    */
   init(name: string, _default: any): any;
 
   /**
-   * 写入配置项
-   * @param name 配置项名字
-   * @param data 指定类型
-   * @returns boolean 是否写入成功
+   * 設定項目を書き込みます。
+   * @param name 設定項目の名前
+   * @param data 指定された型
+   * @returns {boolean} 書き込みに成功したかどうか
    */
   set(name: string, data: any): boolean;
 
   /**
-   * 读取配置项
-   * @param name 配置项名字
-   * @param _default （可选参数）当读取失败时返回的默认值  默认为`null`
-   * @returns any 指定配置项的数据
+   * 設定項目を読み取ります。
+   * @param name 設定項目の名前
+   * @param _default オプション: 読み取りに失敗した場合に返されるデフォルト値（デフォルトは`null`）
+   * @returns {any} 指定した設定項目のデータ
    */
   get(name: string, _default?: any | null): any;
 
   /**
-   * 删除配置项
-   * @param name 配置项名字
-   * @returns boolean 是否删除成功
+   * 設定項目を削除します。
+   * @param name 設定項目の名前
+   * @returns {boolean} 削除に成功したかどうか
    */
   delete(name: string): boolean;
 
   /**
-   * 重新加载文件中的配置项
-   * @returns boolean 是否成功加载
+   * ファイル内の設定項目を再読み込みします。
+   * @returns {boolean} 読み込みに成功したかどうか
    */
   reload(): boolean;
 
   /**
-   * 关闭配置文件
-   * @returns boolean 是否成功关闭
+   * 設定ファイルを閉じます。
+   * @returns {boolean} 閉じるのに成功したかどうか
    */
   close(): boolean;
 
   /**
-   * 获取配置文件路径
-   * @returns string 当前配置文件的文件路径
+   * 設定ファイルのパスを取得します。
+   * @returns {string} 現在の設定ファイルのファイルパス
    */
   getPath(): string;
 
   /**
-   * 读取整个配置文件的内容
-   * @returns string 当前配置文件的所有内容
+   * 設定ファイル全体の内容を読み取ります。
+   * @returns {string} 現在の設定ファイルのすべての内容
    */
   read(): string;
 
   /**
-   * 写入整个配置文件的内容
-   * @param content 内容
-   * @returns boolean 是否写入成功
+   * 設定ファイル全体の内容を書き込みます。
+   * @param content コンテンツ
+   * @returns {boolean} 書き込みに成功したかどうか
    */
-  write(content:string): boolean;
+  write(content: string): boolean;
 }
 
-/** 创建或打开一个 Ini 配置文件 */
+/** INI設定ファイルを作成または開きます。 */
 declare class IniConfigFile {
-  constructor(path:string,_default?:string);
+  constructor(path: string, _default?: string);
 
-  /**
-    配置文件所在路径，以BDS根目录为基准  
-    如果配置文件路径中有目录尚不存在，LLSE会自动创建 */
+  /** ファイルのパスです。BDSルートディレクトリを基準とします。
+   * パスに存在しないディレクトリが含まれている場合、LLSEは自動的に作成します。
+   */
   path: string;
 
-  /** （可选参数）配置文件的默认内容。  
-    如果初始化时目标文件**不存在**，引擎将新建一个配置文件并将此处的默认内容写入文件中 */
+  /** オプション: ファイルのデフォルトコンテンツ。
+   * ターゲットファイルが**存在しない**場合、エンジンは新しい設定ファイルを作成し、ここにデフォルトコンテンツを書き込みます。
+   */
   _default?: string;
 
   /**
-   * 初始化配置项
-   * @param section 配置项键名
-   * @param name 配置项名字
-   * @param _default 配置项初始化时写入的值
-   * @returns number|string|boolean 指定配置项的数据
+   * 設定項目を初期化します。
+   * @param section 設定項目のキー名
+   * @param name 設定項目の名前
+   * @param _default 設定項目の初期値（数値、文字列、ブール値）
+   * @returns {number|string|boolean} 指定した設定項目のデータ
    */
   init(section: string, name: string, _default: number | string | boolean): any;
 
   /**
-   * 写入配置项
-   * @param section 配置项键名
-   * @param name 配置项名字
-   * @param data 要写入的配置数据
-   * @returns boolean 是否写入成功
+   * 設定項目を書き込みます。
+   * @param section 設定項目のキー名
+   * @param name 設定項目の名前
+   * @param data 書き込む設定データ（数値、文字列、ブール値）
+   * @returns {boolean} 書き込みに成功したかどうか
    */
   set(section: string, name: string, data: number | string | boolean): boolean;
 
   /**
-   *
-   * @param section 配置项键名
-   * @param name 配置项名字
-   * @param _default （可选参数）当读取失败时返回的默认值  默认为`0`
-   * @returns string 指定配置项的数据
+   * @param section 設定項目のキー名
+   * @param name 設定項目の名前
+   * @param _default オプション: 読み取りに失敗した場合に返されるデフォルト値（デフォルトは`0`）
+   * @returns {string} 指定した設定項目のデータ
    */
-  getStr(
-    section: string,
-    name: string,
-    _default?: string | number | boolean
-  ): string;
+  getStr(section: string, name: string, _default?: string | number | boolean): string;
 
   /**
-   *
-   * @param section 配置项键名
-   * @param name 配置项名字
-   * @param _default （可选参数）当读取失败时返回的默认值  默认为`0`
-   * @returns number 指定配置项的数据
+   * @param section 設定項目のキー名
+   * @param name 設定項目の名前
+   * @param _default オプション: 読み取りに失敗した場合に返されるデフォルト値（デフォルトは`0`）
+   * @returns {number} 指定した設定項目のデータ
    */
-  getInt(
-    section: string,
-    name: string,
-    _default?: string | number | boolean
-  ): number;
+  getInt(section: string, name: string, _default?: string | number | boolean): number;
 
   /**
-   *
-   * @param section 配置项键名
-   * @param name 配置项名字
-   * @param _default （可选参数）当读取失败时返回的默认值  默认为`0`
-   * @returns number 指定配置项的数据
+   * @param section 設定項目のキー名
+   * @param name 設定項目の名前
+   * @param _default オプション: 読み取りに失敗した場合に返されるデフォルト値（デフォルトは`0`）
+   * @returns {number} 指定した設定項目のデータ
    */
-  getFloat(
-    section: string,
-    name: string,
-    _default?: string | number | boolean
-  ): number;
+  getFloat(section: string, name: string, _default?: string | number | boolean): number;
 
   /**
-   *
-   * @param section 配置项键名
-   * @param name 配置项名字
-   * @param _default （可选参数）当读取失败时返回的默认值  默认为`0`
-   * @returns boolean 指定配置项的数据
+   * @param section 設定項目のキー名
+   * @param name 設定項目の名前
+   * @param _default オプション: 読み取りに失敗した場合に返されるデフォルト値（デフォルトは`0`）
+   * @returns {boolean} 指定した設定項目のデータ
    */
-  getBool(
-    section: string,
-    name: string,
-    _default?: string | number | boolean
-  ): boolean;
+  getBool(section: string, name: string, _default?: string | number | boolean): boolean;
 
   /**
-   * @param section 配置项键名
-   * @param name 配置项名字
-   * @returns boolean 是否删除成功
+   * @param section 設定項目のキー名
+   * @param name 設定項目の名前
+   * @returns {boolean} 削除に成功したかどうか
    */
   delete(section: string, name: string): boolean;
 
   /**
-   * 重新加载文件中的配置项
-   * @returns boolean 是否成功加载
+   * ファイル内の設定項目を再読み込みします。
+   * @returns {boolean} 読み込みに成功したかどうか
    */
   reload(): boolean;
 
   /**
-   * 关闭配置文件
-   * @returns boolean 是否成功关闭
+   * 設定ファイルを閉じます。
+   * @returns {boolean} 閉じるのに成功したかどうか
    */
   close(): boolean;
 
   /**
-   * 获取配置文件路径
-   * @returns string 当前配置文件的文件路径
+   * 設定ファイルのパスを取得します。
+   * @returns {string} 現在の設定ファイルのファイルパス
    */
   getPath(): string;
 
   /**
-   * 读取整个配置文件的内容
-   * @returns string 当前配置文件的所有内容
+   * 設定ファイル全体の内容を読み取ります。
+   * @returns {string} 現在の設定ファイルのすべての内容
    */
   read(): string;
 
   /**
-   * 写入整个配置文件的内容
-   * @param content 内容
-   * @returns boolean 是否写入成功
+   * 設定ファイル全体の内容を書き込みます。
+   * @param content コンテンツ
+   * @returns {boolean} 書き込みに成功したかどうか
    */
-  write(content:string): boolean;
+  write(content: string): boolean;
 }
