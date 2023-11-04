@@ -1,60 +1,60 @@
 /* eslint-disable @typescript-eslint/triple-slash-reference */
 
 declare class record {
-  /** 此项交易的发起者玩家Xuid */
+  /** トランザクションの発行元プレイヤーのXUID */
   from: string;
 
-  /** 此项交易的接收者玩家Xuid */
+  /** 受け取る相手のXUID */
   to: string;
 
-  /** 此项交易的金额 */
+  /** 金額 */
   money: number;
 
-  /** 此项交易发生时的时间字符串 */
+  /** トランザクションの実行を行った日付 */
   time: string;
 
-  /** 此交易的附加说明信息 */
+  /** 備考欄 */
   note: string;
 }
 
-/** 经济系统 API */
+/** 経済システムAPI */
 declare namespace money {
   /**
-   * 设置玩家的存款金额
-   * @param xuid 要操作的玩家的Xuid标识符
-   * @param money 要设置的金额
-   * @returns boolean 是否设置成功
+   * プレイヤーの所持金を設定します
+   * @param xuid 操作対象のプレイヤーのXUID
+   * @param money 設定金額
+   * @returns {boolean} 成功したかどうか
    */
   function set(xuid: string, money: number): boolean;
 
   /**
-   * 获取玩家的存款金额
-   * @param xuid 要读取的玩家的Xuid标识符
-   * @returns number 玩家的资金数值
+   * プレイヤーの所持金を取得する
+   * @param xuid 所得するプレイヤーのXUID
+   * @returns {number} プレイヤーの所持金
    */
   function get(xuid: string): number;
 
   /**
-   * 增加玩家的存款
-   * @param xuid 要操作的玩家的Xuid标识符
-   * @param money 要增加的金额
+   * プレイヤーの所持金を増加させる
+   * @param xuid 操作対象のプレイヤーのXUID
+   * @param money 増加させる金額
    */
   function add(xuid: string, money: number): boolean;
 
   /**
-   * 减少玩家的存款
-   * @param xuid 要操作的玩家的Xuid标识符
-   * @param money 要减少的金额
+   * プレイヤーの所持金を減少させる
+   * @param xuid 操作対象のプレイヤーのXUID
+   * @param money 減少させる金額
    */
   function reduce(xuid: string, money: number): boolean;
 
   /**
-   * 进行一笔转账
-   * @param xuid_1 付款的玩家的Xuid标识符
-   * @param xuid_2 收款的玩家的Xuid标识符
-   * @param money 要支付的金额
-   * @param note （可选参数）给这笔转账附加一些文字说明
-   * @returns boolean 是否转账成功
+   * 送金する
+   * @param xuid_1 支払うプレイヤーのXUID
+   * @param xuid_2 受け取るプレイヤーのXUID
+   * @param money 送金する金額
+   * @param note オプション: 備考欄
+   * @returns {boolean} 送金は成功したかどうか
    */
   function trans(
     xuid_1: string,
@@ -64,17 +64,17 @@ declare namespace money {
   ): boolean;
 
   /**
-   * 查询历史账单
-   * @param xuid 要操作的玩家的Xuid标识符
-   * @param time 查询从现在开始往前time秒的记录
-   * @returns Array<Object> 查询结果对象的数组
+   * トランザクション履歴を照会する
+   * @param xuid 照会するプレイヤーのXUID
+   * @param time 何秒前の履歴を確認するか
+   * @returns {Array<Object>} 照会結果オブジェクトの配列
    */
   function getHistory(xuid: string, time: number): Array<record>;
 
   /**
-   * 删除账单历史记录
-   * @param time 删除从现在开始往前time秒的记录
-   * @returns boolean
+   * トランザクション履歴を削除する
+   * @param time 何秒前の履歴を削除するか
+   * @returns {boolean}
    */
   function clearHistory(time: number): boolean;
 }
