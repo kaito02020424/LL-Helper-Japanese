@@ -1,76 +1,76 @@
 /// <reference path="../index.d.ts" />
 
 declare namespace mc {
-  /** 玩家开始连接服务器 */
+  /** プレイヤーがサーバーに接続しようと開始するときに発生します。 */
   function listen(
     event: 'onPreJoin',
     listener: (player: Player) => boolean | void
   ): boolean;
 
-  /** 玩家进入游戏（加载世界完成） */
+  /** プレイヤーがゲームに参加したときに発生します（ワールドの読み込みが完了）。 */
   function listen(event: 'onJoin', listener: (player: Player) => void): boolean;
 
-  /** 玩家离开游戏 */
+  /** プレイヤーがゲームから退出したときに発生します。 */
   function listen(event: 'onLeft', listener: (player: Player) => void): boolean;
 
-  /** 玩家重生 */
+  /** プレイヤーが復活したときに発生します。 */
   function listen(
     event: 'onRespawn',
     listener: (player: Player) => void
   ): boolean;
 
-  /** 玩家死亡 */
+  /** プレイヤーが死亡したときに発生します。 */
   function listen(
     event: 'onPlayerDie',
     listener: (player: Player, source: Entity | null) => void
   ): boolean;
 
-  /** 玩家执行命令 */
+  /** プレイヤーがコマンドを実行したときに発生します。 */
   function listen(
     event: 'onPlayerCmd',
     listener: (player: Player, cmd: string) => boolean | void
   ): boolean;
 
-  /** 玩家发送聊天信息 */
+  /** プレイヤーがチャットメッセージを送信したときに発生します。 */
   function listen(
     event: 'onChat',
     listener: (player: Player, msg: string) => boolean | void
   ): boolean;
 
-  /** 玩家切换维度 */
+  /** プレイヤーがディメンションを切り替えたときに発生します。 */
   function listen(
     event: 'onChangeDim',
     listener: (player: Player, dimId: 0 | 1 | 2) => void
   ): boolean;
 
-  /** 玩家跳跃 */
+  /** プレイヤーがジャンプしたときに発生します。 */
   function listen(event: 'onJump', listener: (player: Player) => void): boolean;
 
-  /** 玩家切换潜行状态 */
+  /** プレイヤーがスニーク状態を切り替えたときに発生します。 */
   function listen(
     event: 'onSneak',
     listener: (player: Player, isSneaking: boolean) => void
   ): boolean;
 
-  /** 玩家攻击实体 */
+  /** プレイヤーがエンティティを攻撃したときに発生します。 */
   function listen(
     event: 'onAttackEntity',
     listener: (player: Player, entity: Entity, damage: number) => boolean | void
   ): boolean;
 
-  /** 玩家攻击方块 */
+  /** プレイヤーがブロックを攻撃したときに発生します。 */
   function listen(
     event: 'onAttackBlock',
     listener: (player: Player, block: Block, item: Item) => boolean | void
   ): boolean;
 
-  /** 玩家使用物品 */
+  /** プレイヤーがアイテムを使用したときに発生します。 */
   function listen(
     event: 'onUseItem',
     listener: (player: Player, item: Item) => boolean | void
   ): boolean;
 
-  /** 玩家对方块使用物品（点击右键） */
+  /** プレイヤーがブロックにアイテムを使用したときに発生します（右クリック）。 */
   function listen(
     event: 'onUseItemOn',
     listener: (
@@ -82,31 +82,31 @@ declare namespace mc {
     ) => boolean | void
   ): boolean;
 
-  /** 玩家捡起物品 */
+  /** プレイヤーがアイテムを拾ったときに発生します。 */
   function listen(
     event: 'onTakeItem',
     listener: (player: Player, entity: Entity, item: Item) => boolean | void
   ): boolean;
 
-  /** 玩家丢出物品 */
+  /** プレイヤーがアイテムをドロップしたときに発生します。 */
   function listen(
     event: 'onDropItem',
     listener: (player: Player, item: Item) => boolean | void
   ): boolean;
 
-  /** 玩家正在吃食物 */
+  /** プレイヤーが食べ物を食べているときに発生します。 */
   function listen(
     event: 'onEat',
     listener: (player: Player) => boolean | void
   ): boolean;
 
-  /** 玩家消耗图腾 */
+  /** プレイヤーがトーテムを消費したときに発生します。 */
   function listen(
     event: 'onConsumeTotem',
     listener: (player: Player) => boolean | void
   ): boolean;
 
-  /** 玩家获得效果 */
+  /** プレイヤーがエフェクトを獲得したときに発生します。 */
   function listen(
     event: 'onEffectAdded',
     listener: (
@@ -117,19 +117,19 @@ declare namespace mc {
     ) => boolean | void
   ): boolean;
 
-  /** 玩家开始连接服务器 */
-  function listen(
-    event: 'onPreJoin',
-    listener: (player: Player) => boolean | void
-  ): boolean;
+/** プレイヤーがサーバーに接続しようと開始するときに発生します。 */
+function listen(
+  event: 'onPreJoin',
+  listener: (player: Player) => boolean | void
+): boolean;
 
-  /** 玩家移除效果 */
-  function listen(
-    event: 'onEffectRemoved',
-    listener: (player: Player, effectName: string) => boolean | void
-  ): boolean;
+/** プレイヤーからエフェクトが削除されたときに発生します。 */
+function listen(
+  event: 'onEffectRemoved',
+  listener: (player: Player, effectName: string) => boolean | void
+): boolean;
 
-  /** 玩家刷新效果 */
+  /** プレイヤーがエフェクトを更新したときに発生します。 */
   function listen(
     event: 'onEffectUpdated',
     listener: (
@@ -140,43 +140,43 @@ declare namespace mc {
     ) => boolean | void
   ): boolean;
 
-  /** 玩家开始破坏方块/点击左键 */
+  /** プレイヤーがブロックを破壊し始めたときに発生します（左クリック）。 */
   function listen(
     event: 'onStartDestroyBlock',
     listener: (player: Player, block: Block) => void
   ): boolean;
 
-  /** 玩家破坏方块完成 */
+  /** プレイヤーがブロックを破壊し終えたときに発生します。 */
   function listen(
     event: 'onDestroyBlock',
     listener: (player: Player, block: Block) => boolean | void
   ): boolean;
 
-  /** 玩家尝试放置方块 */
+  /** プレイヤーがブロックを配置しようとしたときに発生します。 */
   function listen(
     event: 'onPlaceBlock',
     listener: (player: Player, block: Block) => boolean | void
   ): boolean;
 
-  /** 玩家放置方块 */
+  /** プレイヤーがブロックを配置したときに発生します。 */
   function listen(
     event: 'afterPlaceBlock',
     listener: (player: Player, block: Block) => void
   ): boolean;
 
-  /** 玩家打开容器方块 */
+  /** プレイヤーがコンテナブロックを開いたときに発生します。 */
   function listen(
     event: 'onOpenContainer',
     listener: (player: Player, block: Block) => boolean | void
   ): boolean;
 
-  /** 玩家关闭容器方块 */
+  /** プレイヤーがコンテナブロックを閉じたときに発生します。 */
   function listen(
     event: 'onCloseContainer',
     listener: (player: Player, block: Block) => boolean | void
   ): boolean;
 
-  /** 玩家物品栏变化 */
+  /** プレイヤーのインベントリが変更されたときに発生します。 */
   function listen(
     event: 'onInventoryChange',
     listener: (
@@ -187,43 +187,43 @@ declare namespace mc {
     ) => void
   ): boolean;
 
-  /** 玩家改变疾跑状态 */
+  /** プレイヤーがスプリント状態を変更したときに発生します。 */
   function listen(
     event: 'onChangeSprinting',
     listener: (player: Player, sprinting: boolean) => void
   ): boolean;
 
-  /** 玩家使用重生锚 */
+  /** プレイヤーがリスポーンアンカーを使用したときに発生します。 */
   function listen(
     event: 'onUseRespawnAnchor',
     listener: (player: Player, pos: IntPos) => boolean | void
   ): boolean;
 
-  /** 玩家改变盔甲栏 */
+  /** プレイヤーがアーマースロットを変更したときに発生します。 */
   function listen(
     event: 'onSetArmor',
     listener: (player: Player, slotNum: number, item: Item) => boolean | void
   ): boolean;
 
-  /** 玩家打开容器类GUI */
+  /** プレイヤーがコンテナGUIを開いたときに発生します。 */
   function listen(
     event: 'onOpenContainerScreen',
     listener: (player: Player) => boolean | void
   ): boolean;
 
-  /** 玩家获得经验 */
+  /** プレイヤーが経験値を獲得したときに発生します。 */
   function listen(
     event: 'onExperienceAdd',
     listener: (player: Player, exp: number) => boolean | void
   ): boolean;
 
-  /** 玩家上床 */
+  /** プレイヤーがベッドに入ったときに発生します。 */
   function listen(
     event: 'onBedEnter',
     listener: (player: Player, pos: IntPos) => boolean | void
   ): boolean;
 
-  /** 玩家使用桶装东西 */
+  /** プレイヤーがバケツでアイテムを配置しようとしたときに発生します。 */
   function listen(
     event: 'onUseBucketPlace',
     listener: (
@@ -235,7 +235,7 @@ declare namespace mc {
     ) => boolean | void
   ): boolean;
 
-  /** 玩家吃下食物 */
+  /** プレイヤーが食べ物を食べたときに発生します。 */
   function listen(
     event: 'onAte',
     listener: (player: Player, item: Item) => void
