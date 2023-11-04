@@ -1,55 +1,55 @@
 /// <reference path="../../index.d.ts" />
 
 /**
- * ### 📱 设备信息对象
+ * ### 📱 デバイス情報オブジェクト
  *
- * 在LLSE中，使用「设备信息对象」来操作和获取某一个玩家使用的游戏设备的相关信息。
+ * LLSEでは、「デバイス情報オブジェクト」を使用して、特定のプレイヤーが使用しているゲームデバイスに関連する情報を操作および取得します。
  *
- * 该类**没有构造函数**，请使用{@linkcode Player.getDevice()}创建
+ * このクラスには**コンストラクタはありません**。{@linkcode Player.getDevice()} を使用して作成してください。
  *
- * **注意**：不要**长期保存**一个设备信息对象\
- * 当设备对应的玩家退出游戏时，对应的对象将变得无效。\
- * 因此，如果有长期操作某个对象的需要，请通过上述途径获取实时的设备信息对象
+ * **注意**：デバイス情報オブジェクトを**長期間保存しないでください**。
+ * デバイスに関連付けられたプレイヤーがゲームを終了すると、対応するオブジェクトは無効になります。
+ * したがって、特定のオブジェクトに長期間アクセスする必要がある場合は、前述の方法でリアルタイムのデバイス情報オブジェクトを取得してください。
  *
- * @see [📱 设备信息对象 API](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Device)
+ * @see [📱 デバイス情報オブジェクト API](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Device)
  */
 declare class Device {
-  /** 玩家设备的IP地址 */
+  /** プレイヤーデバイスのIPアドレス */
   readonly ip: string;
 
-  /** 玩家的平均网络延迟时间（ms） */
+  /** プレイヤーの平均ネットワーク遅延時間（ミリ秒） */
   readonly avgPing: number;
 
-  /** 玩家的平均网络丢包率（%） */
+  /** プレイヤーの平均ネットワークパケットロス率（%） */
   readonly avgPacketLoss: number;
 
-  /** 玩家的网络延迟时间（ms） */
+  /** プレイヤーのネットワーク遅延時間（ミリ秒） */
   readonly lastPing: number;
 
-  /** 玩家的网络丢包率（%） */
+  /** プレイヤーのネットワークパケットロス率（%） */
   readonly lastPacketLoss: number;
 
   /**
-   * ### 玩家设备的操作系统类型
+   * ### プレイヤーデバイスのオペレーティングシステムタイプ
    *
-   * 返回一个字符串，记录了玩家设备的操作系统。可能返回的值如下表
+   * プレイヤーデバイスのオペレーティングシステムを表す文字列を返します。返される可能性のある値は次のとおりです。
    *
-   * | dv.os返回字符串 | 玩家设备的操作系统    |
+   * | dv.osの返り値 | プレイヤーデバイスのオペレーティングシステム |
    * | --------------- | --------------------- |
-   * | `Android`       | 手机谷歌Android       |
-   * | `iOS`           | 手机苹果iOS/平板iPadOS           |
-   * | `OSX`           | 电脑苹果macOS           |
-   * | `Amazon`        | 平板/电视亚马逊FireOS                |
-   * | `GearVR`        | 头显三星GearVR                |
-   * | `Hololens`      | 头显微软HoloLens              |
-   * | `Windows10`     | 电脑微软Windows         |
-   * | `Win32`         | 电脑微软Win32（教育版？） |
-   * | `TVOS`          | 机顶盒苹果tvOS                  |
-   * | `PlayStation`   | 主机索尼PlayStation       |
-   * | `Nintendo`      | 掌机任天堂Switch          |
-   * | `Xbox`          | 主机微软Xbox              |
-   * | `WindowsPhone`  | 手机微软Windows Mobile     |
-   * | `Unknown`       | 未知系统              |
+   * | `Android`       | スマートフォン用のGoogle Android       |
+   * | `iOS`           | スマートフォンのApple iOS / タブレットのiPadOS           |
+   * | `OSX`           | Apple macOS搭載のコンピュータ           |
+   * | `Amazon`        | タブレット/テレビのAmazon FireOS                |
+   * | `GearVR`        | サムスンGearVR用のヘッドセット                |
+   * | `Hololens`      | Microsoft HoloLens用のヘッドセット              |
+   * | `Windows10`     | Microsoft Windowsを搭載したコンピュータ         |
+   * | `Win32`         | Microsoft Win32を搭載したコンピュータ（教育版？） |
+   * | `TVOS`          | テレビ向けのApple tvOS                  |
+   * | `PlayStation`   | ソニーPlayStation用のゲーム機       |
+   * | `Nintendo`      | 任天堂Switch用の携帯ゲーム機          |
+   * | `Xbox`          | Microsoft Xbox用のゲーム機              |
+   * | `WindowsPhone`  | Microsoft Windows Mobileを搭載したスマートフォン     |
+   * | `Unknown`       | 不明なOS              |
    */
   readonly os:
     | `Android`
@@ -67,16 +67,16 @@ declare class Device {
     | `WindowsPhone`
     | `Unknown`;
 
-  /** 玩家连接的地址 */
+  /** プレイヤーの接続アドレス */
   readonly serverAddress: string;
 
-  /** 玩家客户端的识别码ID */
+  /** プレイヤークライアントの識別ID */
   readonly clientId: string;
 
-  /** 输入模式 */
+  /** 入力モード */
   readonly inputMode: number
 
-  /** 玩家的游玩模式 */
+  /** プレイモード */
   readonly playMode: number
 }
 
