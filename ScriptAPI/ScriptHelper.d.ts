@@ -8,11 +8,11 @@ declare enum Version {
 
 declare namespace ll {
   /**
-   * 注册插件
-   * @param name 插件名字
-   * @param introduction 对插件的简短介绍
-   * @param version 插件的版本信息[2,0,1]
-   * @param otherInformation 其他你愿意提供的的附加信息（如许可证、开源地址等）
+   * プラグインを登録します。
+   * @param name - プラグイン名
+   * @param introduction - プラグインの簡単な説明
+   * @param version - プラグインのバージョン情報[2,0,1]
+   * @param otherInformation - 提供するその他の情報（ライセンス、オープンソースの場所など）
    */
   function registerPlugin(
     name: string,
@@ -23,49 +23,43 @@ declare namespace ll {
 }
 
 /**
- * 输出信息到控制台
- * @param data 待输出的变量或者数据
+ * コンソールに情報を出力します。
+ * @param data - 出力する変数またはデータ
  */
 declare function log(...data: any[]): void;
 
 /**
- * 输出带颜色文本
- * @param color 此行输出的颜色(代码示例和效果见文档)
- * @param data 待输出的变量或者数据
+ * カラー付きのテキストを出力します。
+ * @param color - この行の出力カラー（コードの例と効果はドキュメントを参照）
+ * @param data - 出力する変数またはデータ
  */
 declare function colorLog(color: string, ...data: any[]): void;
 
 /**
- * 异步输出
- * @param data 待输出的变量或者数据
+ * 非同期に情報を出力します。
+ * @param data - 出力する変数またはデータ
  */
 declare function fastLog(...data: any[]): void;
 
 /**
- * 推迟一段时间执行代码
- * @param func 待执行的函数或待执行的代码段
- * @param msec 推迟执行的时间（毫秒）
- * @returns Integer|null 此任务ID
+ * コードを一定時間後に実行します。
+ * @param func - 実行する関数またはコード
+ * @param msec - 実行を遅延させる時間（ミリ秒）
+ * @returns - このタスクのID
  */
-declare function setTimeout(
-  func: () => void | string,
-  msec: number
-): number | null;
+declare function setTimeout(func: () => void | string, msec: number): number | null;
 
 /**
- * 设置周期执行代码
- * @param func 待执行的函数或待执行的代码段
- * @param msec 执行间隔周期（毫秒）
- * @returns Integer|null 此任务ID
+ * コードを定期的に実行します。
+ * @param func - 実行する関数またはコード
+ * @param msec - 実行間隔（ミリ秒）
+ * @returns - このタスクのID
  */
-declare function setInterval(
-  func: () => void | string,
-  msec: number
-): number | null;
+declare function setInterval(func: () => void | string, msec: number): number | null;
 
 /**
- * 取消延时 / 周期执行项
- * @param taskid 由前几个函数返回的任务ID
- * @returns boolean 是否取消成功
+ * 遅延/定期的な実行をキャンセルします。
+ * @param taskid - これらの関数から返されたタスクID
+ * @returns - キャンセルが成功したかどうか
  */
 declare function clearInterval(taskid: number): boolean | null;
