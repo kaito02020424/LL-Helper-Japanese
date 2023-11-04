@@ -1,32 +1,32 @@
 declare namespace data {
   /**
-   * 根据玩家名查询Xuid
-   * @param name 要查询的玩家名
-   * @returns string 玩家的Xuid
+   * プレイヤー名からXUIDを取得する
+   * @param name 検索するプレイヤー名
+   * @returns {string | null} プレイヤーのXUIDまたはnull
    */
   function name2xuid(name: string): string | null;
 
   /**
-   * 根据Xuid查询玩家名
-   * @param xuid 要查询的玩家Xuid
-   * @returns string 玩家名
+   * プレイヤー名からXUIDを取得する
+   * @param xuid 検索するプレイヤーのXUID
+   * @returns {string | null} プレイヤー名またはnull
    */
   function xuid2name(xuid: string): string | null;
 
   /**
-   * 根据玩家名查询uuid
-   * @param name 要查询的玩家名
-   * @returns string 玩家的uuid
+   * プレイヤー名からUUIDを取得する
+   * @param name 検索するプレイヤー名
+   * @returns {string | null} プレイヤーのUUIDまたはnull
    */
   function name2uuid(name: string): string | null;
 
   /**
-   * 根据Xuid查询玩家的uuid
-   * @param xuid 要查询的玩家Xuid
-   * @returns string 玩家的uuid
+   * XUIDからUUIDを取得する
+   * @param xuid 検索するプレイヤーのXUID
+   * @returns {string | null} プレイヤーのUUIDまたはnull
    */
   function xuid2uuid(xuid: string): string | null;
 
-  function getAllPlayerInfo(): {name:string,xuid:string,uuid:string}[]
+  function getAllPlayerInfo(): { name: string, xuid: string, uuid: string }[]
 
 }
