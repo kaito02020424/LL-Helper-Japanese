@@ -2,62 +2,62 @@
 
 declare namespace mc {
   /**
-   * ### 执行一条后台命令
+   * ### コマンドを実行します
    *
-   * @param cmd 待执行的命令
+   * @param cmd 実行するコマンド
    *
-   * @returns 是否执行成功
+   * @returns 実行が成功したかどうか
    */
   function runcmd(cmd: string): boolean;
 
   /**
-   * ### 执行一条后台命令（强化版）
+   * ### 強化版のコマンドを実行します
    *
-   * **提示**：`runcmdEx` 与普通 {@linkcode runcmd} 实现区别非常大，在于 Ex 版本拥有**隐藏执行**的机制，执行结果不会输出至控制台，\
-   * 因此如果有需要，要手动用 {@linkcode log} 函数将结果输出
+   * **注意**: `runcmdEx`は通常の {@linkcode runcmd} とは大きく異なり、Exバージョンには**非表示の実行**メカニズムが備わっており、
+   * 実行結果はコンソールに出力されません。そのため、必要であれば結果を手動で {@linkcode log} 関数を使用して出力する必要があります。
    *
-   * @param cmd 待执行的命令
+   * @param cmd 実行するコマンド
    *
-   * @returns 命令执行结果
+   * @returns コマンドの実行結果
    */
   function runcmdEx(cmd: string): {
-    /** 是否执行成功 */
+    /** 実行が成功したかどうか */
     success: boolean;
 
-    /** BDS执行命令后的输出结果 */
+    /** BDSがコマンドを実行した後の出力結果 */
     output: string;
   };
 
   /**
-   * ### 模拟产生一个控制台命令输出
+   * ### コンソールコマンドの出力をシミュレートします
    *
-   * @param output
+   * @param output 出力内容
    *
-   * @returns 是否成功执行
+   * @returns 成功したかどうか
    */
   function sendCmdOutput(output: string): boolean;
 
   /**
-   * ### 注册一条顶层命令
+   * ### トップレベルのコマンドを登録します
    *
-   * 这里提供了注册自定义命令的接口。
+   * ここではカスタムコマンドの登録インターフェースが提供されています。
    *
-   * 通过对接 BDS 内置的命令系统，你注册的命令可以由玩家、控制台、命令方块、NPC等各种游戏中可以执行命令的对象所使用，\
-   * 在 addon 中，也可以使用这里所注册的命令。
+   * BDSの組み込みのコマンドシステムに接続し、登録したコマンドはプレイヤー、コンソール、コマンドブロック、NPCなど、ゲーム内でコマンドを実行できるさまざまなオブジェクトから使用できます。
+   * また、アドオン内でもここで登録したコマンドを使用できます。
    *
    * @see {@linkcode Command}
-   * @see [🎯 命令注册API](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Command)
+   * @see [🎯 コマンド登録API](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Command)
    *
-   * @param cmd 待注册的命令
-   * @param description 命令描述文本
-   * @param permission 指令执行所需权限，默认为{@linkcode PermType.GameMasters}
-   * @param flag 默认值 `0x80`，目前直接按此输入即可，后续会进行相关修改
-   * @param alias 命令的别名
+   * @param cmd 登録するコマンド
+   * @param description コマンドの説明文
+   * @param permission コマンドの実行に必要な権限。デフォルトは{@linkcode PermType.GameMasters}
+   * @param flag デフォルト値は `0x80` ですが、現在はそのまま使用してください。後で変更される予定です
+   * @param alias コマンドのエイリアス
    *
-   * 可以为命令设置多个别名，执行的时候相当于触发同一条命令\
-   * （这里只能填一个，建议使用{@linkcode Command.setAlias()}）
+   * コマンドに複数のエイリアスを設定でき、実行時には同じコマンドがトリガーされます
+   * （ここでは1つしか設定できず、{@linkcode Command.setAlias()}を使用することをお勧めします）
    *
-   * @returns 指令对象
+   * @returns コマンドオブジェクト
    */
   function newCommand(
     cmd: string,
@@ -70,22 +70,23 @@ declare namespace mc {
   /**
    * @deprecated
    *
-   * ### 注册一个新的玩家命令（假命令）
+   * ### 新しいプレイヤーコマンド（フェイクコマンド）を登録します
    *
-   * **警告**：
+   * **警告**:
    *
-   * 这里的假命令API为 **向下兼容** 而留存，请尽量使用 真命令API
+   * ここで提供されているフェイクコマンドAPIは**下位互換性のため**に保持されており、できる限り真のコマンドAPIを使用することをお勧めします。
    *
-   * 尽管看起来比较简单，但是假命令有一些很重要的缺点，包括只能由玩家或控制台执行，其他对象（如命令方块、NPC等）都无法执行、所有参数数据都需要自行解析等等。
+   * それは見かけによらず、フェイクコマンドにはプレイヤーやコンソールにしか実行できないという重要な制約があり、
+   * 他のオブジェクト（コマンドブロック、NPCなど）では実行できず、すべてのパラメータデータを自分で解析する必要があります。
    *
    * @see {@linkcode mc.newCommand()}
    *
-   * @param cmd 待注册的命令
-   * @param description 命令描述文本
-   * @param callback 注册的这个命令被执行时，接口自动调用的回调函数。
-   * @param level 命令的注册等级，默认为 `0` ，即所有人都可以执行  如果设置命令注册等级为`1`，则只有OP可以执行此命令
+   * @param cmd 登録するコマンド
+   * @param description コマンドの説明文
+   * @param callback 登録されたコマンドが実行されたときにインターフェースが自動的に呼び出されるコールバック関数
+   * @param level コマンドの登録レベル。デフォルトは `0` で、誰でも実行できます。コマンドの登録レベルを `1` に設定すると、OPのみがこのコマンドを実行できます
    *
-   * @returns 是否注册成功
+   * @returns 登録に成功したかどうか
    */
   function regPlayerCmd(
     cmd: string,
@@ -97,21 +98,22 @@ declare namespace mc {
   /**
    * @deprecated
    *
-   * ### 注册一个新的控制台命令（假命令）
+   * ### 新しいコンソールコマンド（フェイクコマンド）を登録します
    *
-   * **警告**：
+   * **警告**:
    *
-   * 这里的假命令API为 **向下兼容** 而留存，请尽量使用 真命令API
+   * ここで提供されているフェイクコマンドAPIは**下位互換性のため**に保持されており、できる限り真のコマンドAPIを使用することをお勧めします。
    *
-   * 尽管看起来比较简单，但是假命令有一些很重要的缺点，包括只能由玩家或控制台执行，其他对象（如命令方块、NPC等）都无法执行、所有参数数据都需要自行解析等等。
+   * それは見かけによらず、フェイクコマンドにはプレイヤーやコンソールにしか実行できないという重要な制約があり、
+   * 他のオブジェクト（コマンドブロック、NPCなど）では実行できず、すべてのパラメータデータを自分で解析する必要があります。
    *
    * @see {@linkcode mc.newCommand()}
    *
-   * @param cmd 待注册的命令
-   * @param description 命令描述文本
-   * @param callback 注册的这个命令被执行时，接口自动调用的回调函数。
+   * @param cmd 登録するコマンド
+   * @param description コマンドの説明文
+   * @param callback 登録されたコマンドが実行されたときにインターフェースが自動的に呼び出されるコールバック関数
    *
-   * @returns 是否注册成功
+   * @returns 登録に成功したかどうか
    */
   function regPlayerCmd(
     cmd: string,
