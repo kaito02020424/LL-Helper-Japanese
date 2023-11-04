@@ -1,47 +1,47 @@
 /// <reference path="../../index.d.ts" />
 
 /**
- * ### 🎯 浮点数 坐标对象
+ * ### 🎯 浮動小数点数座標オブジェクト
  *
- * x y z坐标均为**浮点数**，多用来表示实体坐标等用无法用整数表示的位置
+ * x、y、z座標はすべて**浮動小数点数**であり、通常はエンティティの座標など、整数では表現できない位置を示すのに使用されます。
  *
- * @see [🎯 坐标对象](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Basic?id=%f0%9f%8e%af-%e5%9d%90%e6%a0%87%e5%af%b9%e8%b1%a1)
+ * @see [🎯 座標オブジェクト](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Basic?id=%f0%9f%8e%af-%e5%9d%90%e6%a0%87%e5%af%b9%e8%b1%a1)
  */
 declare class FloatPos {
   /**
-   * @param x x坐标（浮点数）
-   * @param y y坐标（浮点数）
-   * @param z z坐标（浮点数）
-   * @param dimId 维度ID
+   * @param x x座標（浮動小数点数）
+   * @param y y座標（浮動小数点数）
+   * @param z z座標（浮動小数点数）
+   * @param dimId ディメンションID
    */
   constructor(x: number, y: number, z: number, dimId: number);
 
-  /** x坐标（浮点数） */
+  /** x座標（浮動小数点数） */
   x: number;
 
-  /** y坐标（浮点数） */
+  /** y座標（浮動小数点数） */
   y: number;
 
-  /** z坐标（浮点数） */
+  /** z座標（浮動小数点数） */
   z: number;
 
   /**
-   * ### 维度文字名
+   * ### ディメンション名
    *
-   * 主世界 - `Overworld`\
-   * 下界 - `Nether`\
-   * 末地 - `TheEnd`
+   * オーバーワールド - `Overworld`\
+   * ネザー - `Nether`\
+   * ジ・エンド - `TheEnd`
    */
-  readonly dim: "主世界"|"下界"|"末地";
+  readonly dim: "オーバーワールド" | "ネザー" | "ジ・エンド";
 
   /**
-   * ### 维度ID
+   * ### ディメンションID
    *
-   * 主世界 - `0`\
-   * 下界 - `1`\
-   * 末地 - `2`
+   * オーバーワールド - `0`\
+   * ネザー - `1`\
+   * ジ・エンド - `2`
    *
-   * 如果某种情况下维度无效，或者无法获取，你会发现`dimid`的值为`-1`
+   * ある状況ではディメンションが無効であるか、取得できない場合、`dimid`の値は`-1`となります。
    */
   dimid: 0 | 1 | 2;
 
