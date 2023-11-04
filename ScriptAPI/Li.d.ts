@@ -1,68 +1,74 @@
 /// <reference path="../index.d.ts" />
 
+/**
+ * バージョン情報を表すクラス
+ */
 declare class version {
-  /** 主版本号（如 **2**.1.0 里的 **2**）*/
+  /** メジャーバージョン（例: 2.1.0 の 2） */
   major: number;
 
-  /** 次版本号（如 2.**1**.0 里的 **1**）*/
+  /** マイナーバージョン（例: 2.1.0 の 1） */
   minor: number;
 
-  /** 修订版本号（如 2.1.**0** 里的 **0**） */
+  /** リビジョンバージョン（例: 2.1.0 の 0） */
   revision: number;
 
-  /** 当前版本是否为测试版 */
+  /** 現在のバージョンがベータ版であるかどうか */
   isBeta: boolean;
 }
 
 declare namespace ll {
-  /** LiteLoaderBDS 使用的语言。(例如 `zh_Hans`、`en` 和 `ru_RU`) */
+  /** LiteLoaderBDS が使用する言語 (例: `zh_Hans`、`en`、`ru_RU`) */
   const language: string;
 
-  /** 主版本号（如 **2**.1.0 里的 **2**）*/
+  /** メジャーバージョン（例: 2.1.0 の 2） */
   const major: number;
 
-  /** 次版本号（如 2.**1**.0 里的 **1**）*/
+  /** マイナーバージョン（例: 2.1.0 の 1） */
   const minor: number;
 
-  /** 修订版本号（如 2.1.**0** 里的 **0**） */
+  /** リビジョンバージョン（例: 2.1.0 の 0） */
   const revision: number;
 
-  /** 版本状态 (`0` 为 `Dev`, `1` 为 `Beta`, `2` 为 `Release`) */
+  /** バージョンのステータス (`0` は `Dev`、`1` は `Beta`、`2` は `Release`) */
   const status: number;
 
-  /** LiteLoaderBDS Script Engine 版本 */
+  /** LiteLoaderBDS Script Engine のバージョン */
   const scriptEngineVersion: string;
 
-  /** 是否处于 Wine 环境下 */
+  /** Wine 環境下にあるかどうか */
   const isWine: boolean;
 
-  /** 是否处于 debug 模式 */
+  /** デバッグモードであるかどうか */
   const isDebugMode: boolean;
 
-  /** 当前版本是否为测试版 */
+  /** 現在のバージョンがベータ版であるかどうか */
   const isBeta: boolean;
 
-  /** 当前版本是否为开发版 */
+  /** 現在のバージョンが開発版であるかどうか */
   const isDev: boolean;
 
-  /** 当前版本是否为发布版本 */
+  /** 現在のバージョンがリリース版であるかどうか */
   const isRelease: boolean;
 
   /**
-   * 获取 LiteLoader 加载器版本
-   * @returns 加载器版本对象
+   * LiteLoader ローダーのバージョンを取得します。
+   * @returns {version} - ローダーのバージョン情報: {Version}
    */
   function version(): version;
 
   /**
-   * 获取 LiteLoader 加载器版本字符串
-   * @returns 加载器版本
+   * LiteLoader ローダーのバージョン文字列を取得します。
+   * @returns {string} - ローダーのバージョン文字列
    */
   function versionString(): string;
 
   /**
-   * 检查 LiteLoader 加载器版本
-   * @returns 检查结果
+   * LiteLoader ローダーのバージョンをチェックします。
+   * @param major - メジャーバージョン
+   * @param minor オプション: - マイナーバージョン
+   * @param revision オプション: - リビジョンバージョン
+   * @returns {boolean} - チェック結果
    */
   function requireVersion(
     major: number,
@@ -71,17 +77,17 @@ declare namespace ll {
   ): boolean;
 
   /**
-   * 列出所有已加载的插件
-   * @returns 列出所有已加载的插件
+   * ロードされたすべてのプラグインをリストアップします。
+   * @returns {string[]} - ロードされたすべてのプラグインのリスト
    */
   function listPlugins(): string[];
 
   /**
-   * 导出函数
-   * @param func 要导出的函数
-   * @param namespace 函数的命名空间名，只是方便用于区分不同插件导出的API
-   * @param name 函数的导出名称。其他插件根据导出名称来调用这个函数
-   * @returns 是否成功导出
+   * 関数をエクスポートします。
+   * @param func - エクスポートする関数
+   * @param namespace - 関数の名前空間名（異なるプラグインがエクスポートしたAPIを区別するため）
+   * @param name - 関数のエクスポート名。他のプラグインはこの名前を使用して関数を呼び出します
+   * @returns {boolean} - エクスポートが成功したかどうか
    */
   function exports(
     func: (...arg: any[]) => any,
@@ -90,55 +96,55 @@ declare namespace ll {
   ): boolean;
 
   /**
-   * 导出函数
-   * @param func 要导出的函数
-   * @param name 函数的导出名称。其他插件根据导出名称来调用这个函数
-   * @returns 是否成功导出
+   * 関数をエクスポートします。
+   * @param func - エクスポートする関数
+   * @param name - 関数のエクスポート名。他のプラグインはこの名前を使用して関数を呼び出します
+   * @returns {boolean} - エクスポートが成功したかどうか
    */
   function exports(func: (...arg: any[]) => any, name: string): boolean;
 
   /**
-   * 导入函数
-   * @param namespace 要导入的函数使用的命名空间名称
-   * @param name 要导入的函数使用的导出名称
-   * @returns 导入的函数
+   * 関数をインポートします。
+   * @param namespace - インポートする関数が使用する名前空間名
+   * @param name - インポートする関数のエクスポート名
+   * @returns {(...arg: any[]) => any} - インポートした関数
    */
   function imports(namespace: string, name: string): (...arg: any[]) => any;
 
   /**
-   * 导入函数
-   * @param name 要导入的函数使用的导出名称
-   * @returns 导入的函数
+   * 関数をインポートします。
+   * @param name - インポートする関数のエクスポート名
+   * @returns {(...arg: any[]) => any} - インポートした関数
    */
   function imports(name: string): (...arg: any[]) => any;
 
   /**
-   * 判断远程函数是否已导出
-   * @param namespace 函数使用的命名空间名称
-   * @param name 函数使用的导出名称
-   * @returns 函数是否已导出
+   * リモート関数がエクスポートされているかどうかを判断します。
+   * @param namespace - 関数が使用する名前空間名
+   * @param name - 関数が使用するエクスポート名
+   * @returns {boolean} - 関数がエクスポートされているかどうか
    */
   function hasExported(namespace: string, name: string): boolean;
 
   /**
-   * 判断远程函数是否已导出
-   * @param name 函数使用的导出名称
-   * @returns 函数是否已导出
+   * リモート関数がエクスポートされているかどうかを判断します。
+   * @param name - 関数が使用するエクスポート名
+   * @returns {boolean} - 関数がエクスポートされているかどうか
    */
   function hasExported(name: string): boolean;
 
   /**
-   * 设置插件依赖库
-   * @param path 依赖库文件名（如 `addplugin.js`)
-   * @param remotePath （可选参数）查找并装载依赖库的路径，说明见文档
-   * @returns 是否加载依赖库成功
+   * プラグインの依存ライブラリを設定します。
+   * @param path - 依存ライブラリのファイル名（例: `addplugin.js`）
+   * @param remotePath （オプション） - 依存ライブラリを検索およびロードするパス。詳細はドキュメントを参照
+   * @returns {boolean} - 依存ライブラリのロードが成功したかどうか
    */
   function require(path: string, remotePath?: string): boolean;
 
   /**
-   * 将字符串作为脚本代码执行
-   * @param str 要作为脚本代码执行的字符串
-   * @returns 执行结果
+   * 文字列をスクリプトコードとして実行します。
+   * @param str - スクリプトコードとして実行する文字列
+   * @returns {any} - 実行結果
    */
   function eval(str: string): any;
 }
