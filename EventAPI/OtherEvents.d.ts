@@ -1,34 +1,34 @@
 /// <reference path="../index.d.ts" />
 
 declare namespace mc {
-	/** 玩家计分板数值改变 */
+  /** プレイヤーのスコアボードの値が変更されたときに発生します。 */
   function listen(
     event: "onScoreChanged",
-    listener: (player:Player,num:number,name:string,disName:string) => void
+    listener: (player: Player, num: number, name: string, disName: string) => void
   ): boolean;
 
-	/** 每个游戏刻触发 */
+  /** 各ゲームティックごとに発生します。 */
   function listen(
     event: "onTick",
     listener: () => boolean | void
   ): boolean;
 
 
-	/** 服务器启动完毕 */
+  /** サーバーが起動し終わったときに発生します。 */
   function listen(
     event: "onServerStarted",
     listener: () => void
   ): boolean;
 
-	/** 服务端执行后台命令 */
+  /** サーバーコンソールがバックグラウンドでコマンドを実行したときに発生します。 */
   function listen(
     event: "onConsoleCmd",
-    listener: (cmd:string) => boolean | void
+    listener: (cmd: string) => boolean | void
   ): boolean;
 
-	/** 控制台产生命令输出 */
+  /** コンソールがコマンドを実行した結果を出力したときに発生します。 */
   function listen(
     event: "onConsoleOutput",
-    listener: (output:string) => boolean | void
+    listener: (output: string) => boolean | void
   ): boolean;
 }
