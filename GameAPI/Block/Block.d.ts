@@ -1,96 +1,96 @@
 /// <reference path="../../index.d.ts" />
 
 /**
- * ### 📦 方块对象
+ * ### 📦 ブロックオブジェクト
  *
- * 在LLSE中，使用「方块对象」来操作和获取某一类方块的相关信息
+ * LLSEでは、「ブロックオブジェクト」を使用して特定の種類のブロックに関連する情報を操作および取得します。
  *
- * 该类**没有构造函数**，请通过其他方式获得类对象
+ * このクラスには**コンストラクタが存在しません**。クラスオブジェクトを取得するには他の方法を使用してください。
  *
- * **注意**：不要**长期保存**一个方块对象\
- * 当方块对象对应的方块被销毁时，对应的方块对象将变得无效。\
- * 因此，如果有长期操作某个方块的需要，请通过**事件提供的参数**或者**使用**{@linkcode mc.getBlock()}获取实时的方块对象
+ * **注意**: ブロックオブジェクトを**長期間保持しないでください**。\
+ * ブロックオブジェクトが対応するブロックが破壊されると、ブロックオブジェクトも無効になります。\
+ * したがって、特定のブロックを長期間操作する必要がある場合は、**イベントパラメータ**を使用するか、**{@linkcode mc.getBlock()}**を使用してリアルタイムのブロックオブジェクトを取得してください。
  *
- * @see [📦 方块对象](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Block)
+ * @see [📦 ブロックオブジェクト](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Block)
  */
 declare class Block {
-  /** 游戏内显示的方块名称（例：`Stone`） */
+  /** ゲーム内で表示されるブロックの名前（例: `Stone`） */
   readonly name: string;
 
-  /** 方块标准类型名（例：`minecraft:stone`） */
+  /** ブロックの標準タイプ名（例: `minecraft:stone`） */
   readonly type: string;
 
-  /** 方块的游戏内id */
+  /** ブロックのゲーム内ID */
   readonly id: number;
 
-  /** 方块所在坐标 */
+  /** ブロックの位置 */
   readonly pos: IntPos;
 
-  /** 方块数据值 */
+  /** ブロックのタイルデータ */
   readonly tileData: number;
 
-  /** The block variant */
+  /** ブロックのバリアント */
   readonly variant: number;
 
-  /** 方块透明度 */
+  /** ブロックの透明度 */
   readonly translucency: number;
 
-  /** 方块厚度 */
+  /** ブロックの厚さ */
   readonly thickness: number;
 
-  /** 方块是否为空气 */
+  /** ブロックが空気かどうか */
   readonly isAir: boolean;
 
-  /** 是否为可弹跳方块 */
+  /** ブロックが跳ね返りブロックかどうか */
   readonly isBounceBlock: boolean;
 
-  /** 是否为按钮方块 */
+  /** ブロックがボタンブロックかどうか */
   readonly isButtonBlock: boolean;
 
-  /** 是否为农作物方块 */
+  /** ブロックが作物ブロックかどうか */
   readonly isCropBlock: boolean;
 
-  /** 是否为门方块 */
+  /** ブロックがドアブロックかどうか */
   readonly isDoorBlock: boolean;
 
-  /** 是否为栅栏方块 */
+  /** ブロックがフェンスブロックかどうか */
   readonly isFenceBlock: boolean;
 
-  /** 是否为栅栏门方块 */
+  /** ブロックがフェンスゲートブロックかどうか */
   readonly isFenceGateBlock: boolean;
 
-  /** 是否为细栅栏方块 */
+  /** ブロックが薄いフェンスブロックかどうか */
   readonly isThinFenceBlock: boolean;
 
-  /** 是否为重的方块 */
+  /** ブロックが重いブロックかどうか */
   readonly isHeavyBlock: boolean;
 
-  /** 是否为干方块 */
+  /** ブロックが茎ブロックかどうか */
   readonly isStemBlock: boolean;
 
-  /** 是否为半砖方块 */
+  /** ブロックがスラブブロックかどうか */
   readonly isSlabBlock: boolean;
 
-  /** 方块是否为不可破坏 */
+  /** ブロックが破壊不可能かどうか */
   readonly isUnbreakable: boolean;
 
-  /** 方块是否可阻挡水 */
+  /** ブロックが水を遮るかどうか */
   readonly isWaterBlockingBlock: boolean;
 
   /**
-   * ### 破坏方块
+   * ### ブロックを破壊
    *
-   * @param drop 是否生成掉落物
-   * @returns 是否成功破坏
+   * @param drop アイテムをドロップするかどうか
+   * @returns 破壊に成功したかどうか
    */
   destroy(drop: boolean): boolean;
 
   /**
-   * ### 获取方块对应的NBT对象
+   * ### ブロックに対応するNBTオブジェクトを取得
    *
-   * 关于NBT对象的更多使用，请参考 [NBT接口文档](https://docs.litebds.com/#/zh_CN/Development/NbtAPI/NBT)
+   * NBTオブジェクトについての詳細は、[NBTインターフェースドキュメント](https://docs.litebds.com/#/zh_CN/Development/NbtAPI/NBT)を参照してください。
    *
-   * @returns 方块的NBT对象
+   * @returns ブロックのNBTオブジェクト
    */
   getNbt(): NbtCompound;
 
@@ -101,15 +101,14 @@ declare class Block {
   getTag(): NbtCompound;
 
   /**
-   * ### 写入方块对应的NBT对象
+   * ### ブロックに対応するNBTオブジェクトを書き込む
    *
-   * 关于NBT对象的更多使用，请参考 [NBT接口文档](https://docs.litebds.com/#/zh_CN/Development/NbtAPI/NBT)
+   * NBTオブジェクトについての詳細は、[NBTインターフェースドキュメント](https://docs.litebds.com/#/zh_CN/Development/NbtAPI/NBT)を参照してください。
    *
-   * 注意：慎重使用此api，请考虑使用 {@linkcode mc.setBlock()} 代替
+   * 注意: このAPIを慎重に使用し、代わりに**{@linkcode mc.setBlock()}**を使用することを検討してください。
    *
-   * @param nbt NBT对象
-   *
-   * @returns 是否成功写入
+   * @param nbt NBTオブジェクト
+   * @returns 書き込みに成功したかどうか
    */
   setNbt(nbt: NbtCompound): boolean;
 
@@ -120,69 +119,68 @@ declare class Block {
   setTag(nbt: NbtCompound): boolean;
 
   /**
-   * ### 获取方块的BlockState
+   * ### ブロックのBlockStateを取得
    *
-   * 方便函数，协助解析方块BlockState并转换为`Object`，方便读取与解析
+   * ブロックのBlockStateを解析し、`Object`に変換するのを支援する便利な関数です。
    *
-   * 等价于脚本执行`block.getNbt().getTag("states").toObject()`
+   * `block.getNbt().getTag("states").toObject()`のスクリプト実行と同等です。
    *
-   * 关于NBT对象的更多使用，请参考 [NBT接口文档](https://docs.litebds.com/#/zh_CN/Development/NbtAPI/NBT)
+   * NBTオブジェクトについての詳細は、[NBTインターフェースドキュメント](https://docs.litebds.com/#/zh_CN/Development/NbtAPI/NBT)を参照してください。
    *
-   * @returns 方块的BlockState
+   * @returns ブロックのBlockState
    */
   getBlockState(): object;
 
   /**
-   * ### 判断方块是否拥有容器
+   * ### ブロックがコンテナを持っているかどうかを判定
    *
-   * 如箱子、桶等容器，他们各自拥有一个属于自己的容器对象
+   * たとえば、チェスト、バケツなどの各々が独自のコンテナオブジェクトを持っています。
    *
-   * 关于容器对象的更多使用，请参考 [容器对象 API文档](https://docs.litebds.com/#/zh_CN/Development/GameAPI/Container)
+   * コンテナオブジェクトに関する詳細は、[コンテナオブジェクトAPIドキュメント](https://docs.litebds.com/#/zh_CN/Development/GameAPI/Container)を参照してください。
    *
-   * @returns 这个方块是否拥有容器
+   * @returns このブロックがコンテナを持っているかどうか
    */
   hasContainer(): boolean;
 
   /**
-   * ### 获取方块所拥有的容器对象
+   * ### ブロックが所属するコンテナオブジェクトを取得
    *
-   * 如箱子、桶等容器，他们各自拥有一个属于自己的容器对象
+   * たとえば、チェスト、バケツなどの各々が独自のコンテナオブジェクトを持っています。
    *
-   * 关于容器对象的更多使用，请参考 [容器对象 API文档](https://docs.litebds.com/#/zh_CN/Development/GameAPI/Container)
+   * コンテナオブジェクトに関する詳細は、[コンテナオブジェクトAPIドキュメント](https://docs.litebds.com/#/zh_CN/Development/GameAPI/Container)を参照してください。
    *
-   * @returns 这个方块所拥有的容器对象
+   * @returns このブロックが所属するコンテナオブジェクト
    */
   getContainer(): Container;
 
   /**
-   * ### 判断方块是否拥有方块实体
+   * ### ブロックがブロックエンティティを持っているかどうかを判定
    *
-   * 关于方块实体对象的更多使用，请参考 [方块实体对象 API文档](https://docs.litebds.com/#/zh_CN/Development/GameAPI/BlockEntity)
+   * ブロックエンティティオブジェクトに関する詳細は、[ブロックエンティティオブジェクトAPIドキュメント](https://docs.litebds.com/#/zh_CN/Development/GameAPI/BlockEntity)を参照してください。
    *
-   * @returns 这个方块是否拥有方块实体
+   * @returns このブロックがブロックエンティティを持っているかどうか
    */
   hasBlockEntity(): boolean;
 
   /**
-   * ### 获取方块所拥有的方块实体
+   * ### ブロックが所属するブロックエンティティオブジェクトを取得
    *
-   * 关于方块实体对象的更多使用，请参考 [方块实体对象 API文档](https://docs.litebds.com/#/zh_CN/Development/GameAPI/BlockEntity)
+   * ブロックエンティティオブジェクトに関する詳細は、[ブロックエンティティオブジェクトAPIドキュメント](https://docs.litebds.com/#/zh_CN/Development/GameAPI/BlockEntity)を参照してください。
    *
-   * @returns 这个方块所拥有的方块实体
+   * @returns このブロックが所属するブロックエンティティオブジェクト
    */
   getBlockEntity(): BlockEntity;
 
   /**
-   * ### 删除方块所拥有的方块实体
+   * ### ブロックが所属するブロックエンティティを削除
    *
-   * 关于方块实体对象的更多使用，请参考 [方块实体对象 API文档](https://docs.litebds.com/#/zh_CN/Development/GameAPI/BlockEntity)
+   * ブロックエンティティオブジェクトに関する詳細は、[ブロックエンティティオブジェクトAPIドキュメント](https://docs.litebds.com/#/zh_CN/Development/GameAPI/BlockEntity)を参照してください。
    *
-   * @returns 是否成功删除
+   * @returns 削除に成功したかどうか
    */
   removeBlockEntity(): boolean;
 
   asPointer(): NativePointer;
 }
 
-
-declare class LLSE_Block extends Block{}
+declare class LLSE_Block extends Block {}
