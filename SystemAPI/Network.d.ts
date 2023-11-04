@@ -2,111 +2,93 @@
 
 declare namespace network {
   /**
-   * 发送一个异步HTTP(s) Get请求
-   * @param url 请求的目标地址（包括 Get 请求附带的参数）
-   * @param callback 当请求返回时执行的回调函数，用于回传HTTP(s)响应结果。
-   * @returns boolean 是否成功发送请求
+   * 非同期HTTP(s) GETリクエストを送信します。
+   * @param url - リクエストの対象URL（GETリクエストに含まれるパラメータを含む）
+   * @param callback - リクエストが戻ったときに呼び出されるコールバック関数、HTTP(s)の応答結果を返すために使用されます.
+   * @returns {boolean} - リクエストの送信に成功したかどうか {boolean}
    */
-  function httpGet(
-    url: string,
-    callback: (status: number, result: string) => void
-  ): boolean;
+  function httpGet(url: string, callback: (status: number, result: string) => void): boolean;
 
   /**
-   * 发送一个异步HTTP(s) Get请求
-   * @param url 请求的目标地址（包括 Get 请求附带的参数）
-   * @param header 请求头（包括 Get 请求Request header）
-   * @param callback 当请求返回时执行的回调函数，用于回传HTTP(s)响应结果。
-   * @returns boolean 是否成功发送请求
+   * 非同期HTTP(s) GETリクエストを送信します。
+   * @param url - リクエストの対象URL（GETリクエストに含まれるパラメータを含む）
+   * @param header - リクエストヘッダ（GETリクエストのリクエストヘッダを含む）
+   * @param callback - リクエストが戻ったときに呼び出されるコールバック関数、HTTP(s)の応答結果を返すために使用されます.
+   * @returns {boolean} - リクエストの送信に成功したかどうか {boolean}
    */
-  function httpGet(
-    url: string,
-    header: any,
-    callback: (status: number, result: string) => void
-  ): boolean;
+  function httpGet(url: string, header: any, callback: (status: number, result: string) => void): boolean;
 
   /**
-   * 发送一个异步HTTP(s) Post请求
-   * @param url 请求的目标地址
-   * @param data 发送的数据
-   * @param type 发送的 Post 数据类型，形如 `text/plain` `application/x-www-form-urlencoded` 等
-   * @param callback 当请求返回时执行的回调函数，用于回传HTTP(s)响应结果。
-   * @returns boolean 是否成功发送请求
+   * 非同期HTTP(s) POSTリクエストを送信します。
+   * @param url - リクエストの対象URL
+   * @param data - 送信するデータ
+   * @param type - 送信するPOSTデータのタイプ、例: `text/plain`, `application/x-www-form-urlencoded` など.
+   * @param callback - リクエストが戻ったときに呼び出されるコールバック関数、HTTP(s)の応答結果を返すために使用されます.
+   * @returns {boolean} - リクエストの送信に成功したかどうか {boolean}
    */
-  function httpPost(
-    url: string,
-    data: string,
-    type: string,
-    callback: (status: number, result: string) => void
-  ): boolean;
+  function httpPost(url: string, data: string, type: string, callback: (status: number, result: string) => void): boolean;
 
   /**
-   * 发送一个异步HTTP(s) Post请求
-   * @param url 请求的目标地址
-   * @param header 请求头（包括 Post 请求Request header）
-   * @param data 发送的数据
-   * @param type 发送的 Post 数据类型，形如 `text/plain` `application/x-www-form-urlencoded` 等
-   * @param callback 当请求返回时执行的回调函数，用于回传HTTP(s)响应结果。
-   * @returns boolean 是否成功发送请求
+   * 非同期HTTP(s) POSTリクエストを送信します。
+   * @param url - リクエストの対象URL
+   * @param header - リクエストヘッダ（POSTリクエストのリクエストヘッダを含む）
+   * @param data - 送信するデータ
+   * @param type - 送信するPOSTデータのタイプ、例: `text/plain`, `application/x-www-form-urlencoded` など.
+   * @param callback - リクエストが戻ったときに呼び出されるコールバック関数、HTTP(s)の応答結果を返すために使用されます.
+   * @returns {boolean} - リクエストの送信に成功したかどうか {boolean}
    */
-  function httpPost(
-    url: string,
-    header: any,
-    data: string,
-    type: string,
-    callback: (status: number, result: string) => void
-  ): boolean;
+  function httpPost(url: string, header: any, data: string, type: string, callback: (status: number, result: string) => void): boolean;
 }
 
 declare type WSClientType = number;
 declare class WSClient {
-  /** 处于正常连接中   */
+  /** 正常な接続中 */
   Open: WSClientType;
 
-  /** 正在断开连接 */
+  /** 切断中 */
   Closing: WSClientType;
 
-  /** 未连接 */
+  /** 未接続 */
   Closed: WSClientType;
 
-  /** 当前的连接状态 */
+  /** 現在の接続状態 */
   readonly status: WSClientType;
 
   /**
-   * 创建连接
-   * @param target 要连接的目标地址
-   * @returns boolean 是否成功连接
+   * 接続を作成します。
+   * @param target - 接続する対象アドレス
+   * @returns {boolean} - 接続が成功したかどうか {boolean}
    */
   connect(target: string): boolean;
 
   /**
-   * 异步创建连接
-   * @param target 要连接的目标地址
-   * @param callback 当连接成功或者失败时执行的回调函数。
-   * @returns boolean 是否成功开始尝试连接
+   * 非同期で接続を作成します。
+   * @param target - 接続する対象アドレス
+   * @param callback - 接続が成功または失敗した場合に実行されるコールバック関数。
+   * @returns {boolean} - 接続を試みるのに成功したかどうか {boolean}
    */
   connectAsync(target: string, callback: (success: boolean) => void): boolean;
 
   /**
-   * 发送文本 / 二进制消息
-   * @param msg 要发送的文本 / 二进制数据
-   * @returns boolean 是否成功发送
+   * テキストまたはバイナリメッセージを送信します。
+   * @param msg - 送信するテキストまたはバイナリデータ
+   * @returns {boolean} - 送信が成功したかどうか {boolean}
    */
   send(msg: string | ByteBuffer): boolean;
 
   /**
-   * 监听WebSocket事件
-   * @param event 要监听的事件名
-   * @param callback 注册的监听函数
-   * @returns boolean 是否成功监听事件
+   * WebSocketイベントを監視します。
+   * @param event - 監視するイベント名
+   * @param callback - 登録されたリスナーファンクション
+   * @returns {boolean} - イベントの監視に成功したかどうか {boolean}
    */
   listen(event: "onTextReceived", callback: (msg: string) => void): boolean;
 
   /**
-   * 监听WebSocket事件
-   * @param event 要监听的事件名
-   * @param callback 注册的监听函数
-   * @returns boolean 是否成功监听事件
+   * WebSocketイベントを監視します。
+   * @param event - 監視するイベント名
+   * @param callback - 登録されたリスナーファンクション
+   * @returns {boolean} - イベントの監視に成功したかどうか {boolean}
    */
   listen(
     event: "onBinaryReceived",
@@ -114,125 +96,125 @@ declare class WSClient {
   ): boolean;
 
   /**
-   * 监听WebSocket事件
-   * @param event 要监听的事件名
-   * @param callback 注册的监听函数
-   * @returns boolean 是否成功监听事件
+   * WebSocketイベントを監視します。
+   * @param event - 監視するイベント名
+   * @param callback - 登録されたリスナーファンクション
+   * @returns {boolean} - イベントの監視に成功したかどうか {boolean}
    */
   listen(event: "onError", callback: (msg: string) => void): boolean;
 
   /**
-   * 监听WebSocket事件
-   * @param event 要监听的事件名
-   * @param callback 注册的监听函数
-   * @returns boolean 是否成功监听事件
+   * WebSocketイベントを監視します。
+   * @param event - 監視するイベント名
+   * @param callback - 登録されたリスナーファンクション
+   * @returns {boolean} - イベントの監視に成功したかどうか {boolean}
    */
   listen(event: "onLostConnection", callback: (code: number) => void): boolean;
 
   /**
-   * 关闭连接
-   * @returns boolean 是否成功关闭连接
-   * @tips 在处于关闭状态时，请勿继续使用此客户端对象！
+   * 接続を閉じます。
+   * @returns {boolean} - 接続を閉じるのに成功したかどうか {boolean}
+   * @tips - 閉じている状態でこのクライアントオブジェクトを使用しないでください！
    */
   close(): boolean;
 
   /**
-   * 强制断开连接
-   * @returns boolean 是否成功断开连接
+   * 接続を強制的に切断します。
+   * @returns {boolean} - 接続を強制的に切断したかどうか {boolean}
    */
   shutdown(): boolean;
 
   /**
-   * 获取错误码
-   * @returns Integer 上一次错误产生的错误码
+   * エラーコードを取得します。
+   * @returns {number} - 直近のエラーによって生成されたエラーコード {number}
    */
   errorCode(): number;
 }
 
 declare class HttpRequest {
-  /** 请求方法 */
+  /** リクエストメソッド */
   readonly method: string;
 
-  /** 请求路径 */
+  /** リクエストパス */
   readonly path: string;
 
-  /** 请求查询参数 */
+  /** リクエストクエリパラメータ */
   readonly query: any;
 
-  /** 请求查询参数(同上) */
+  /** リクエストクエリパラメータ (同上) */
   readonly params: any;
 
-  /** 请求头 */
+  /** リクエストヘッダー */
   readonly headers: any;
 
-  /** 请求内容 */
+  /** リクエストボディ */
   readonly body: string;
 
-  /** 请求源地址 */
+  /** リクエスト元のアドレス */
   readonly remoteAddr: string;
 
-  /** 请求源端口 */
+  /** リクエスト元のポート番号 */
   readonly remotePort: number;
 
-  /** 请求版本 */
+  /** リクエストバージョン */
   readonly version: string;
 
-  /** 请求路径正则匹配结果 */
+  /** リクエストパスの正規表現一致結果 */
   readonly matches: Array<any>;
 
   /**
-   * 获取指定请求头的值
-   * @param name 请求头名称
-   * @returns Array<string> 请求头的值数组(如果没有该请求头，则返回`[]`空数组)
+   * 指定されたリクエストヘッダーの値を取得します。
+   * @param name - リクエストヘッダー名
+   * @returns {Array<string>} - リクエストヘッダーの値の配列 (指定されたヘッダーが存在しない場合、`[]` 空の配列が返ります)
    */
   getHeader(name: string): Array<string>;
 }
 
 declare class HttpResponse {
-  /** 响应状态码 */
+  /** レスポンスのステータスコード */
   status: number;
 
-  /** 响应头 */
+  /** レスポンスヘッダー */
   header: any;
 
-  /** 响应内容 */
+  /** レスポンスボディ */
   body: string;
 
-  /** 响应版本 */
+  /** レスポンスのバージョン */
   version: string;
 
-  /** 错误原因 */
+  /** エラーの理由 */
   reason: string;
 
   /**
-   * 获取指定请求头的值
-   * @param name 请求头名称
-   * @returns Array<string> 请求头的值数组(如果没有该请求头，则返回`[]`空数组)
+   * 指定されたレスポンスヘッダーの値を取得します。
+   * @param name - レスポンスヘッダー名
+   * @returns {Array<string>} - レスポンスヘッダーの値の配列 (指定されたヘッダーが存在しない場合、`[]` 空の配列が返ります)
    */
   getHeader(name: string): Array<string>;
 
   /**
-   * 设置指定响应头的值
-   * @param name 响应头名称
-   * @param value 响应头值
-   * @returns HttpResponse 处理完毕的响应对象
+   * 指定されたレスポンスヘッダーの値を設定します。
+   * @param name - レスポンスヘッダー名
+   * @param value - レスポンスヘッダーの値
+   * @returns {HttpResponse} - 処理が完了したレスポンスオブジェクト
    */
   setHeader(name: string, value: any): HttpResponse;
 
   /**
-   * 写入响应内容
-   * @param content 响应内容
-   * @returns HttpResponse 处理完毕的响应对象
+   * レスポンスボディにコンテンツを書き込みます。
+   * @param content - レスポンスのコンテンツ
+   * @returns {HttpResponse} - 処理が完了したレスポンスオブジェクト
    */
   write(...content: any[]): HttpResponse;
 }
 
 declare class HttpServer {
   /**
-   * 监听 Get 请求
-   * @param path 请求目录，以`/`开头，可以包含正则表达式。如: `/test/(.+)`
-   * @param callback 回调函数，在收到符合path的GET请求回调
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
+   * GETリクエストをリッスンします。
+   * @param path - リクエストディレクトリ、`/`で始まり、正規表現を含むことができます。例: `/test/(.+)`
+   * @param callback - マッチするpathのGETリクエストが到着した際に呼び出されるコールバック関数
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
    */
   onGet(
     path: string,
@@ -240,10 +222,10 @@ declare class HttpServer {
   ): HttpServer;
 
   /**
-   * 监听 Put 请求
-   * @param path 请求目录，以`/`开头，可以包含正则表达式。如: `/test/(.+)`
-   * @param callback 回调函数，在收到符合path的Put请求回调
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
+   * PUTリクエストをリッスンします。
+   * @param path - リクエストディレクトリ、`/`で始まり、正規表現を含むことができます。例: `/test/(.+)`
+   * @param callback - マッチするpathのPUTリクエストが到着した際に呼び出されるコールバック関数
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
    */
   onPut(
     path: string,
@@ -251,10 +233,10 @@ declare class HttpServer {
   ): HttpServer;
 
   /**
-   * 监听 Post 请求
-   * @param path 请求目录，以`/`开头，可以包含正则表达式。如: `/test/(.+)`
-   * @param callback 回调函数，在收到符合path的Post请求回调
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
+   * POSTリクエストをリッスンします。
+   * @param path - リクエストディレクトリ、`/`で始まり、正規表現を含むことができます。例: `/test/(.+)`
+   * @param callback - マッチするpathのPOSTリクエストが到着した際に呼び出されるコールバック関数
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
    */
   onPost(
     path: string,
@@ -262,10 +244,10 @@ declare class HttpServer {
   ): HttpServer;
 
   /**
-   * 监听 Patch 请求
-   * @param path 请求目录，以`/`开头，可以包含正则表达式。如: `/test/(.+)`
-   * @param callback 回调函数，在收到符合path的Patch请求回调
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
+   * PATCHリクエストをリッスンします。
+   * @param path - リクエストディレクトリ、`/`で始まり、正規表現を含むことができます。例: `/test/(.+)`
+   * @param callback - マッチするpathのPATCHリクエストが到着した際に呼び出されるコールバック関数
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
    */
   onPatch(
     path: string,
@@ -273,10 +255,10 @@ declare class HttpServer {
   ): HttpServer;
 
   /**
-   * 监听 Delete 请求
-   * @param path 请求目录，以`/`开头，可以包含正则表达式。如: `/test/(.+)`
-   * @param callback 回调函数，在收到符合path的Delete请求回调
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
+   * DELETEリクエストをリッスンします。
+   * @param path - リクエストディレクトリ、`/`で始まり、正規表現を含むことができます。例: `/test/(.+)`
+   * @param callback - マッチするpathのDELETEリクエストが到着した際に呼び出されるコールバック関数
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
    */
   onDelete(
     path: string,
@@ -284,10 +266,10 @@ declare class HttpServer {
   ): HttpServer;
 
   /**
-   * 监听 Options 请求
-   * @param path 请求目录，以`/`开头，可以包含正则表达式。如: `/test/(.+)`
-   * @param callback 回调函数，在收到符合path的Options请求回调
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
+   * OPTIONSリクエストをリッスンします。
+   * @param path - リクエストディレクトリ、`/`で始まり、正規表現を含むことができます。例: `/test/(.+)`
+   * @param callback - マッチするpathのOPTIONSリクエストが到着した際に呼び出されるコールバック関数
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
    */
   onOptions(
     path: string,
@@ -295,63 +277,63 @@ declare class HttpServer {
   ): HttpServer;
 
   /**
-   * 监听 PreRouting 预路由事件
-   * @param callback 回调函数，在收到请求时调用。在回调函数中可以修改响应，如果返回`false`，则不会继续路由至对应路径的回调函数(但仍然会触发PostRouting事件)。
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
+   * PreRoutingプリルーティングイベントをリッスンします。
+   * @param callback - リクエストが到着したときに呼び出されます。コールバック内でレスポンスを変更でき、`false`を返すと指定されたパスのコールバック関数にはルーティングされませんが、PostRoutingイベントは引き続きトリガーされます。
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
    */
   onPreRouting(
     callback: (req: HttpRequest, resp: HttpResponse) => void
   ): HttpServer;
 
   /**
-   * 监听 PostRouting 后路由事件
-   * @param callback 回调函数，在对应目录的回调函数(或PreRouting事件)执行完毕后调用，在回调函数中可以修改响应
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
+   * PostRoutingポストルーティングイベントをリッスンします。
+   * @param callback - 指定されたディレクトリのコールバック関数（またはPreRoutingイベント）が実行された後に呼び出され、レスポンスを変更できます。
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
    */
   onPostRouting(
     callback: (req: HttpRequest, resp: HttpResponse) => void
   ): HttpServer;
 
   /**
-   * 监听 Error 错误事件
-   * @param callback 回调函数，在错误(状态码 >= 400)时调用
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
+   * エラーエラーイベントをリッスンします。
+   * @param callback - エラー（ステータスコードが400以上）が発生したときに呼び出されます。
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
    */
   onError(callback: (req: HttpRequest, resp: HttpResponse) => void): HttpServer;
 
   /**
-   * 监听 Exception 异常事件
-   * @param callback 回调函数，在handler中有抛出异常时调用，参数3为异常信息
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
+   * 例外例外イベントをリッスンします。
+   * @param callback - ハンドラ内で例外がスローされた場合に呼び出され、引数3は例外情報です。
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
    */
   onException(
-    callback: (req: HttpRequest, resp: HttpResponse,error:string) => void
+    callback: (req: HttpRequest, resp: HttpResponse, error: string) => void
   ): HttpServer;
 
-	/**
-	 * 监听端口并开启服务器
-	 * @param addr 监听地址，可以是IP地址或域名
-	 * @param port 监听端口
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
-	 */
-	listen(addr:string, port:number):HttpServer;
+  /**
+   * ポートをリッスンし、サーバーを開始します。
+   * @param addr - リッスンするアドレス、IPアドレスまたはドメイン名で指定できます
+   * @param port - リッスンするポート
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
+   */
+  listen(addr: string, port: number): HttpServer;
 
-	/**
-	 * 监听端口并开启服务器
-	 * @param addr 监听地址，可以是IP地址或域名
-	 * @param port 监听端口
-   * @returns HttpServer 处理完毕的服务器对象（便于连锁进行其他操作）
-	 */
-	startAt(addr:string, port:number):HttpServer;
+  /**
+   * ポートをリッスンし、サーバーを開始します。
+   * @param addr - リッスンするアドレス、IPアドレスまたはドメイン名で指定できます
+   * @param port - リッスンするポート
+   * @returns {HttpServer} - 処理が完了したサーバーオブジェクト（他の操作を連鎖的に実行するため）
+   */
+  startAt(addr: string, port: number): HttpServer;
 
-	/**
-	 * 停止服务器
-	 */
-	stop():void;
+  /**
+   * サーバーを停止します。
+   */
+  stop(): void;
 
-	/**
-	 * 获取服务器是否正在运行
-	 * @returns boolean 服务器正在运行与否
-	 */
-	isRunning():boolean;
+  /**
+   * サーバーが実行中かどうかを取得します。
+   * @returns {boolean} - サーバーが実行中の場合はtrue、それ以外の場合はfalse
+   */
+  isRunning(): boolean;
 }
