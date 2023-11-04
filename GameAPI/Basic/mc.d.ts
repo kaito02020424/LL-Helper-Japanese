@@ -2,36 +2,36 @@
 
 declare namespace mc {
   /**
-   * ### 生成一个整数坐标对象
+   * ### 整数座標オブジェクトを生成します
    *
-   * @param x x坐标
-   * @param y y坐标
-   * @param z z坐标
+   * @param x x座標
+   * @param y y座標
+   * @param z z座標
    * @param dimId
-   * 维度ID
+   * ディメンションID
    *
    * 主世界 - `0`\
    * 下界 - `1`\
    * 末地 - `2`
    *
-   * @returns 一个整数坐标对象
+   * @returns 整数座標オブジェクト
    */
   function newIntPos(x: number, y: number, z: number, dimId: 0 | 1 | 2): IntPos;
 
   /**
-   * ### 生成一个浮点数坐标对象
+   * ### 浮動小数点座標オブジェクトを生成します
    *
-   * @param x x坐标
-   * @param y y坐标
-   * @param z z坐标
+   * @param x x座標
+   * @param y y座標
+   * @param z z座標
    * @param dimId
-   * 维度ID
+   * ディメンションID
    *
    * 主世界 - `0`\
    * 下界 - `1`\
    * 末地 - `2`
    *
-   * @returns 一个浮点数坐标对象
+   * @returns 浮動小数点座標オブジェクト
    */
   function newFloatPos(
     x: number,
@@ -41,30 +41,30 @@ declare namespace mc {
   ): FloatPos;
 
   /**
-   * ### 获取结构NBT
+   * ### 構造NBTを取得します
    * 
-   * @param pos1 第1点坐标对象
-   * @param pos2 第2点坐标对象
+   * @param pos1 第1座標オブジェクト
+   * @param pos2 第2座標オブジェクト
    * @param ignoreBlocks 
    * @param ignoreEntities
    * @default ignoreBlocks - false
    * @default ignoreEntities - false
    * 
-   * @returns 结构NBT
+   * @returns 構造NBT
    */
   function getStructure(pos1: IntPos, pos2: IntPos, ignoreBlocks?: boolean, ignoreEntities?: boolean): NbtCompound
 
   /**
-   * ### 放置结构NBT
+   * ### 構造NBTを配置します
    * 
-   * @param nbt 结构nbt对象
-   * @param pos 放置坐标对象
-   * @param mirror 镜像 0:None 1:X 2:Z 3:XZ
+   * @param nbt 構造NBTオブジェクト
+   * @param pos 配置座標オブジェクト
+   * @param mirror ミラー 0:なし 1:X 2:Z 3:XZ
    * @default mirror - 0
-   * @param rotation 旋转 0:None 1:Rotate90 2:Rotate180 3:Rotate270
+   * @param rotation 回転 0:なし 1:90度回転 2:180度回転 3:270度回転
    * @default rotation - 0
    * 
-   * @returns 是否放置成功
+   * @returns 配置が成功したかどうか
    */
   function setStructure(nbt: NbtCompound, pos: IntPos, mirror?: 0 | 1 | 2 | 3, rotation?: 0 | 1 | 2 | 3): boolean
 }
