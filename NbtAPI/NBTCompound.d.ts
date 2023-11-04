@@ -1,154 +1,157 @@
 /// <reference path="../index.d.ts" />
 
-declare class NbtCompound{
+declare class NbtCompound {
   constructor(data?: object);
 
   /**
-   * 获取NBT对象储存的数据类型
-   * @returns NBT.enum 此NBT对象储存的数据类型
+   * NBTオブジェクトに格納されているデータ型を取得します。
+   * @returns {any} - このNBTオブジェクトに格納されているデータ型: {NBT.enum}
    */
-  getType():10
+  getType(): 10;
 
   /**
-   * 将NBT对象转换为Json字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをJSON文字列に変換します。
+   * @param space （オプション） - 出力文字列を整形する場合にこのパラメータを指定します
+   * @returns {string} - JSON文字列
    */
   toString(space?: number): string;
 
   /**
-   * 获取所有的键
-   * @returns Array<string> Compound 中所有的键
+   * すべてのキーを取得します。
+   * @returns {Array<string>} - コンパウンド内のすべてのキー
    */
   getKeys(): Array<string>;
 
   /**
-   * 获取键对应的值的数据类型
-   * @param key 要查询的键名
-   * @returns NBT.enum 对应的值的数据类型
+   * 指定したキーの値のデータ型を取得します。
+   * @param key - 調査するキー名
+   * @returns {any} - 対応する値のデータ型: {NBT.enum}
    */
   getTypeOf(key: string): NBT;
 
   /**
-   * 设置键对应的 NBT 对象
-   * @param key 要操作的键名
-   * @param tag 要写入的 NBT 对象（它承载着具体的NBT数据）
-   * @returns boolean 是否写入成功
+   * キーに対応するNBTオブジェクトを設定します。
+   * @param key - 操作対象のキー名
+   * @param tag - 書き込むNBTオブジェクト（NBTデータを保持）
+   * @returns {boolean} - 書き込みが成功したかどうか
    */
   setTag(key: string, tag: NbtType): boolean;
 
   /**
-   * 读取键对应的 NBT 对象
-   * @param key 要操作的键名
-   * @returns NbtObject|Null 键对应的NBT对象
+   * キーに対応するNBTオブジェクトを読み込みます。
+   * @param key - 操作対象のキー名
+   * @returns {NbtType|null} - キーに対応するNBTオブジェクト
    */
   getTag(key: string): NbtType | null;
 
   /**
-   * 删除键对应的 NBT 对象
-   * @param key 要操作的键名。键名必须已经存在
-   * @returns NbtCompound 处理完毕的NBT对象（便于连锁进行其他操作）
+   * キーに対応するNBTオブジェクトを削除します。
+   * @param key - 操作対象のキー名（キーは既に存在している必要があります）
+   * @returns {NbtCompound} - 処理が完了したNBTオブジェクト（他の操作を連鎖できるように）: {NbtCompound}
    */
   removeTag(key: string): NbtCompound;
 
   /**
-   * 设置键对应的值的具体数据
-   * @param key 要操作的键名
-   * @returns NbtCompound 处理完毕的NBT对象（便于连锁进行其他操作）
+   * キーに対応する値をエンドデータに設定します。
+   * @param key - 操作対象のキー名
+   * @returns {NbtCompound} - 処理が完了したNBTオブジェクト（他の操作を連鎖できるように）: {NbtCompound}
    */
   setEnd(key: string): NbtCompound;
 
   /**
-   * 设置键对应的值的具体数据
-   * @param key 要操作的键名
-   * @param data 要写入的具体数据
-   * @returns NbtCompound 处理完毕的NBT对象（便于连锁进行其他操作）
+   * キーに対応する値をバイトデータに設定します。
+   * @param key - 操作対象のキー名
+   * @param data - 書き込む具体的なデータ
+   * @returns {NbtCompound} - 処理が完了したNBTオブジェクト（他の操作を連鎖できるように）: {NbtCompound}
    */
   setByte(key: string, data: number): NbtCompound;
 
   /**
-   * 设置键对应的值的具体数据
-   * @param key 要操作的键名
-   * @param data 要写入的具体数据
-   * @returns NbtCompound 处理完毕的NBT对象（便于连锁进行其他操作）
+   * キーに対応する値をショートデータに設定します。
+   * @param key - 操作対象のキー名
+   * @param data - 書き込む具体的なデータ
+   * @returns {NbtCompound} - 処理が完了したNBTオブジェクト（他の操作を連鎖できるように）: {NbtCompound}
    */
   setShort(key: string, data: number): NbtCompound;
 
   /**
-   * 设置键对应的值的具体数据
-   * @param key 要操作的键名
-   * @param data 要写入的具体数据
-   * @returns NbtCompound 处理完毕的NBT对象（便于连锁进行其他操作）
+   * キーに対応する値を整数データに設定します。
+   * @param key - 操作対象のキー名
+   * @param data - 書き込む具体的なデータ
+   * @returns {NbtCompound} - 処理が完了したNBTオブジェクト（他の操作を連鎖できるように）: {NbtCompound}
    */
   setInt(key: string, data: number): NbtCompound;
 
   /**
-   * 设置键对应的值的具体数据
-   * @param key 要操作的键名
-   * @param data 要写入的具体数据
-   * @returns NbtCompound 处理完毕的NBT对象（便于连锁进行其他操作）
+   * キーに対応する値をロングデータに設定します。
+   * @param key - 操作対象のキー名
+   * @param data - 書き込む具体的なデータ
+   * @returns {NbtCompound} - 処理が完了したNBTオブジェクト（他の操作を連鎖できるように）: {NbtCompound}
    */
   setLong(key: string, data: number): NbtCompound;
 
   /**
-   * 设置键对应的值的具体数据
-   * @param key 要操作的键名
-   * @param data 要写入的具体数据
-   * @returns NbtCompound 处理完毕的NBT对象（便于连锁进行其他操作）
+   * キーに対応する値を浮動小数点数データに設定します。
+   * @param key - 操作対象のキー名
+   * @param data - 書き込む具体的なデータ
+   * @returns {NbtCompound} - 処理が完了したNBTオブジェクト（他の操作を連鎖できるように）: {NbtCompound}
    */
   setFloat(key: string, data: number): NbtCompound;
 
   /**
-   * 设置键对应的值的具体数据
-   * @param key 要操作的键名
-   * @param data 要写入的具体数据
-   * @returns NbtCompound 处理完毕的NBT对象（便于连锁进行其他操作）
+   * キーに対応する値を倍精度浮動小数点数データに設定します。
+   * @param key - 操作対象のキー名
+   * @param data - 書き込む具体的なデータ
+   * @returns {NbtCompound} - 処理が完了したNBTオブジェクト（他の操作を連鎖できるように）: {NbtCompound}
    */
   setDouble(key: string, data: number): NbtCompound;
 
   /**
-   * 设置键对应的值的具体数据
-   * @param key 要操作的键名
-   * @param data 要写入的具体数据
-   * @returns NbtCompound 处理完毕的NBT对象（便于连锁进行其他操作）
+   * キーに対応する値をバイト配列データに設定します。
+   * @param key - 操作対象のキー名
+   * @param data - 書き込む具体的なデータ
+   * @returns {NbtCompound} - 処理が完了したNBTオブジェクト（他の操作を連鎖できるように）: {NbtCompound}
    */
   setByteArray(key: string, data: ByteBuffer): NbtCompound;
 
   /**
-   * 设置键对应的值的具体数据
-   * @param key 要操作的键名
-   * @param data 要写入的具体数据
-   * @returns NbtCompound 处理完毕的NBT对象（便于连锁进行其他操作）
+   * キーに対応する値を文字列データに設定します。
+   * @param key - 操作対象のキー名
+   * @param data - 書き込む具体的なデータ
+   * @returns {NbtCompound} - 処理が完了したNBTオブジェクト（他の操作を連鎖できるように）: {NbtCompound}
    */
   setString(key: string, data: string): NbtCompound;
 
   /**
-   * 读取键对应的值的具体数据
-   * @param key 要操作的键名
-   * @returns Any|NbtList|NbtCompound|null 键对应的值的具体数据
+   * キーに対応する値を読み込みます。
+   * @param key - 操作対象のキー名
+   * @returns {any|NbtList|NbtCompound|null} - キーに対応する値の具体的なデータ
    */
   getData(key: string): any | NbtList | NbtCompound | null;
 
   /**
-   * 将 NBT 标签对象 转换为Object
-   * @returns Object 对应的对象/表
+   * NBTタグオブジェクトをオブジェクトに変換します。
+   * @returns {Object} - 対応するオブジェクト/テーブル
    */
-  toObject(): any;
+  toObject(): Object;
 
   /**
-   * 将 NBT 标签对象 序列化为二进制NBT
-   * @returns ByteBuffer 对应的二进制NBT数据
+   * NBTタグオブジェクトをバイナリNBTにシリアライズします。
+   * @returns {ByteBuffer} - 対応するバイナリNBTデータ: {ByteBuffer}
    */
   toBinaryNBT(): ByteBuffer;
 
   /**
-   * 将NBT对象转换为SNBT字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをSNBT文字列に変換します。
+   * @param space （オプション） - 出力文字列を整形する場合にこのパラメータを指定します
+   * @returns {string} - SNBT文字列
    */
-  toSNBT(space?:number):string
+  toSNBT(space?: number): string;
 
   /**
-   * 销毁此 NBT 标签对象
-   * @returns boolean 是否成功清理
+   * このNBTタグオブジェクトを破棄します。
+   * @returns {boolean} - 正常にクリアされたかどうか
+   * 訳者注:中国語版のtypo?
    */
-  destory(): boolean;
+  destroy(): boolean;
 }
