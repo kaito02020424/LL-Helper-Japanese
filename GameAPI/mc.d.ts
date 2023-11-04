@@ -1,29 +1,29 @@
 /// <reference path="../index.d.ts" />
 declare namespace mc {
     /**
-     * 获取服务器游戏时间
-     * @param TimeID 想要查询的时间 (0 代表daytime，1 代表gametime，2 代表day)
-     * @returns 获取到的时间
+     * サーバーゲーム時間を取得します。
+     * @param TimeID 取得したい時間 (0 は昼間を表し、1 はゲーム時間を表し、2 は日付を表します)
+     * @returns 取得した時間
      */
-    function getTime(TimeID: 0 | 1 | 2): number
+    function getTime(TimeID: 0 | 1 | 2): number;
 
     /**
-     * 设置服务器时间
-     * @param tick 想要设置的时间
-     * @returns 是否设置成功
+     * サーバーの時間を設定します。
+     * @param tick 設定したい時間
+     * @returns 設定が成功したかどうか
      */
-    function setTime(tick: number): boolean
+    function setTime(tick: number): boolean;
 
     /**
-     * 获取服务器天气
-     * @returns 当前天气 (0 代表晴天，1 代表雨天，2 代表雷暴)
+     * サーバーの天気を取得します。
+     * @returns 現在の天気 (0 は晴れ、1 は雨、2 は雷雨を表します)
      */
-    function getWeather(): 0 | 1 | 2
+    function getWeather(): 0 | 1 | 2;
 
     /**
-     * 设置服务器天气
-     * @param WeatherID 想要设置的天气 (0 代表晴天，1 代表雨天，2 代表雷暴)
-     * @returns 是否设置成功
+     * サーバーの天気を設定します。
+     * @param WeatherID 設定したい天気 (0 は晴れ、1 は雨、2 は雷雨を表します)
+     * @returns 設定が成功したかどうか
      */
-    function setWeather(WeatherID:0 |1 |2):boolean
+    function setWeather(WeatherID: 0 | 1 | 2): boolean;
 }
