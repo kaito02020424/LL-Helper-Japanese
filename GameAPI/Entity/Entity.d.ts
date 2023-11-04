@@ -1,158 +1,159 @@
 /// <reference path="../../index.d.ts" />
 
 /**
- * ### 🎈 实体对象
+ * ### 🎈 エンティティオブジェクト
  *
- * 在脚本引擎中，使用「实体对象」来操作和获取某一个实体的相关信息。
+ * スクリプトエンジンでは、「エンティティオブジェクト」を使用して特定のエンティティに関連する情報を操作および取得します。
  *
- * 该类**没有构造函数**，请使用下面的方法获取该类对象
+ * このクラスには**コンストラクタはありません**。このクラスのインスタンスを取得するには、以下の方法を使用してください：
  *
- * - 从监听事件中获取
+ * - イベントリスナーから取得
  * - {@linkcode mc.getAllEntities()}
  * - {@linkcode mc.spawnMob()}
  * - {@linkcode mc.cloneMob()}
- * - 从其他API中获取
+ * - 他のAPIから取得
  *
- * **注意**：不要**长期保存**一个实体对象\
- * 当实体对象对应的实体被销毁时，对应的实体对象将同时释放。\
- * 因此，如果有长期操作某个实体的需要，请通过上述途径获取实时的实体对象
+ * **注意**: エンティティオブジェクトを長期間保持しないでください。
+ * 対応するエンティティが破棄されると、エンティティオブジェクトも同時に解放されます。
+ * したがって、エンティティと長期間対話する必要がある場合は、上記の方法を使用してリアルタイムのエンティティオブジェクトを取得してください。
  *
- * @see [🎈 实体对象 API](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Entity)
+ * @see [🎈 エンティティオブジェクト API](https://docs.litebds.com/en/#/LLSEPluginDevelopment/GameAPI/Entity)
  */
 declare class Entity {
-  /** 实体名称 */
+  /** エンティティ名 */
   readonly name: string;
 
-  /** 实体标准类型名 */
+  /** エンティティの標準タイプ名 */
   readonly type: string;
 
-  /** 实体的游戏内id */
+  /** エンティティのゲーム内ID */
   readonly id: number;
 
-  /** 实体所在坐标 */
+  /** エンティティの位置 */
   readonly pos: FloatPos;
 
-  /** 实体所在的方块坐标 */
+  /** エンティティのブロック位置 */
   readonly blockPos: IntPos;
 
-  /** 实体腿部所在坐标 */
+  /** エンティティの足元の位置 */
   readonly feetPos: FloatPos;
 
-  /** 实体最大生命值 */
+  /** エンティティの最大体力 */
   readonly maxHealth: number;
 
-  /** 实体当前生命值 */
+  /** エンティティの現在の体力 */
   readonly health: number;
 
-  /** 实体是否能飞行 */
+  /** エンティティが飛行できるかどうか */
   readonly canFly: boolean;
 
-  /** 实体是否能被冻结 */
+  /** エンティティが凍結できるかどうか */
   readonly canFreeze: boolean;
 
-  /** 实体是否能看到天空 */
+  /** エンティティが昼光を見ることができるかどうか */
   readonly canSeeDaylight: boolean;
 
-  /** 实体是否能拾取物品 */
+  /** エンティティがアイテムを拾えるかどうか */
   readonly canPickupItems: boolean;
 
-  /** 实体是否悬空 */
+  /** エンティティが浮遊しているかどうか */
   readonly inAir: boolean;
 
-  /** 实体是否在水中 */
+  /** エンティティが水中にいるかどうか */
   readonly inWater: boolean;
 
-  /** 实体是否在岩浆中 */
+  /** エンティティが溶岩中にいるかどうか */
   readonly inLava: boolean;
 
-  /** 实体是否在雨中 */
+  /** エンティティが雨中にいるかどうか */
   readonly inRain: boolean;
 
-  /** 实体是否在雪中 */
+  /** エンティティが雪中にいるかどうか */
   readonly inSnow: boolean;
 
-  /** 实体是否在墙上 */
+  /** エンティティが壁にいるかどうか */
   readonly inWall: boolean;
 
-  /** 实体是否在水中或雨中 */
+  /** エンティティが水中または雨中にいるかどうか */
   readonly inWaterOrRain: boolean;
 
-  /** 实体是否在世界中 */
+  /** エンティティがワールド内にいるかどうか */
   readonly inWorld: boolean;
 
-  /** 实体当前速度 */
+  /** エンティティの現在の速度 */
   readonly speed: number;
 
-  /** 实体当前朝向 */
+  /** エンティティの現在の向き */
   readonly direction: DirectionAngle;
 
-  /** 实体唯一标识符 */
+  /** エンティティの一意の識別子 */
   readonly uniqueId: string;
 
-  /** 实体是否不可见 */
+  /** エンティティが透明かどうか */
   readonly isInvisible: boolean;
 
-  /** 实体是否在门户内 */
+  /** エンティティがポータル内にいるかどうか */
   readonly isInsidePortal: boolean;
 
-  /** 实体是否信任 */
+  /** エンティティが信頼できるかどうか */
   readonly isTrusting: boolean;
 
-  /** 实体是否接触到伤害方块 */
+  /** エンティティがダメージを受けるブロックに触れているかどうか */
   readonly isTouchingDamageBlock: boolean;
 
-  /** 实体是否着火 */
+  /** エンティティが炎に包まれているかどうか */
   readonly isOnFire: boolean;
 
-  /** 实体是否在地面 */
+  /** エンティティが地上にいるかどうか */
   readonly isOnGround: boolean;
 
-  /** 实体是否在热块上 */
+  /** エンティティが熱いブロックの上にいるかどうか */
   readonly isOnHotBlock: boolean;
 
-  /** 实体是否在交易 */
+  /** エンティティがトレードをしているかどうか */
   readonly isTrading: boolean;
 
-  /** 实体是否正在骑行 */
+  /** エンティティが乗っているかどうか */
   readonly isRiding: boolean;
 
-  /** 实体是否在跳舞 */
+  /** エンティティがダンスをしているかどうか */
   readonly isDancing: boolean;
 
-  /** 实体是否在睡觉 */
+  /** エンティティが眠っているかどうか */
   readonly isSleeping: boolean;
 
-  /** 实体是否生气 */
+  /** エンティティが怒っているかどうか */
   readonly isAngry: boolean;
 
-  /** 实体是否为幼体 */
+  /** エンティティが幼体かどうか */
   readonly isBaby: boolean;
 
-  /** 实体是否移动 */
+  /** エンティティが移動中かどうか */
   readonly isMoving: boolean;
 
+  /** 位置の変化 */
   readonly posDelta: FloatPos;
 
   /**
-   * ### 传送实体至指定位置
+   * ### エンティティを指定した位置にテレポート
    *
-   * @param pos 目标位置坐标
-   * @param rot 传送后实体的朝向，若缺省则与传送前朝向相同
+   * @param pos - 目標位置の座標
+   * @param rot - テレポート後のエンティティの向き。省略すると、テレポート前と同じ向きになります。
    *
-   * @returns 是否成功传送
+   * @returns テレポートが成功したかどうか
    */
   teleport(pos: IntPos | FloatPos, rot?: DirectionAngle): boolean;
 
   /**
-   * ### 传送实体至指定位置
+   * ### エンティティを指定した位置にテレポート
    *
-   * @param x x坐标
-   * @param y y坐标
-   * @param z z坐标
-   * @param dimId 维度Id
-   * @param rot 传送后实体的朝向，若缺省则与传送前朝向相同
+   * @param x - x座標
+   * @param y - y座標
+   * @param z - z座標
+   * @param dimId - 次元ID
+   * @param rot - テレポート後のエンティティの向き。省略すると、テレポート前と同じ向きになります。
    *
-   * @returns 是否成功传送
+   * @returns テレポートが成功したかどうか
    */
   teleport(
     x: number,
@@ -163,183 +164,182 @@ declare class Entity {
   ): boolean;
 
   /**
-   * ### 杀死指定实体
+   * ### 指定したエンティティを殺す
    *
-   * @returns 是否执行成功
+   * @returns 実行が成功したかどうか
    */
   kill(): boolean;
 
   /**
-   * ### 对实体造成伤害
+   * ### エンティティにダメージを与える
    *
-   * 此处造成的伤害为真实伤害，无法被盔甲等保护装备减免
+   * ここで与えるダメージは真のダメージであり、アーマーや保護装備によって軽減されません。
    *
-   * @param damage 对实体造成的伤害数值
-   * @param type 伤害类型（见{@linkcode ActorDamageCause}）
+   * @param damage - エンティティに与えられるダメージ量
+   * @param type - ダメージの種類（{@linkcode ActorDamageCause}を参照）
    *
-   * @returns 是否造成伤害
+   * @returns ダメージが与えられたかどうか
    */
   hurt(damage: number, type?: number): boolean;
 
   /**
-   * ### 治愈实体
+   * ### エンティティを回復する
    *
-   * @param health 要回复的生命值
+   * @param health - 回復する体力量
    *
-   * @returns 是否成功回复
+   * @returns 回復が成功したかどうか
    */
-  // 正式版未实装
+  // 公式バージョンでは実装されていない
   // heal(health: number): boolean;
 
   /**
-   * ### 使指定实体着火
+   * ### エンティティに火をつける
    *
-   * @param time 着火时长，单位秒
+   * @param time - 燃える期間（秒単位）
    *
-   * @returns 是否成功着火
+   * @returns 火をつけたかどうか
    */
   setOnFire(time: number): boolean;
 
   /**
-   * ### 设置实体体积
+   * ### エンティティのサイズを設定する
    *
-   * @param scale 新的实体体积
+   * @param scale - 新しいエンティティのサイズ
    *
-   * @returns 实体是否成功缩放
+   * @returns エンティティが成功補正されたかどうか
    */
-  // 正式版未实装
+  // 公式バージョンでは実装されていない
   // setScale(scale: number): boolean;
 
   /**
-   * ### 获取实体到指定坐标的距离
+   * ### エンティティから指定座標までの距離を取得する
    *
-   * @param pos 目标位置
+   * @param pos - 対象位置
    *
-   * @returns 到坐标的距离（方块）
+   * @returns その座標までの距離（ブロック単位）
    */
-  // 正式版未实装
+  // 公式バージョンでは実装されていない
   // distanceToPos(pos: IntPos | FloatPos): number;
 
   /**
-   * ### 判断一个实体对象是不是玩家
+   * ### エンティティオブジェクトがプレイヤーかどうかをチェック
    *
-   * @returns 当前实体对象是不是玩家
+   * @returns 現在のエンティティオブジェクトがプレイヤーかどうか
    */
   isPlayer(): boolean;
-
   /**
-   * ### 将实体对象转换玩家对象
+   * ### エンティティオブジェクトをプレイヤーオブジェクトに変換
    *
-   * 如果当前实体对象指向的是一个玩家，可以使用此函数将实体对象转换为玩家对象，以使用更多的玩家相关 API\
-   * 如果此实体对象指向的不是某个玩家，或者转换失败，则返回 `null`
+   * 現在のエンティティオブジェクトがプレイヤーを指している場合、この関数を使用してエンティティオブジェクトをプレイヤーオブジェクトに変換し、より多くのプレイヤー関連のAPIを使用できます。
+   * このエンティティオブジェクトがプレイヤーを指していない場合、または変換に失敗した場合、`null`が返ります。
    *
-   * @returns 转换成的玩家对象，失败返回`null`
+   * @returns 変換されたプレイヤーオブジェクト、失敗した場合は `null`
    */
   toPlayer(): Player | null;
 
   /**
-   * ### 判断一个实体对象是不是掉落物实体
+   * ### エンティティオブジェクトがアイテムエンティティであるかどうかを判定
    *
-   * @returns 当前实体对象是不是掉落物实体
+   * @returns 現在のエンティティオブジェクトがアイテムエンティティであるかどうか
    */
   isItemEntity(): boolean;
 
   /**
-   * ### 获取掉落物实体中的物品对象
+   * ### アイテムエンティティ内のアイテムオブジェクトを取得
    *
-   * 如果当前实体对象是一个掉落物实体，可以使用此函数获取掉落物实体中的物品对象，以使用更多的物品相关 API\
-   * 如果此实体对象不是掉落物实体，或者获取失败，则返回 `null`
+   * 現在のエンティティオブジェクトがアイテムエンティティである場合、この関数を使用してアイテムエンティティ内のアイテムオブジェクトを取得し、より多くのアイテム関連のAPIを使用できます。
+   * このエンティティオブジェクトがアイテムエンティティでない場合、または取得に失敗した場合、`null`が返ります。
    *
-   * @returns 获取到的物品对象，失败返回`null`
+   * @returns 取得したアイテムオブジェクト、失敗した場合は `null`
    */
   toItem(): Item | null;
 
   /**
-   * ### 获取实体当前站立所在的方块
+   * ### エンティティの現在の立っているブロックを取得
    *
-   * @returns 当前站立在的方块对象
+   * @returns 現在立っているブロックオブジェクト
    */
   getBlockStandingOn(): Block;
 
   /**
-   * ### 获取生物盔甲栏的容器对象
+   * ### 生物のアーマーコンテナオブジェクトを取得
    *
-   * @returns 此实体盔甲栏对应的容器对象
+   * @returns このエンティティのアーマーコンテナに対応するコンテナオブジェクト
    */
   getArmor(): Container;
 
   /**
-   * ### 判断生物是否拥有容器（盔甲栏除外）
+   * ### 生物がコンテナを持っているかどうかを判定（アーマーコンテナを除く）
    *
-   * 如羊驼身上的箱子等，他们各自拥有一个属于自己的容器对象
+   * アルパカの背中に箱など、それぞれ独自のコンテナオブジェクトを持っています。
    *
-   * @returns 这个生物实体是否拥有容器
+   * @returns この生物エンティティがコンテナを持っているかどうか
    */
   hasContainer(): boolean;
 
   /**
-   * ### 获取生物所拥有的容器对象（盔甲栏除外）
+   * ### 生物が所有するコンテナオブジェクトを取得（アーマーコンテナを除く）
    *
-   * @returns 这个生物实体所拥有的容器对象
+   * @returns この生物エンティティが所有するコンテナオブジェクト
    */
   getContainer(): Container;
 
   /**
-   * ### 刷新生物物品栏、盔甲栏
+   * ### 生物のアイテムをリフレッシュ
    *
-   * 在修改生物物品之后，为了促使客户端生效，需要刷新生物所有的物品
+   * 生物のアイテムを変更した後、クライアントで適用するために生物のすべてのアイテムをリフレッシュする必要があります。
    *
-   * @returns 是否成功刷新
+   * @returns リフレッシュが成功したかどうか
    */
   refreshItems(): boolean;
 
   /**
-   * ### 为实体增加一个Tag
+   * ### エンティティにタグを追加
    *
-   * @param tag 要增加的tag字符串
+   * @param tag - 追加するタグの文字列
    *
-   * @returns 是否添加成功
+   * @returns タグが追加されたかどうか
    */
   addTag(tag: string): boolean;
 
   /**
-   * ### 为为实体移除一个Tag
+   * ### エンティティからタグを削除
    *
-   * @param tag 要移除的tag字符串
+   * @param tag - 削除するタグの文字列
    *
-   * @returns 是否移除成功
+   * @returns タグが削除されたかどうか
    */
   removeTag(tag: string): boolean;
 
   /**
-   * ### 检查实体是否拥有某个Tag
+   * ### エンティティが特定のタグを持っているか確認
    *
-   * @param tag 要检查的tag字符串
+   * @param tag - 確認するタグの文字列
    *
-   * @returns 是否拥有这个Tag
+   * @returns このタグを持っているかどうか
    */
   hasTag(tag: string): boolean;
 
   /**
-   * ### 返回实体拥有的所有Tag列表
+   * ### エンティティが持つすべてのタグのリストを返す
    *
-   * @returns 实体所有的 tag 字符串列表
+   * @returns エンティティが持つすべてのタグの文字列リスト
    */
   getAllTags(): Array<string>;
 
   /**
-   * ### 获取实体对应的NBT对象
+   * ### エンティティに対応するNBTオブジェクトを取得
    *
-   * @returns 实体的NBT对象
+   * @returns エンティティのNBTオブジェクト
    */
   getNbt(): NbtCompound;
 
   /**
-   * ### 写入实体对应的NBT对象
+   * ### エンティティに対応するNBTオブジェクトを書き込む
    *
-   * @param nbt NBT对象
+   * @param nbt - NBTオブジェクト
    *
-   * @returns 是否成功写入
+   * @returns 書き込みが成功したかどうか
    */
   setNbt(nbt: NbtCompound): boolean;
 
@@ -356,23 +356,23 @@ declare class Entity {
   setTag(nbt: NbtCompound): boolean | null;
 
   /**
-   * ### 获取视线方向实体
+   * ### エンティティの視線方向にあるエンティティを取得
    *
-   * @param maxDistance 查找最大距离
+   * @param maxDistance - 最大距離の探索
    *
-   * @returns 视线方向实体，如果获取失败，返回 `null`
+   * @returns 視線方向のエンティティ、取得に失敗した場合は `null`
    */
   getEntityFromViewVector(maxDistance?: number): Entity | null;
 
   /**
-   * ### 获取视线方向方块
+   * ### エンティティの視線方向にあるブロックを取得
    *
-   * @param includeLiquid 是否包含液态方块
-   * @param solidOnly 是否仅允许 `Solid` 类型的方块
-   * @param maxDistance 查找最大距离
-   * @param fullOnly 是否仅允许完整方块
+   * @param includeLiquid - 液体ブロックを含めるか
+   * @param solidOnly - `Solid` タイプのブロックのみを許可するか
+   * @param maxDistance - 最大距離の探索
+   * @param fullOnly - 完全なブロックのみを許可するか
    *
-   * @returns 视线方向方块，如果获取失败，返回 `null`
+   * @returns 視線方向のブロック、取得に失敗した場合は `null`
    */
   getBlockFromViewVector(
     includeLiquid?: boolean,
@@ -382,145 +382,145 @@ declare class Entity {
   ): Block | null;
 
   /**
-   * ### 快速执行Molang表达式
+   * ### Molangスクリプトを高速に実行
    *
-   * 关于Molang的详细使用方法，请参考 [MOLANG文档 bedrock.dev](https://bedrock.dev/zh/docs/stable/Molang)
+   * Molangの詳細な使用方法については、[MOLANGドキュメント bedrock.dev](https://bedrock.dev/zh/docs/stable/Molang)を参照してください。
    *
-   * @param str Molang表达式
+   * @param str - Molangスクリプト
    *
-   * @returns 表达式执行结果
+   * @returns スクリプトの実行結果
    */
   quickEvalMolangScript(str: string): number;
 
   asPointer(): NativePointer | null;
 
   /**
-   * ### 缩放实体
+   * ### エンティティのサイズを設定
    *
-   * @param scale 新的玩家实体 (整数)
+   * @param scale - 新しいエンティティのサイズ（整数）
    *
-   * @returns 是否缩放成功
+   * @returns サイズが設定されたかどうか
    */
   setScale(scale: number): boolean;
 
   /**
-   * ### 熄灭实体
+   * ### エンティティの消火
    *
-   * @returns 是否熄灭成功
+   * @returns 消火が成功したかどうか
    */
   stopFire(): boolean;
 
   /**
    * @deprecated
-   * ### 获取实体到坐标的距离
+   * ### エンティティから座標への距離を取得
    *
-   * @param pos 目标位置
+   * @param pos - 対象位置
    *
-   * @returns 到坐标的距离(方块)
+   * @returns その座標までの距離（ブロック単位）
    *
    */
   distanceToPos(pos: Entity | Player | IntPos | FloatPos): number;
 
   /**
    *
-   * ### 获取实体到坐标的距离
+   * ### エンティティから座標への距離を取得
    *
-   * @param pos 目标位置
+   * @param pos - 対象位置
    *
-   * @returns 到坐标的距离(方块)
+   * @returns その座標までの距離（ブロック単位）
    *
    */
   distanceToSqr(pos: Entity | Player | IntPos | FloatPos): number;
 
   /**
    *
-   * ### 获取实体到坐标的距离
+   * ### エンティティから座標への距離を取得
    *
-   * @param pos 目标位置
+   * @param pos - 対象位置
    *
-   * @returns 到坐标的距离(方块)
+   * @returns その座標までの距離（ブロック単位）
    *
    */
   distanceTo(pos: Entity | Player | IntPos | FloatPos): number;
 
-  /** 设置生命值 */
+  /** 生命値を設定 */
   setHealth(health: number): boolean;
 
-  /** 设置生命值上限 */
+  /** 生命値上限を設定 */
   setMaxHealth(health: number): boolean;
 
   /**
-   * 设置伤害吸收属性
-   * @param value 新的值
-   * @returns 是否成功
+   * ダメージ吸収属性を設定
+   * @param value - 新しい値
+   * @returns 成功したかどうか
    */
   setAbsorption(value: number): boolean;
 
   /**
-   * 设置攻击伤害属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 攻撃ダメージ属性を設定
+   * @param value - 新しい値
+   * @returns 成功したかどうか
    */
   setAttackDamage(value: number): boolean;
 
   /**
-   * 最大攻击伤害属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 最大攻撃ダメージ属性
+   * @param value - 新しい値
+   * @returns 成功したかどうか
    */
   setMaxAttackDamage(value: number): boolean;
 
   /**
-   * 设置跟随范围
-   * @param value 新的值
-   * @returns 是否成功
+   * フォロー範囲を設定
+   * @param value - 新しい値
+   * @returns 成功したかどうか
    */
   setFollowRange(value: number): boolean;
 
   /**
-   * 设置击退抵抗属性
-   * @param value 新的值
-   * @returns 是否成功
+   * ノックバック抵抗属性を設定
+   * @param value - 新しい値
+   * @returns 成功したかどうか
    */
   setKnockbackResistance(value: 0 | 1): boolean;
 
   /**
-   * 设置幸运属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 幸運属性を設定
+   * @param value - 新しい値
+   * @returns 成功したかどうか
    */
   setLuck(value: number): boolean;
 
   /**
-   * 设置移动速度属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 移動速度属性を設定
+   * @param value - 新しい値
+   * @returns 成功したかどうか
    */
   setMovementSpeed(value: number): boolean;
 
   /**
-   * 置水下移动速度属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 水中移動速度属性を設定
+   * @param value - 新しい値
+   * @returns 成功したかどうか
    */
   setUnderwaterMovementSpeed(value: number): boolean;
 
   /**
-   * 设置岩浆上移动速度属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 岩浆上移動速度属性を設定
+   * @param value - 新しい値
+   * @returns 成功したかどうか
    */
   setLavaMovementSpeed(value: number): boolean;
 
   /**
-   * 使指定实体刷新消失
-   * @returns 是否成功执行
+   * 指定エンティティを消滅させる
+   * @returns 成功したかどうか
    */
   despawn(): boolean;
 
   /**
-   * 移除指定实体
-   * @returns 是否成功执行
+   * 指定エンティティを削除
+   * @returns 成功したかどうか
    */
   remove(): boolean;
 
@@ -529,18 +529,18 @@ declare class Entity {
   setPosDelta(arg1: number, arg2: number, arg3: number): boolean;
 
   /**
-   * 获取实体全部药水效果
-   * @returns 实体所有的药水效果id
+   * エンティティのすべての効果を取得
+   * @returns エンティティのすべての効果ID
    */
   getAllEffects(): number[];
 
   /**
-   * 为实体添加一个药水效果
-   * @param id 药水效果的id
-   * @param tick 持续时间
-   * @param level 等级
-   * @param showParticles 是否显示粒子
-   * @returns 是否成功
+   * エンティティに効果を追加
+   * @param id - 効果のID
+   * @param tick - 持続時間
+   * @param level - レベル
+   * @param showParticles - パーティクルを表示するかどうか
+   * @returns 成功したかどうか
    */
   addEffect(
     id: number,
@@ -550,11 +550,11 @@ declare class Entity {
   ): boolean;
 
   /**
-   * 为实体移除一个药水效果
-   * @param id 药水效果的id
-   * @returns 是否成功
+   * エンティティから効果を削除
+   * @param id - 効果のID
+   * @returns 成功したかどうか
    */
   removeEffect(id: number): boolean;
 }
 
-declare class LLSE_Entity extends Entity {}
+declare class LLSE_Entity extends Entity { }
