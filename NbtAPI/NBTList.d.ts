@@ -1,143 +1,147 @@
 /// <reference path="../index.d.ts" />
 
-declare class NbtList{
+/**
+ * NbtList クラスの型宣言
+ */
+declare class NbtList {
   constructor(data?: Array<NbtType>);
 
   /**
-   * 获取NBT对象储存的数据类型
-   * @returns NBT.enum 此NBT对象储存的数据类型
+   * NBTオブジェクトの格納されているデータ型を取得します。
+   * @returns {any} - このNBTオブジェクトが格納しているデータ型
    */
-  getType():9
+  getType(): 9;
 
   /**
-   * 将NBT对象转换为Json字符串
-   * @param space （可选参数）如果要格式化输出的字符串，则传入此参数  
+   * NBTオブジェクトをJSON文字列に変換します。
+   * @param {number} space - オプション: 文字列をフォーマットする場合に渡すパラメータ
+   * @returns {string} - 変換されたJSON文字列
    */
   toString(space?: number): string;
-    
+
   /**
-   * 获取列表长度
-   * @returns Integer 此列表的长度
+   * リストの長さを取得します。
+   * @returns {number} - このリストの長さ
    */
   getSize(): number;
 
   /**
-   * 获取某个下标位置储存的数据类型
-   * @param index 要查询的目标下标
-   * @returns NBT.enum 此下标处储存的NBT的数据类型
+   * 特定のインデックス位置に格納されているデータ型を取得します。
+   * @param {number} index - クエリ対象のインデックス
+   * @returns {any} - このインデックス位置に格納されているNBTのデータ型
    */
   getTypeOf(index: number): NBT;
 
   /**
-   * 设置某个下标位置的NBT对象
-   * @param index 要操作的目标下标
-   * @param tag 要写入的 NBT 对象
-   * @returns NbtList 写入完毕的NBT列表（便于连锁进行其他操作）
+   * 特定のインデックス位置にNBTオブジェクトを設定します。
+   * @param {number} index - 操作対象のインデックス
+   * @param {NbtType} tag - 書き込むNBTオブジェクト
+   * @returns {NbtList} - 書き込みが完了したNBTリスト（他の操作をチェーンできるように）
    */
   setTag(index: number, tag: NbtType): NbtList;
 
   /**
-   * 读取某个下标位置的NBT对象
-   * @param index 要操作的目标下标
-   * @returns NbtType|null NBT对象
+   * 特定のインデックス位置からNBTオブジェクトを読み取ります。
+   * @param {number} index - 操作対象のインデックス
+   * @returns {NbtType | null} - NBTオブジェクト
    */
   getTag(index: number): NbtType | null;
 
   /**
-   * 往列表末尾追加一个NBT对象
-   * @param tag 要追加的 NBT 对象
-   * @returns NbtList 追加完毕的NBT列表（便于连锁进行其他操作）
+   * リストの末尾にNBTオブジェクトを追加します。
+   * @param {NbtType} tag - 追加するNBTオブジェクト
+   * @returns {NbtList} - 追加が完了したNBTリスト（他の操作をチェーンできるように）
    */
   addTag(tag: NbtType): NbtList;
 
   /**
-   * 删除某个下标位置的NBT对象
-   * @param index 要删除的目标下标
-   * @returns NbtList 处理完毕的NBT列表（便于连锁进行其他操作）
-   */
-  removeTag(index: number): NbtList;
+ * 特定のインデックス位置に格納されているNBTオブジェクトを削除します。
+ * @param {number} index - 削除する対象のインデックス
+ * @returns {NbtList} - 処理が完了したNBTリスト（他の操作をチェーンできるように）
+ */
+removeTag(index: number): NbtList;
+
+/**
+ * 特定のインデックス位置に具体的なデータを設定します。
+ * @param {number} index - 操作対象のインデックス
+ * @returns {NbtList} - 書き込みが完了したNBTリスト（他の操作をチェーンできるように）
+ */
+setEnd(index: number): NbtList;
 
   /**
-   * 设置某个下标位置的具体数据
-   * @param index 要操作的目标下标
-   * @returns NbtList 写入完毕的NBT列表（便于连锁进行其他操作）
-   */
-  setEnd(index: number): NbtList;
-
-  /**
-   * 设置某个下标位置的具体数据
-   * @param index 要操作的目标下标
-   * @param data 要写入的具体数据
-   * @returns NbtList 写入完毕的NBT列表（便于连锁进行其他操作）
+   * 特定のインデックス位置にデータを設定します。
+   * @param {number} index - 操作対象のインデックス
+   * @param {number} data - 書き込む具体的なデータ
+   * @returns {NbtList} - 書き込みが完了したNBTリスト（他の操作をチェーンできるように）
    */
   setByte(index: number, data: number): NbtList;
 
   /**
-   * 设置某个下标位置的具体数据
-   * @param index 要操作的目标下标
-   * @param data 要写入的具体数据
-   * @returns NbtList 写入完毕的NBT列表（便于连锁进行其他操作）
+   * 特定のインデックス位置にデータを設定します。
+   * @param {number} index - 操作対象のインデックス
+   * @param {number} data - 書き込む具体的なデータ
+   * @returns {NbtList} - 書き込みが完了したNBTリスト（他の操作をチェーンできるように）
    */
   setShort(index: number, data: number): NbtList;
 
   /**
-   * 设置某个下标位置的具体数据
-   * @param index 要操作的目标下标
-   * @param data 要写入的具体数据
-   * @returns NbtList 写入完毕的NBT列表（便于连锁进行其他操作）
+   * 特定のインデックス位置にデータを設定します。
+   * @param {number} index - 操作対象のインデックス
+   * @param {number} data - 書き込む具体的なデータ
+   * @returns {NbtList} - 書き込みが完了したNBTリスト（他の操作をチェーンできるように）
    */
   setInt(index: number, data: number): NbtList;
 
   /**
-   * 设置某个下标位置的具体数据
-   * @param index 要操作的目标下标
-   * @param data 要写入的具体数据
-   * @returns NbtList 写入完毕的NBT列表（便于连锁进行其他操作）
+   * 特定のインデックス位置にデータを設定します。
+   * @param {number} index - 操作対象のインデックス
+   * @param {number} data - 書き込む具体的なデータ
+   * @returns {NbtList} - 書き込みが完了したNBTリスト（他の操作をチェーンできるように）
    */
   setLong(index: number, data: number): NbtList;
 
   /**
-   * 设置某个下标位置的具体数据
-   * @param index 要操作的目标下标
-   * @param data 要写入的具体数据
-   * @returns NbtList 写入完毕的NBT列表（便于连锁进行其他操作）
+   * 特定のインデックス位置にデータを設定します。
+   * @param {number} index - 操作対象のインデックス
+   * @param {number} data - 書き込む具体的なデータ
+   * @returns {NbtList} - 書き込みが完了したNBTリスト（他の操作をチェーンできるように）
    */
   setFloat(index: number, data: number): NbtList;
 
   /**
-   * 设置某个下标位置的具体数据
-   * @param index 要操作的目标下标
-   * @param data 要写入的具体数据
-   * @returns NbtList 写入完毕的NBT列表（便于连锁进行其他操作）
+   * 特定のインデックス位置にデータを設定します。
+   * @param {number} index - 操作対象のインデックス
+   * @param {number} data - 書き込む具体的なデータ
+   * @returns {NbtList} - 書き込みが完了したNBTリスト（他の操作をチェーンできるように）
    */
   setDouble(index: number, data: number): NbtList;
 
   /**
-   * 设置某个下标位置的具体数据
-   * @param index 要操作的目标下标
-   * @param data 要写入的具体数据
-   * @returns NbtList 写入完毕的NBT列表（便于连锁进行其他操作）
+   * 特定のインデックス位置にデータを設定します。
+   * @param {number} index - 操作対象のインデックス
+   * @param {ByteBuffer} data - 書き込む具体的なデータ
+   * @returns {NbtList} - 書き込みが完了したNBTリスト（他の操作をチェーンできるように）
    */
   setByteBuffer(index: number, data: ByteBuffer): NbtList;
 
   /**
-   * 设置某个下标位置的具体数据
-   * @param index 要操作的目标下标
-   * @param data 要写入的具体数据
-   * @returns NbtList 写入完毕的NBT列表（便于连锁进行其他操作）
+   * 特定のインデックス位置にデータを設定します。
+   * @param {number} index - 操作対象のインデックス
+   * @param {string} data - 書き込む具体的なデータ
+   * @returns {NbtList} - 書き込みが完了したNBTリスト（他の操作をチェーンできるように）
    */
   setString(index: number, data: string): NbtList;
 
   /**
-   * 读取某个下标位置的具体数据
-   * @param index 要操作的目标下标
-   * @returns Any|NbtList|NbtCompound|null 键对应的值的具体数据
+   * 特定のインデックス位置からデータを読み取ります。
+   * @param {number} index - 操作対象のインデックス
+   * @returns {any | NbtList | NbtCompound | null} - キーに対応する値の具体的なデータ
    */
   getData(index: number): any | NbtList | NbtCompound | null;
 
   /**
-   * 将List类型转换为Array
-   * @returns Array<any> 对应的数组/列表
+   * List型をArrayに変換します。
+   * @returns {Array<any>} - 対応する配列/リスト
    */
   toArray(): Array<any>;
 }
