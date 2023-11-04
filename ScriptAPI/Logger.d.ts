@@ -1,55 +1,55 @@
 /// <reference path="../index.d.ts" />
 
-declare class logger{
+declare class logger {
     /**
-     * 设置日志是否输出到控制台
-     * @param isOpen 设置日志是否输出到控制台  
-     * @param logLevel （可选参数）控制台的日志输出等级，默认为`4` 
+     * ログをコンソールに出力するかどうかを設定します。
+     * @param isOpen - ログをコンソールに出力するかどうか
+     * @param logLevel （オプション） - コンソールのログ出力レベル（デフォルトは`4`）
      */
-    static setConsole(isOpen:boolean,logLevel?:0|1|2|3|4|5):void;
-
-    /**
-     * 设置日志是否输出到文件
-     * @param filePath 设置日志输出到的文件路径
-     * @param logLevel （可选参数）文件的最小日志输出等级，默认为`4` 
-     */
-    static setFile(filePath:string,logLevel?:0|1|2|3|4|5):void;
+    static setConsole(isOpen: boolean, logLevel?: 0 | 1 | 2 | 3 | 4 | 5): void;
 
     /**
-     * 设置日志是否输出到某个玩家
-     * @param player 设置日志输出到的目标玩家对象
-     * @param logLevel （可选参数）玩家的最小日志输出等级，默认为`4`   
+     * ログをファイルに出力するかどうかを設定します。
+     * @param filePath - ログを出力するファイルのパス
+     * @param logLevel （オプション） - ファイルへの最小ログ出力レベル（デフォルトは`4`）
      */
-    static setPlayer(player:Player,logLevel?:0|1|2|3|4|5):void;
-
-    // 输出普通文本
-    static log(...data:any[]):void;
-
-    // 输出调试信息  
-    static debug(...data:any[]):void;
-
-    // 输出提示信息
-    static info(...data:any[]):void;
-
-    // 输出警告信息
-    static warn(...data:any[]):void;
-
-    // 输出错误信息
-    static error(...data:any[]):void;
-
-    // 输出严重错误信息
-    static fatal(...data:any[]):void;
+    static setFile(filePath: string, logLevel?: 0 | 1 | 2 | 3 | 4 | 5): void;
 
     /**
-     * 设置自定义日志消息标头 
-     * @param title 设置的自定义标头
+     * ログを特定のプレイヤーに出力するかどうかを設定します。
+     * @param player - ログを出力する対象のプレイヤーオブジェクト
+     * @param logLevel （オプション） - プレイヤーへの最小ログ出力レベル（デフォルトは`4`）
      */
-    static setTitle(title:string):void;
+    static setPlayer(player: Player, logLevel?: 0 | 1 | 2 | 3 | 4 | 5): void;
+
+    // 通常のテキストを出力
+    static log(...data: any[]): void;
+
+    // デバッグ情報を出力
+    static debug(...data: any[]): void;
+
+    // 情報メッセージを出力
+    static info(...data: any[]): void;
+
+    // 警告メッセージを出力
+    static warn(...data: any[]): void;
+
+    // エラーメッセージを出力
+    static error(...data: any[]): void;
+
+    // 重大なエラーメッセージを出力
+    static fatal(...data: any[]): void;
 
     /**
-     * 统一修改日志输出等级
-     * @param level 日志输出等级  0~5
+     * カスタムログメッセージのヘッダーを設定します。
+     * @param title - 設定するカスタムヘッダー
      */
-    static setLogLevel(level:0|1|2|3|4|5):void;
+    static setTitle(title: string): void;
+
+    /**
+     * ログ出力のレベルを一括で変更します。
+     * @param level - ログ出力のレベル（0～5）
+     */
+    static setLogLevel(level: 0 | 1 | 2 | 3 | 4 | 5): void;
 }
 
