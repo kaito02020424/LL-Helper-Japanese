@@ -1,7 +1,7 @@
 /// <reference path="../index.d.ts" />
 
 declare class NBT {
-  // enum
+  // 列挙型
   static readonly End = 0
 
   static readonly Byte = 1
@@ -25,24 +25,24 @@ declare class NBT {
   static readonly Compound = 10
 
   /**
-   * 从 SNBT  字符串生成 NBT 标签对象
-   * @param snbt 你要解析的SNBT字符串
-   * @returns NbtCompound 生成的NBT对象
+   * SNBT文字列からNBTタグオブジェクトを生成します。
+   * @param snbt - 解析したいSNBT文字列
+   * @returns 生成されたNBTオブジェクト
    */
   static parseSNBT(snbt: string): NbtCompound | null;
 
   /**
-   * 从二进制 NBT 数据生成 NBT 标签对象
-   * @param nbt 你要解析的二进制 NBT 数据
-   * @returns NbtCompound 生成的NBT对象
+   * バイナリNBTデータからNBTタグオブジェクトを生成します。
+   * @param nbt - 解析したいバイナリNBTデータ
+   * @returns 生成されたNBTオブジェクト
    */
   static parseBinaryNBT(nbt: ArrayBuffer): NbtCompound | null;
 
   /** @deprecated */
-  static newTag(arg:NbtEnum):NbtType
+  static newTag(arg: NbtEnum): NbtType;
 
   /** @deprecated */
-  static createTag(arg:NbtEnum):NbtType
+  static createTag(arg: NbtEnum): NbtType;
 }
 
 
@@ -58,7 +58,7 @@ declare type NbtType =
   | NbtString
   | NbtList
   | NbtCompound;
-declare type NbtValue = 
+declare type NbtValue =
   | NbtEnd
   | NbtByte
   | NbtShort
@@ -69,4 +69,4 @@ declare type NbtValue =
   | NbtByteArray
   | NbtString;
 
-declare type NbtEnum = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+declare type NbtEnum = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
