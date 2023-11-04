@@ -2,26 +2,27 @@
 
 declare class NativePatch {
   /**
-   * PatternSearch搜索
-   * @param pattern 描述匹配模式的字符串
-   * @returns NativePointer 结果地址
+   * パターン検索を実行します。
+   * @param pattern - マッチングパターンを記述する文字列
+   * @returns {NativePointer} - 結果のアドレス
    */
   search(pattern: string): NativePointer;
 
   /**
-   * 对指定位置进行Patch操作
-   * @param pointer 目标地址
-   * @param expect 原始字节
-   * @param target 目标字节
-   * @returns boolean 成功结果
+   * 指定された位置にパッチを適用します。
+   * @param pointer - 対象アドレス
+   * @param expect - 元のバイト列
+   * @param target - 目標のバイト列
+   * @returns {boolean} - 成功したかどうかの結果
    */
-  patch(pointer: NativePatch, expect: string, target: string): boolean;
+  patch(pointer: NativePointer, expect: string, target: string): boolean;
 
   /**
-   * Dump展示内存
-   * @param pointer 目标地址
-   * @param size 长度
-   * @returns string 内存内容
+   * メモリをダンプして表示します。
+   * @param pointer - 対象アドレス
+   * @param size - 長さ
+   * @returns {string} - メモリの内容
+   * 訳者注:typo?(使用した経験がないため,関数名が間違ってる判断ができない.)
    */
-  patch(pointer:NativePatch, size:number):string;
+  dump(pointer: NativePointer, size: number): string;
 }
