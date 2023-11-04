@@ -1,185 +1,185 @@
 /// <reference path="../index.d.ts" />
 
 declare class Item {
-  /** 游戏内显示的物品名称 */
+  /** ゲーム内で表示されるアイテムの名前 */
   readonly name: string;
 
-  /** 物品标准类型名 */
+  /** アイテムの標準タイプ名 */
   readonly type: string;
 
-  /** 物品的游戏内id */
+  /** アイテムのゲーム内ID */
   readonly id: number;
 
-  /** 这个物品对象堆叠的个数 */
+  /** このアイテムオブジェクトのスタック数 */
   readonly count: number;
 
-  /** 物品附加值（如羊毛颜色） */
+  /** アイテムの追加値（例: 羊毛の色） */
   readonly aux: number;
 
-  /**	物品当前耐久 */
+  /** アイテムの現在の耐久値 */
   readonly damage: number;
 
-  /** 物品攻击伤害 */
+  /** アイテムの攻撃ダメージ */
   readonly attackDamage: number;
 
-  /** 物品最大耐久 */
+  /** アイテムの最大耐久値 */
   readonly maxDamage: number;
 
-  /** Item Lore */
+  /** アイテムのLore */
   readonly lore: Array<string>
 
-  /**	物品是否为箭 */
+  /** アイテムが武具アイテムかどうか */
   readonly isArmorItem: boolean
 
-  /** 物品是否为方块 */
+  /** アイテムがブロックかどうか */
   readonly isBlock: boolean
 
-  /** 物品是否可被破坏 */
+  /** アイテムが破壊可能なアイテムかどうか */
   readonly isDamageableItem: boolean
 
-  /** 物品耐久是否被消耗 */
+  /** アイテムの耐久が減少しているかどうか */
   readonly isDamaged: boolean
 
-  /** 物品是否已被附魔 */
+  /** アイテムがすでにエンチャントされているかどうか */
   readonly isEnchanted: boolean
 
-  /** 物品是否为附魔书 */
+  /** アイテムがエンチャントの本かどうか */
   readonly isEnchantingBook: boolean
   
-  /** 物品是否防火 */
+  /** アイテムが耐火性かどうか */
   readonly isFireResistant: boolean
   
-  /** 物品是否已堆叠到最大堆叠数 */
+  /** アイテムがスタックの最大数に達しているかどうか */
   readonly isFullStack: boolean
   
-  /** 物品是否闪烁 */
+  /** アイテムが輝いているかどうか */
   readonly isGlint: boolean
   
-  /** 物品是否为马铠 */
+  /** アイテムが馬の鎧アイテムかどうか */
   readonly isHorseArmorItem: boolean
   
-  /** Whether the item is liquid clip */
+  /** アイテムが液体を通過するかどうか */
   readonly isLiquidClipItem: boolean
   
-  /** 物品是否为唱片 */
+  /** アイテムが音楽ディスクかどうか */
   readonly isMusicDiscItem: boolean
   
-  /** 物品是否可设置到副手 */
+  /** アイテムが副手に装備できるかどうか */
   readonly isOffhandItem: boolean
   
-  /** 物品是否为药水 */
+  /** アイテムがポーションアイテムかどうか */
   readonly isPotionItem: boolean
   
-  /** 物品是否可堆叠 */
+  /** アイテムがスタック可能かどうか */
   readonly isStackable: boolean
   
-  /** 物品是否可穿戴 */
-  readonly isWearableItem	: boolean
+  /** アイテムが装備可能かどうか */
+  readonly isWearableItem: boolean
 
   /**
-   * 从现有的物品对象克隆
-   * @returns Item|null 生成的新物品对象
+   * 既存のアイテムオブジェクトからクローンを生成
+   * @returns Item|null 生成された新しいアイテムオブジェクト
    */
   clone(): Item | null;
 
   /**
-   * 判断物品对象是否为空
-   * @returns boolean 这个物品对象是否为空
+   * アイテムオブジェクトが空かどうかを判定
+   * @returns boolean このアイテムオブジェクトが空かどうか
    */
   isNull(): boolean;
 
   /**
-   * 将此物品对象置为空（删除物品）
-   * @returns boolean 是否删除成功
+   * このアイテムオブジェクトを空に設定（アイテムを削除）
+   * @returns boolean 削除が成功したかどうか
    */
   setNull(): boolean;
 
   /**
-   * 将此物品对象设置为另一个物品
-   * @param item 要赋值的物品对象
-   * @returns boolean 是否赋值成功
+   * このアイテムオブジェクトを別のアイテムに設定
+   * @param item 設定するアイテムオブジェクト
+   * @returns boolean 設定が成功したかどうか
    */
   set(item: Item): boolean;
 
   /**
-   * 设置物品的附加值
-   * @param aux 物品附加值
-   * @returns boolean 是否设置成功
+   * アイテムの追加値を設定
+   * @param aux アイテムの追加値
+   * @returns boolean 設定が成功したかどうか
    */
   setAux(aux: number): boolean;
 
   /**
-   * 获取物品对应的NBT对象
-   * @returns NbtCompound 物品的NBT对象
+   * アイテムに対応するNBTオブジェクトを取得
+   * @returns NbtCompound アイテムのNBTオブジェクト
    */
   getNbt(): NbtCompound;
 
   /**
-   * 写入物品对应的NBT对象
-   * @param nbt NBT对象
-   * @returns boolean 是否成功写入
+   * アイテムに対応するNBTオブジェクトを書き込む
+   * @param nbt NBTオブジェクト
+   * @returns boolean 書き込みが成功したかどうか
    */
   setNbt(nbt: NbtCompound): boolean;
 
   /**
-   * 设置自定义Lore
-   * @param names 要设置的Lore字符串的数组
-   * @returns boolean 是否设置成功
+   * カスタムのLoreを設定
+   * @param names 設定するLore文字列の配列
+   * @returns boolean 設定が成功したかどうか
    */
   setLore(names: Array<string>): boolean;
 
   /**
-   * 设置自定义物品名称
-   * @param name 新物品名称
-   * @returns 是否成功
+   * カスタムのアイテム名を設定
+   * @param name 新しいアイテム名
+   * @returns boolean 設定が成功したかどうか
    */
   setDisplayName(name: string): boolean
 
   /**
-   * 判断是否为同类物品
-   * @param item 被判断的物品
-   * @returns 是否为同类物品
+   * 同じ種類のアイテムかどうかを判定
+   * @param item 判定するアイテム
+   * @returns 同じ種類のアイテムかどうか
    */
   match(item: Item): boolean
 }
 
 declare namespace mc {
   /**
-   * 根据物品对象生成掉落物实体
-   * @param item 生成掉落物实体所使用的物品对象
-   * @param pos 生成掉落物实体的位置的坐标对象（或者使用x, y, z, dimid来确定生成位置）
-   * @returns Entity|null 生成的掉落物实体对象
+   * アイテムオブジェクトからドロップエンティティを生成
+   * @param item ドロップエンティティを生成するためのアイテムオブジェクト
+   * @param pos ドロップエンティティを生成する位置の座標オブジェクト（またはx, y, z, dimidを使用して位置を指定）
+   * @returns Entity|null 生成されたドロップエンティティオブジェクト
    */
   function spawnItem(item: Item, pos: IntPos | FloatPos): Entity | null;
 
   /**
-   * 根据物品对象生成掉落物实体
-   * @param item 生成掉落物实体所使用的物品对象
-   * @param x x坐标
-   * @param y y坐标
-   * @param z z坐标
-   * @param dimId 维度Id
-   * @returns Entity|null 生成的掉落物实体对象
-   */
-  function spawnItem(
-    item: Item,
-    x: number,
-    y: number,
-    z: number,
-    dimId: 0 | 1 | 2
-  ): Entity | null;
+ * アイテムオブジェクトからドロップエンティティを生成
+ * @param item 生成に使用するアイテムオブジェクト
+ * @param x x座標
+ * @param y y座標
+ * @param z z座標
+ * @param dimId ディメンションID
+ * @returns Entity|null 生成されたドロップエンティティオブジェクト
+ */
+function spawnItem(
+  item: Item,
+  x: number,
+  y: number,
+  z: number,
+  dimId: 0 | 1 | 2
+): Entity | null;
+
+/**
+ * NBTからアイテムオブジェクトを生成
+ * @param nbt アイテムオブジェクトの生成に使用するNBT
+ * @returns Item|null 生成されたアイテムオブジェクト
+ */
+function newItem(nbt: NbtCompound): Item | null;
 
   /**
-   * 通过NBT生成物品对象
-   * @param nbt 生成物品对象所使用的物品NBT
-   * @returns Item|null 生成的物品对象
-   */
-  function newItem(nbt: NbtCompound): Item | null;
-
-  /**
-   * 生成新的物品对象
-   * @param name 物品的标准类型名，如`minecraft:bread`
-   * @param count 物品堆叠数量
+   * 新しいアイテムオブジェクトを生成
+   * @param name アイテムの標準タイプ名（例: `minecraft:bread`）
+   * @param count アイテムのスタック数
    */
   function newItem(name: string, count: number): Item | null;
 }
