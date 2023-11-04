@@ -1,16 +1,16 @@
 /// <reference path="../../index.d.ts" />
 
 /**
- * ### 🎯 指令对象
+ * ### 🎯 コマンドオブジェクト
  *
- * 通过对接 BDS 内置的命令系统，你注册的命令可以由玩家、控制台、命令方块、NPC等各种游戏中可以执行命令的对象所使用，\
- * 在 addon 中，也可以使用这里所注册的命令。
+ * BDSの組み込みコマンドシステムに対応し、プレイヤー、コンソール、コマンドブロック、NPCなど、ゲーム内でコマンドを実行できるオブジェクトからの登録されたコマンドを使用できます。\
+ * アドオンでは、ここで登録されたコマンドを使用することもできます。
  *
- * 通过指令对象，你可以为这个命令注册各式各样的形式、功能。
+ * コマンドオブジェクトを使用することで、このコマンドにさまざまな形式や機能を登録できます。
  *
- * 该类**没有构造函数**，请使用{@linkcode mc.newCommand()}创建
+ * このクラスには**コンストラクタが存在しません**。{@linkcode mc.newCommand()}を使用して作成してください。
  *
- * @see [🎯 命令注册API](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Command)
+ * @see [🎯 コマンド登録API](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Command)
  */
 declare class Command {
   readonly name: string;
@@ -18,34 +18,34 @@ declare class Command {
   readonly registered: boolean;
 
   /**
-   * ### 设置指令别名
+   * ### コマンドのエイリアスを設定
    *
-   * @param alias 指令别名
+   * @param alias エイリアスの名前
    *
-   * @returns 是否成功设置
+   * @returns 設定に成功したかどうか
    */
   setAlias(alias: string): boolean;
 
   /**
-   * ### 新增一个指令枚举选项
+   * ### コマンド列挙オプションを追加
    *
-   * @param name 枚举名，用于设置参数时区分枚举
-   * @param values 枚举的有效值
+   * @param name 列挙名、パラメータを区別するために使用
+   * @param values 列挙の有効な値
    *
-   * @returns 是否成功设置
+   * @returns 設定に成功したかどうか
    */
   setEnum(name: string, values: Array<string>): boolean;
 
   /**
-   * ### 新增一个必选参数
+   * ### 必須パラメータを追加
    *
-   * @param name 参数名，用于执行指令时识别参数
-   * @param type 命令参数类型
-   * @param enumName 枚举名（仅 `ParamType` 为 `Enum` 时有效，用于区分枚举选项）
-   * @param identifier 参数标识，特殊情况下用于唯一识别参数，一般可用 `enumName` 或 `name` 代替
-   * @param enumOptions 参数选项，设置为 `1` 可在指令提示中展开枚举选项，如 `<action : TagChangeAction>` 会变成 `<add|remove>`
+   * @param name パラメータの名前、コマンドを実行する際にパラメータを識別するために使用
+   * @param type コマンドパラメータの型
+   * @param enumName 列挙名（`ParamType` が `Enum` の場合のみ有効、列挙オプションを区別するために使用）
+   * @param identifier パラメータ識別子、特定の状況でパラメータを一意に識別するために使用され、通常は`enumName`または`name`で代用できます
+   * @param enumOptions パラメータのオプション、`1`に設定するとコマンドヒントで列挙オプションを展開できます。例: `<action : TagChangeAction>` が `<add|remove>` に変わります
    *
-   * @returns 是否成功设置
+   * @returns 設定に成功したかどうか
    */
   mandatory(
     name: string,
@@ -63,15 +63,15 @@ declare class Command {
   ): boolean;
 
   /**
-   * ### 新增一个可选参数
+   * ### オプションパラメータを追加
    *
-   * @param name 参数名，用于执行指令时识别参数
-   * @param type 命令参数类型
-   * @param enumName 枚举名（仅 `ParamType` 为 `Enum` 时有效，用于区分枚举选项）
-   * @param identifier 参数标识，特殊情况下用于唯一识别参数，一般可用 `enumName` 或 `name` 代替
-   * @param enumOptions 参数选项，设置为 `1` 可在指令提示中展开枚举选项，如 `<action : TagChangeAction>` 会变成 `<add|remove>`
+   * @param name パラメータの名前、コマンドを実行する際にパラメータを識別するために使用
+   * @param type コマンドパラメータの型
+   * @param enumName 列挙名（`ParamType` が `Enum` の場合のみ有効、列挙オプションを区別するために使用）
+   * @param identifier パラメータ識別子、特定の状況でパラメータを一意に識別するために使用され、通常は`enumName`または`name`で代用できます
+   * @param enumOptions パラメータのオプション、`1`に設定するとコマンドヒントで列挙オプションを展開できます。例: `<action : TagChangeAction>` が `<add|remove>` に変わります
    *
-   * @returns 是否成功设置
+   * @returns 設定に成功したかどうか
    */
   optional(
     name: string,
@@ -92,28 +92,28 @@ declare class Command {
   getSoftEnumNames(): Array<string>;
 
   /**
-   * ### 新增一条指令重载
+   * ### コマンドオーバーロードを追加
    *
-   * **编者注**：必须在调用{@linkcode Command.setup()}前调用此函数，否则会报错
+   * **注**: {@linkcode Command.setup()}を呼び出す前にこの関数を呼び出す必要があります。それ以外の場合はエラーが発生します。
    *
-   * 指令重载是 BDS 区分不同指令形式的方法，每一种不同的指令形式对应着一种指令重载。
+   * コマンドオーバーロードは、異なるコマンド形式を区別するためのBDSの方法で、異なるコマンド形式ごとに1つのオーバーロードが対応します。
    *
-   * 如你所见，指令重载中提供的各项参数名组成了一种新的指令形式
+   * 提供されたパラメータ名は新しいコマンド形式を構成します。
    *
-   * @param params 参数标识符，重载所用到的参数列表，可用 参数标识符、枚举名、参数名。
+   * @param params オーバーロードに使用するパラメータリスト、パラメータ識別子、列挙名、パラメータ名を使用できます。
    *
-   * 注意不能使用无法区分具体参数的标识符，如两个参数都叫 `action` 但枚举选项不同，此时应该使用枚举名而不是参数名
+   * 一意のパラメータを区別できない識別子は使用できないことに注意してください。たとえば、2つのパラメータがともに「action」という名前でも、列挙オプションが異なる場合は、パラメータ名の代わりに列挙名を使用する必要があります。
    *
-   * @returns  是否成功设置
+   * @returns 設定に成功したかどうか
    */
   overload(params?: Array<string>): boolean;
 
   /**
-   * ### 设置指令回调
+   * ### コマンドコールバックを設定
    *
-   * @param callback 注册的这个命令被执行时，接口自动调用的回调函数。
+   * @param callback このコマンドが実行されたときに自動的に呼び出されるコールバック関数。
    *
-   * @returns 是否成功设置
+   * @returns 設定に成功したかどうか
    */
   setCallback(
     callback: (
@@ -125,11 +125,11 @@ declare class Command {
   ): boolean;
 
   /**
-   * ### 安装指令
+   * ### コマンドをセットアップ
    *
-   * **编者注**：请在调用此函数前调用{@linkcode Command.overload()}，否则会报错
+   * **注**: {@linkcode Command.overload()}を呼び出す前にこの関数を呼び出す必要があります。それ以外の場合はエラーが発生します。
    *
-   * @returns 是否成功安装
+   * @returns セットアップに成功したかどうか
    */
   setup(): boolean;
 }
