@@ -1,37 +1,37 @@
 /**
- * 国际化API
+ * 国際化API
  */
-declare namespace i18n{
+declare namespace i18n {
     /**
-     * 加载翻译数据
-     * @param path 翻译数据所在的文件/目录
-     * @param defaultLocaleName 默认的语言名称，形如zh_CN或en，若传入空字符串，则默认跟随系统语言
-     * @param defaultLangData 该参数将用于补全或创建翻译文件
+     * 翻訳データを読み込みます。
+     * @param path - 翻訳データの場所（ファイルまたはディレクトリ）
+     * @param defaultLocaleName - デフォルトの言語名、例: zh_CN または en。空の文字列を渡すと、システムの言語に従います。
+     * @param defaultLangData - このパラメータは翻訳ファイルを補完または作成するために使用されます。
      */
-    function load(path:string, defaultLocaleName:string, defaultLangData:object):void
+    function load(path: string, defaultLocaleName: string, defaultLangData: object): void;
 
     /**
-     * 获取文本的指定语言翻译
-     * @param key 文本或ID
-     * @param localeName 目标语言，默认为i18n.load时传入的defaultLocaleName
-     * @returns 翻译内容（若经过多次回落仍未找到翻译，则返回key）
+     * 指定した言語のテキスト翻訳を取得します。
+     * @param key - テキストまたはID
+     * @param localeName - ターゲットの言語。デフォルトはi18n.loadで渡されたdefaultLocaleNameです。
+     * @returns 翻訳内容（複数のフォールバックを経ても翻訳が見つからない場合、keyが返されます）
      */
-    function get(key:string,localeName?:string):string
+    function get(key: string, localeName?: string): string;
 
     /**
-     * 使用指定语言翻译文本并格式化
-     * @param localeName 目标语言
-     * @param key 文本或ID
-     * @param info 格式化参数
-     * @returns 翻译并格式化后的文本
-     */ 
-    function trl(localeName:string, key:string, ...info:any[]):string
+     * 指定した言語でテキストを翻訳し、フォーマットします。
+     * @param localeName - ターゲットの言語
+     * @param key - テキストまたはID
+     * @param info - フォーマットパラメータ
+     * @returns 翻訳およびフォーマットされたテキスト
+     */
+    function trl(localeName: string, key: string, ...info: any[]): string;
 
     /**
-     * 使用默认语言翻译文本并格式化
-     * @param key 文本或ID
-     * @param info 格式化参数
-     * @returns 翻译并格式化后的文本
-     */ 
-    function tr(key:string, ...info:any[]):string
+     * デフォルトの言語でテキストを翻訳し、フォーマットします。
+     * @param key - テキストまたはID
+     * @param info - フォーマットパラメータ
+     * @returns 翻訳およびフォーマットされたテキスト
+     */
+    function tr(key: string, ...info: any[]): string;
 }
