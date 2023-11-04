@@ -2,31 +2,31 @@
 
 declare namespace mc {
   /**
-   * ### 通过方块坐标获取Block
+   * ### ブロックを座標から取得
    *
-   * 通过此函数来手动生成对象
+   * この関数を使用してオブジェクトを手動で生成します。
    *
-   * **注意**：要获取的方块必须处于已被加载的范围中，否则会出现问题
+   * **注意**: 取得しようとするブロックはすでにロードされた領域にある必要があります。そうでない場合、問題が発生します。
    *
-   * @param pos 方块所在坐标
+   * @param pos ブロックの位置
    *
-   * @returns 方块对象
+   * @returns ブロックオブジェクト
    */
   function getBlock(pos: IntPos): Block | null;
 
   /**
-   * ### 通过方块坐标获取Block
+   * ### ブロックを座標から取得
    *
-   * 通过此函数来手动生成对象
+   * この関数を使用してオブジェクトを手動で生成します。
    *
-   * **注意**：要获取的方块必须处于已被加载的范围中，否则会出现问题
+   * **注意**: 取得しようとするブロックはすでにロードされた領域にある必要があります。そうでない場合、問題が発生します。
    *
-   * @param x 方块x坐标
-   * @param y 方块y坐标
-   * @param z 方块z坐标
-   * @param dimId 方块维度
+   * @param x ブロックのx座標
+   * @param y ブロックのy座標
+   * @param z ブロックのz座標
+   * @param dimId ブロックのディメンションID
    *
-   * @returns 方块对象
+   * @returns ブロックオブジェクト
    */
   function getBlock(
     x: number,
@@ -36,15 +36,16 @@ declare namespace mc {
   ): Block | null;
 
   /**
-   * ### 设置指定位置的方块
+   * ### 指定位置のブロックを設定
    *
-   * 通过此函数，将一个坐标对应的方块设置成另一个，类似于命令 `/setblock`
+   * この関数を使用して、座標に対応するブロックを別のブロック、`minecraft:stone`のような標準のブロックタイプ、またはブロックNBTデータに設定します。
+   * これはコマンド `/setblock` と同様の動作です。
    *
-   * @param pos 目标方块位置
-   * @param block 要设置成的方块对象、方块标准类型名（如`minecraft:stone`）或方块NBT数据
-   * @param tileData 方块状态值，同原版 `/setBlock` 指令的 `tiledata`，默认为`0`，仅通过方块类型名放置方块时有效
+   * @param pos ターゲットのブロック位置
+   * @param block 設定するブロックオブジェクト、標準のブロックタイプ名（例: `minecraft:stone`）、またはブロックNBTデータ
+   * @param tileData ブロック状態値、標準のブロックタイプ名でブロックを設定する場合のみ有効（デフォルトは`0`）
    *
-   * @returns 是否成功设置
+   * @returns 設定に成功したかどうか
    */
   function setBlock(
     pos: IntPos,
@@ -53,18 +54,19 @@ declare namespace mc {
   ): boolean;
 
   /**
-   * ### 设置指定位置的方块
+   * ### 指定位置のブロックを設定
    *
-   * 通过此函数，将一个坐标对应的方块设置成另一个，类似于命令 `/setblock`
+   * この関数を使用して、座標に対応するブロックを別のブロック、`minecraft:stone`のような標準のブロックタイプ、またはブロックNBTデータに設定します。
+   * これはコマンド `/setblock` と同様の動作です。
    *
-   * @param x 方块x坐标
-   * @param y 方块y坐标
-   * @param z 方块z坐标
-   * @param dimId 方块维度
-   * @param block 要设置成的方块对象、方块标准类型名（如`minecraft:stone`）或方块NBT数据
-   * @param tileData 方块状态值，同原版 `/setBlock` 指令的 `tiledata`，默认为`0`，仅通过方块类型名放置方块时有效
+   * @param x ブロックのx座標
+   * @param y ブロックのy座標
+   * @param z ブロックのz座標
+   * @param dimId ブロックのディメンションID
+   * @param block 設定するブロックオブジェクト、標準のブロックタイプ名（例: `minecraft:stone`）、またはブロックNBTデータ
+   * @param tileData ブロック状態値、標準のブロックタイプ名でブロックを設定する場合のみ有効（デフォルトは`0`）
    *
-   * @returns 是否成功设置
+   * @returns 設定に成功したかどうか
    */
   function setBlock(
     x: number,
@@ -76,33 +78,31 @@ declare namespace mc {
   ): boolean;
 
   /**
-   * ### 在指定位置生成粒子效果
+   * ### 指定位置にパーティクルエフェクトを生成
    *
-   * 粒子效果名称可以查阅[Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/%E7%B2%92%E5%AD%90?variant=zh#.E7.B1.BB.E5.9E.8B)得知
+   * パーティクルエフェクトの名前は[Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/%E7%B2%92%E5%AD%90?variant=zh#.E7.B1.BB.E5.9E.8B)で確認できます。
+   * パラメータを渡す際、名前空間のプレフィックスを忘れないようにしてください。例: `minecraft:heart_particle`
    *
-   * 在传入参数的时候不要忘记命名空间前缀。类似于 `minecraft:heart_particle`
+   * @param pos 生成位置
+   * @param type 生成するパーティクルエフェクトの名前（Wikiで確認可能）
    *
-   * @param pos 目标生成位置
-   * @param type 要生成的粒子效果名称（可查阅wiki得知）
-   *
-   * @returns 是否生成成功
+   * @returns 生成に成功したかどうか
    */
   function spawnParticle(pos: IntPos | FloatPos, type: string): boolean;
 
   /**
-   * ### 在指定位置生成粒子效果
+   * ### 指定位置にパーティクルエフェクトを生成
    *
-   * 粒子效果名称可以查阅[Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/%E7%B2%92%E5%AD%90?variant=zh#.E7.B1.BB.E5.9E.8B)得知
+   * パーティクルエフェクトの名前は[Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/%E7%B2%92%E5%AD%90?variant=zh#.E7.B1.BB.E5.9E.8B)で確認できます。
+   * パラメータを渡す際、名前空間のプレフィックスを忘れないようにしてください。例: `minecraft:heart_particle`
    *
-   * 在传入参数的时候不要忘记命名空间前缀。类似于 `minecraft:heart_particle`
+   * @param x x座標
+   * @param y y座標
+   * @param z z座標
+   * @param dimId ディメンション
+   * @param type 生成するパーティクルエフェクトの名前（Wikiで確認可能）
    *
-   * @param x x坐标
-   * @param y y坐标
-   * @param z z坐标
-   * @param dimId 维度
-   * @param type 要生成的粒子效果名称（可查阅wiki得知）
-   *
-   * @returns 是否生成成功
+   * @returns 生成に成功したかどうか
    */
   function spawnParticle(
     x: number,
