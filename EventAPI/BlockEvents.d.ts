@@ -1,19 +1,19 @@
 /// <reference path="../index.d.ts" />
 
 declare namespace mc {
-  /** 方块接受玩家互动 */
+  /** ブロックがプレイヤーによって対話されたときのリスナー */
   function listen(
     event: "onBlockInteracted",
     listener: (player: Player, block: Block) => boolean | void
   ): boolean;
 
-  /** 方方块改变 */
+  /** ブロックが変更されたときのリスナー */
   function listen(
     event: "onBlockChanged",
     listener: (beforeBlock: Block, afterBlock: Block) => boolean | void
   ): boolean;
 
-  /** 发生由方块引起的爆炸 */
+  /** ブロックから起こる爆発イベントのリスナー */
   function listen(
     event: "onBlockExplode",
     listener: (
@@ -26,25 +26,25 @@ declare namespace mc {
     ) => boolean | void
   ): boolean;
 
-  /** 方块被爆炸破坏 */
+  /** ブロックが爆発によって破壊されたときのリスナー */
   function listen(
     event: "onBlockExploded",
     listener: (block: Block, source: Entity) => void
   ): boolean;
 
-  /** 火焰蔓延 */
+  /** 火が広がるイベントのリスナー */
   function listen(
     event: "onFireSpread",
     listener: (pos: IntPos) => boolean | void
   ): boolean;
 
-  /** 命令方块执行命令 */
+  /** コマンドブロックがコマンドを実行したときのリスナー */
   function listen(
     event: "onCmdBlockExecute",
     listener: (cmd: string, pos: IntPos, isMinecart: boolean) => boolean | void
   ): boolean;
 
-  /** 容器内容改变 */
+  /** コンテナ内のアイテムが変更されたときのリスナー */
   function listen(
     event: "onContainerChange",
     listener: (
@@ -56,55 +56,55 @@ declare namespace mc {
     ) => void
   ): boolean;
 
-  /** 方块被弹射物击中 */
+  /** ブロックが射撃物によって命中したときのリスナー */
   function listen(
     event: "onProjectileHitBlock",
     listener: (player: Player, block: Block) => void
   ): boolean;
 
-  /** 发生红石更新 */
+  /** レッドストーンの更新イベントのリスナー */
   function listen(
     event: "onRedStoneUpdate",
     listener: (block: Block, level: number, isActive: boolean) => boolean | void
   ): boolean;
 
-  /** 漏斗（漏斗矿车）检测可否吸取物品 */
+  /** ホッパー（ホッパーカート）がアイテムを吸い込むかどうかを調べるイベントのリスナー */
   function listen(
     event: "onHopperSearchItem",
     listener: (pos: FloatPos, isMinecart: boolean) => boolean | void
   ): boolean;
 
-  /** 漏斗输出物品 */
+  /** ホッパーがアイテムを押し出すイベントのリスナー */
   function listen(
     event: "onHopperPushOut",
     listener: (cmd: string, pos: IntPos, isMinecart: boolean) => boolean | void
   ): boolean;
 
-  /** 活塞尝试推动 */
+  /** ピストンが押し出しを試みたときのリスナー */
   function listen(
     event: "onPistonTryPush",
     listener: (pistonPos: IntPos, block: Block) => boolean | void
   ): boolean;
 
-  /** 活塞推动 */
+  /** ピストンがブロックを押し出したときのリスナー */
   function listen(
     event: "onPistonPush",
     listener: (pistonPos: IntPos, block: Block) => boolean | void
   ): boolean;
 
-  /** 耕地退化 */
+  /** 耕地が劣化したときのリスナー */
   function listen(
     event: "onFarmLandDecay",
     listener: (pos: IntPos, entity: Entity) => boolean | void
   ): boolean;
 
-  /** 操作物品展示框 */
+  /** アイテムフレームブロックが操作されたときのリスナー */
   function listen(
     event: "onUseFrameBlock",
     listener: (player: Player, block: Block) => boolean | void
   ): boolean;
 
-  /** 液体方块流动 */
+  /** 流体ブロックが流れるときのリスナー */
   function listen(
     event: "onLiquidFlow",
     listener: (from: Block, to: IntPos) => boolean | void
