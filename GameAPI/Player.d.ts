@@ -7,274 +7,271 @@ declare enum sendTextType {
   json = 9,
 }
 
-/** 玩家 */
+/** プレイヤー */
 declare class Player {
-  /** 玩家名 */
+  /** プレイヤー名 */
   readonly name: string;
 
-  /** 玩家所在坐标   */
+  /** プレイヤー位置 */
   readonly pos: FloatPos;
 
-  /** 玩家所在的方块坐标 */
+  /** プレイヤーのブロック位置 */
   readonly blockPos: IntPos;
 
-  /** 玩家腿部所在坐标 */
+  /** プレイヤー足元の位置 */
   readonly feetPos: FloatPos;
 
-  /** 玩家上次死亡的坐标 */
+  /** プレイヤーの直前の死亡位置 */
   readonly lastDeathPos: IntPos;
 
-  /** 玩家的真实名字 */
+  /** プレイヤーの実際の名前 */
   readonly realName: string;
 
-  /** 玩家Xuid字符串 */
+  /** プレイヤーのXuid文字列 */
   readonly xuid: string;
 
-  /** 玩家Uuid字符串 */
+  /** プレイヤーのUuid文字列 */
   readonly uuid: string;
 
-  /** 玩家的操作权限等级（0 - 4） */
+  /** プレイヤーの権限レベル（0 - 4） */
   readonly permLevel: number;
 
-  /** 玩家的游戏模式（0 - 3） */
+  /** プレイヤーのゲームモード（0 - 3） */
   readonly gameMode: number;
 
-  /** 玩家是否可以飞行 */
+  /** プレイヤーが飛行できるかどうか */
   readonly canFly: boolean;
 
-  /** 玩家是否可以睡觉 */
+  /** プレイヤーが寝ることができるかどうか */
   readonly canSleep: boolean;
 
-  /** 玩家是否可以在地图上看到 */
+  /** プレイヤーがマップ上で表示されるかどうか */
   readonly canBeSeenOnMap: boolean;
 
-  /** 玩家是否可以冻结 */
+  /** プレイヤーが凍結できるかどうか */
   readonly canFreeze: boolean;
 
-  /** 玩家是否能看到日光 */
+  /** プレイヤーが日光を見ることができるかどうか */
   readonly canSeeDaylight: boolean;
 
-  /** 玩家是否可以显示姓名标签 */
+  /** プレイヤーが名前タグを表示できるかどうか */
   readonly canShowNameTag: boolean;
 
-  /** 玩家是否可以开始在床上睡觉 */
+  /** プレイヤーがベッドで寝ることを開始できるかどうか */
   readonly canStartSleepInBed: boolean;
 
-  /** 玩家是否可以拾取物品 */
+  /** プレイヤーがアイテムを拾うことができるかどうか */
   readonly canPickupItems: boolean;
 
-  /** 玩家最大生命值 */
+  /** プレイヤーの最大ヘルス */
   readonly maxHealth: number;
 
-  /** 玩家当前生命值 */
+  /** プレイヤーの現在のヘルス */
   readonly health: number;
 
-  /** 玩家当前是否悬空 */
+  /** プレイヤーが現在浮いているかどうか */
   readonly inAir: boolean;
 
-  /** 玩家当前是否在水中 */
+  /** プレイヤーが現在水中にいるかどうか */
   readonly inWater: boolean;
 
-  /** 玩家是否在熔岩中 */
+  /** プレイヤーが溶岩中にいるかどうか */
   readonly inLava: boolean;
 
-  /** 玩家是否下雨 */
+  /** プレイヤーが雨が降っているかどうか */
   readonly inRain: boolean;
 
-  /** 玩家是否在雪中 */
+  /** プレイヤーが雪が降っているかどうか */
   readonly inSnow: boolean;
 
-  /** 玩家是否在墙上 */
+  /** プレイヤーが壁にいるかどうか */
   readonly inWall: boolean;
 
-  /** 玩家是否在水中或雨中 */
+  /** プレイヤーが水中または雨の中にいるかどうか */
   readonly inWaterOrRain: boolean;
 
-  /** 玩家是否在世界 */
+  /** プレイヤーがワールド内にいるかどうか */
   readonly inWorld: boolean;
 
-  /** 玩家是否在云端 */
+  /** プレイヤーが雲の中にいるかどうか */
   readonly inClouds: boolean;
 
-  /** 玩家当前是否正在潜行 */
+  /** プレイヤーが現在しゃがんでいるかどうか */
   readonly isSneaking: boolean;
 
-  /** @deprecated 玩家当前是否正在潜行 */
+  /** @deprecated プレイヤーが現在しゃがんでいるかどうか */
   readonly sneaking: boolean;
 
-  /** 玩家当前速度 */
+  /** プレイヤーの現在の速度 */
   readonly speed: number;
 
-  /** 玩家当前朝向 */
+  /** プレイヤーの現在の方向 */
   readonly direction: DirectionAngle;
 
-  /** 玩家（实体的）唯一标识符 */
+  /** プレイヤー（エンティティの）ユニークな識別子 */
   readonly uniqueId: string;
 
-  /** 玩家设置的语言的标识符(形如zh_CN)  */
+  /** プレイヤーが設定した言語コード（例：zh_CN） */
   readonly langCode: string;
 
-  /** 玩家是否正在加载   */
+  /** プレイヤーが読み込み中かどうか */
   readonly isLoading: boolean;
 
-  /** 玩家是否隐身中 */
+  /** プレイヤーが透明状態かどうか */
   readonly isInvisible: boolean;
 
-  /** 玩家在传送门中 */
+  /** プレイヤーがポータル内にいるかどうか */
   readonly isInsidePortal: boolean;
 
-  /** 玩家是否受伤 */
+  /** プレイヤーが傷ついているかどうか */
   readonly isHurt: boolean;
 
   /** 未知 */
   readonly isTrusting: boolean;
 
-  /** 玩家是否在能造成伤害的方块上 */
+  /** プレイヤーがダメージを受ける可能性のあるブロックに触れているかどうか */
   readonly isTouchingDamageBlock: boolean;
 
-  /** 玩家是否饿了 */
+  /** プレイヤーがお腹をすかしているかどうか */
   readonly isHungry: boolean;
 
-  /** 玩家是否着火 */
+  /** プレイヤーが炎に巻かれているかどうか */
   readonly isOnFire: boolean;
 
-  /** 玩家是否在地上 */
+  /** プレイヤーが地上にいるかどうか */
   readonly isOnGround: boolean;
 
-  /** 玩家是否在高温方块上（岩浆等） */
+  /** プレイヤーが高温ブロック（溶岩など）の上にいるかどうか */
   readonly isOnHotBlock: boolean;
 
-  /** 玩家在交易 */
+  /** プレイヤーが取引中かどうか */
   readonly isTrading: boolean;
 
-  /** 玩家是否是冒险模式 */
+  /** プレイヤーがアドベンチャーモードかどうか */
   readonly isAdventure: boolean;
 
-  /** 玩家在滑行 */
+  /** プレイヤーが滑空中かどうか */
   readonly isGliding: boolean;
 
-  /** 玩家是否是生存模式 */
+  /** プレイヤーがサバイバルモードかどうか */
   readonly isSurvival: boolean;
 
-  /** 玩家是否是观众模式 */
+  /** プレイヤーがスペクテイターモードかどうか */
   readonly isSpectator: boolean;
 
-  /** 玩家是否在骑行 */
+  /** プレイヤーが乗馬中かどうか */
   readonly isRiding: boolean;
 
-  /** 玩家在跳舞？ */
+  /** プレイヤーがダンス中かどうか */
   readonly isDancing: boolean;
 
-  /** 玩家是否是创造模式 */
+  /** プレイヤーがクリエイティブモードかどうか */
   readonly isCreative: boolean;
 
-  /** 玩家是否在飞行 */
+  /** プレイヤーが飛行中かどうか */
   readonly isFlying: boolean;
 
-  /** 玩家是否正在睡觉 */
+  /** プレイヤーが現在寝ているかどうか */
   readonly isSleeping: boolean;
 
-  /** 玩家是否移动 */
+  /** プレイヤーが動いているかどうか */
   readonly isMoving: boolean;
 
-  /** @deprecated 玩家设备IP地址 */
+  /** @deprecated プレイヤーのデバイスIPアドレス */
   readonly ip: string;
 
   /**
-   * 判断玩家是否为OP
-   * @returns boolean 玩家是否为OP
+   * プレイヤーがOPであるかどうかを判定します。
+   * @returns {boolean} プレイヤーがOPであるかどうか
    */
   isOP(): boolean;
 
   /**
-   * 断开玩家连接
-   * @param msg 被踢出玩家出显示的断开原因。
-   * @returns boolean 是否成功断开连接
+   * プレイヤーの接続を切断します。
+   * @param msg {string} 切断理由を表示するメッセージ
+   * @returns {boolean} 接続の切断が成功したかどうか
    */
   kick(msg?: string): boolean;
 
   /**
-   * 发送一个文本消息给玩家
-   * @param msg 待发送的文本
-   * @param type （可选参数）发送的文本消息类型，默认为0
-   * @returns boolean 是否成功发送
+   * プレイヤーにテキストメッセージを送信します。
+   * @param msg {string} 送信するテキスト
+   * @param type {sendTextType | number} (オプション) 送信するテキストのタイプ、デフォルトは0です
+   * @returns {boolean} 送信に成功したかどうか
    */
   tell(msg: string, type?: sendTextType | number): boolean;
 
   /**
-   * 发送一个文本消息给玩家
-   * @param msg 待发送的文本
-   * @param type （可选参数）发送的文本消息类型，默认为0
-   * @returns boolean 是否成功发送
+   * プレイヤーにテキストメッセージを送信します。
+   * @param msg {string} 送信するテキスト
+   * @param type {sendTextType | number} (オプション) 送信するテキストのタイプ、デフォルトは0です
+   * @returns {boolean} 送信に成功したかどうか
    */
   sendText(msg: string, type?: sendTextType | number): boolean;
 
   /**
-   * 断开玩家连接
-   * @param msg 被踢出玩家出显示的断开原因。
-   * @returns boolean 是否成功断开连接
+   * プレイヤーの接続を切断します。
+   * @param msg {string} 切断理由を表示するメッセージ
+   * @returns {boolean} 接続の切断が成功したかどうか
    */
   disconnect(msg?: string): boolean;
 
   /**
-   * 在屏幕上方显示消息(类似于成就完成)
-   * @param title 待发送的标题
-   * @param message 待发送的文本
-   * @returns boolean 是否成功发送
+   * 画面上部にメッセージを表示します（実績達成などと同様）。
+   * @param title {string} 表示するタイトル
+   * @param message {string} 表示するテキスト
+   * @returns {boolean} 送信に成功したかどうか
    */
   sendToast(title: string, message: string): boolean;
 
   /**
-   * 以某个玩家身份执行一条命令
-   * @param cmd 待执行的命令
-   * @returns boolean 是否执行成功
+   * プレイヤーの身代わりとしてコマンドを実行します。
+   * @param cmd {string} 実行するコマンド
+   * @returns {boolean} 実行が成功したかどうか
    */
   runcmd(cmd: string): boolean;
 
   /**
-   * 以某个玩家身份说话
-   * @param text 模拟说话内容
-   * @returns boolean 是否执行成功
+   * プレイヤーの身代わりとして発言します。
+   * @param text {string} 模擬発言内容
+   * @returns {boolean} 実行が成功したかどうか
    */
   talkAs(text: string): boolean;
 
   /**
-   * 以某个玩家身份向某玩家说话
-   * @param target 模拟说话对象
-   * @param text 模拟说话内容
-   * @returns boolean 是否执行成功
+   * プレイヤーの身代わりとして他のプレイヤーに発言します。
+   * @param target {Player} 模擬発言対象プレイヤー
+   * @param text {string} 模擬発言内容
+   * @returns {boolean} 実行が成功したかどうか
    */
   talkAs(target: Player, text: string): boolean;
-
   /**
-   * ### 获取实体到坐标的距离
-   * @param pos 目标位置
-   * @returns 到坐标的距离(方块)
+   * ### エンティティから指定座標までの距離を取得します。
+   * @param pos 目標位置
+   * @returns {number} 座標までの距離（ブロック単位）
    */
   distanceToSqr(pos: Entity | Player | IntPos | FloatPos): number;
 
   /**
-   * ### 获取实体到坐标的距离
-   * @param pos 目标位置
-   * @returns 到坐标的距离(方块)
+   * ### エンティティから指定座標までの距離を取得します。
+   * @param pos 目標位置
+   * @returns {number} 座標までの距離（ブロック単位）
    */
   distanceTo(pos: Entity | Player | IntPos | FloatPos): number;
 
   /**
-   * 传送玩家至指定位置
-   * @param pos 目标位置坐标 （或者使用x, y, z, dimid来确定玩家位置）
-   * @param rot 送后玩家的朝向，若缺省则与传送前朝向相同
-   *
-   * @returns boolean 是否成功传送
+   * プレイヤーを指定の位置にテレポートします。
+   * @param pos 目標の位置座標（またはx, y, z, dimidを使用してプレイヤーの位置を特定する）
+   * @param rot 送信後のプレイヤーの向き（省略可能、省略した場合、テレポート前の向きと同じ）
+   * @returns {boolean} テレポートが成功したかどうか
    */
   teleport(pos: IntPos | FloatPos, rot?: DirectionAngle): boolean;
 
   /**
-   * 传送玩家至指定位置
-   * @param pos 目标位置坐标 （或者使用x, y, z, dimid来确定玩家位置）
-   * @param rot 送后玩家的朝向，若缺省则与传送前朝向相同
-   *
-   * @returns boolean 是否成功传送
+   * プレイヤーを指定の位置にテレポートします。
+   * @param pos 目標の位置座標（またはx, y, z, dimidを使用してプレイヤーの位置を特定する）
+   * @param rot 送信後のプレイヤーの向き（省略可能、省略した場合、テレポート前の向きと同じ）
+   * @returns {boolean} テレポートが成功したかどうか
    */
   teleport(
     x: number,
@@ -285,268 +282,268 @@ declare class Player {
   ): boolean;
 
   /**
-   * 杀死玩家
-   * @returns 是否成功执行
+   * プレイヤーを殺害します。
+   * @returns {boolean} 成功したかどうか
    */
   kill(): boolean;
 
   /**
-   * 对玩家造成伤害
-   * @param damage 对玩家造成的伤害数值
-   * @returns boolean 是否造成伤害
+   * プレイヤーにダメージを与えます。
+   * @param damage プレイヤーに与えるダメージの値
+   * @returns {boolean} ダメージを与えたかどうか
    */
   hurt(damage: number): boolean;
 
   /**
-   * 治疗玩家
-   * @param health 治疗的心数
-   * @returns boolean 治疗是否成功
+   * プレイヤーを回復させます。
+   * @param health 回復するハートの数
+   * @returns {boolean} 回復が成功したかどうか
    */
   heal(health: number): boolean;
 
   /**
-   * 设置玩家的生命值
-   * @param health 生命值数
-   * @returns boolean 是否成功
+   * プレイヤーのヘルスを設定します。
+   * @param health ヘルスの数値
+   * @returns {boolean} 成功したかどうか
    */
   setHealth(health: number): boolean;
 
   /**
-   * 设置玩家最大生命值
-   * @param health 生命值数
-   * @returns boolean 是否成功
+   * プレイヤーの最大ヘルスを設定します。
+   * @param health ヘルスの数値
+   * @returns {boolean} 成功したかどうか
    */
   setMaxHealth(health: number): boolean;
 
   /**
-   * 设置玩家饥饿值
-   * @param hunger 饥饿值数
-   * @returns boolean 是否成功
+   * プレイヤーのハンガー値を設定します。
+   * @param hunger ハンガー値の数値
+   * @returns {boolean} 成功したかどうか
    */
   setHungry(hunger: number): boolean;
 
   /**
-   * 使指定玩家着火
-   * @param time 着火时长，单位秒
-   * @param isEffect 会不会有火的效果
-   * @returns boolean 是否成功
+   * プレイヤーを一定の時間火傷状態にします。
+   * @param time 火傷の継続時間（秒単位）
+   * @param isEffect 火のエフェクトがあるかどうか
+   * @returns {boolean} 成功したかどうか
    */
   setFire(time: number, isEffect: boolean): boolean;
 
   /**
-   * 熄灭玩家
-   * @returns boolean 是否已被熄灭
+   * プレイヤーの火傷を消します。
+   * @returns {boolean} 消火したかどうか
    */
   stopFire(): boolean;
 
   /**
-   * 重命名玩家
-   * @param newName 玩家新名字
-   * @returns boolean 是否重命名成功
+   * プレイヤーの名前を変更します。
+   * @param newName 新しいプレイヤー名
+   * @returns {boolean} 名前を変更したかどうか
    */
   rename(newName: string): boolean;
 
   /**
-   * 获取玩家当前站立所在的方块
-   * @returns Block 当前站立在的方块对象
+   * プレイヤーが現在立っているブロックを取得します。
+   * @returns {Block} 現在立っているブロックオブジェクト
    */
   getBlockStandingOn(): Block;
 
   /**
-   * 获取玩家对应的设备信息对象
-   * @returns Device 玩家对应的设备信息对象
+   * プレイヤーに関連するデバイス情報オブジェクトを取得します。
+   * @returns {Device} プレイヤーに関連するデバイス情報オブジェクト
    */
   getDevice(): Device;
 
   /**
-   * 获取玩家主手中的物品对象
-   * @returns Item 玩家主手中的物品对象
-   * @tips 此处获取的物品对象为引用。也就是说，修改此处返回的物品对象，或使用其API，就相当于直接操作玩家主手中对应的物品
+   * プレイヤーの主手に持っているアイテムオブジェクトを取得します。
+   * @returns {Item} プレイヤーの主手に持っているアイテムオブジェクト
+   * @tips ここで取得したアイテムオブジェクトは参照です。つまり、この関数から返されたアイテムオブジェクトを変更したり、そのAPIを使用したりすると、プレイヤーの主手に関連付けられたアイテムに直接操作が行われます。
    */
   getHand(): Item;
 
   /**
-   * 获取玩家副手中的物品对象
-   * @returns Item 玩家副手中的物品对象
-   * @tips 此处获取的物品对象为引用。也就是说，修改此处返回的物品对象，或使用其API，就相当于直接操作玩家副手中对应的物品
+   * プレイヤーのオフハンドに持っているアイテムオブジェクトを取得します。
+   * @returns {Item} プレイヤーのオフハンドに持っているアイテムオブジェクト
+   * @tips ここで取得したアイテムオブジェクトは参照です。つまり、この関数から返されたアイテムオブジェクトを変更したり、そのAPIを使用したりすると、プレイヤーのオフハンドに関連付けられたアイテムに直接操作が行われます。
    */
   getOffHand(): Item;
 
   /**
-   * 获取玩家物品栏的容器对象
-   * @returns Container 玩家物品栏对应的容器对象
+   * プレイヤーのインベントリコンテナオブジェクトを取得します。
+   * @returns {Container} プレイヤーのインベントリに関連付けられたコンテナオブジェクト
    */
   getInventory(): Container;
 
   /**
-   * 获取玩家盔甲栏的容器对象
-   * @returns Container 玩家盔甲栏对应的容器对象
+   * プレイヤーの防具スロットコンテナオブジェクトを取得します。
+   * @returns {Container} プレイヤーの防具スロットに関連付けられたコンテナオブジェクト
    */
   getArmor(): Container;
 
   /**
-   * 获取玩家末影箱的容器对象
-   * @returns Container 玩家末影箱对应的容器对象
+   * プレイヤーのエンダーチェストコンテナオブジェクトを取得します。
+   * @returns {Container} プレイヤーのエンダーチェストに関連付けられたコンテナオブジェクト
    */
   getEnderChest(): Container;
 
   /**
-   * 获取玩家的重生坐标
-   * @returns IntPos 重生点坐标
+   * プレイヤーのリスポーン地点を取得します。
+   * @returns {IntPos} リスポーン地点の座標
    */
   getRespawnPosition(): IntPos;
 
   /**
-   * 给予玩家一个物品
+   * プレイヤーにアイテムを与えます。
    *
-   * 如果玩家物品栏已满，将抛出多余物品
+   * インベントリがいっぱいの場合、余分なアイテムはドロップされます。
    *
-   * @param item 给予的物品对象
-   * @param amount 给予物品对象的数量，物品对象自身的 `Count` 属性将被忽略
-   * @returns boolean 是否成功给予
+   * @param item {Item} 与えるアイテムオブジェクト
+   * @param amount {number} アイテムオブジェクトの数、アイテムオブジェクト自体の `Count` プロパティは無視されます
+   * @returns {boolean} 成功したかどうか
    */
   giveItem(item: Item, amount?: number): boolean;
 
   /**
-   * 清除玩家背包中所有指定类型的物品
-   * @param type 要清除的物品对象类型名
-   * @returns number 清除的物品个数
+   * プレイヤーのバックパックから特定のアイテムタイプをすべて削除します。
+   * @param type {string} 削除するアイテムタイプ名
+   * @returns {number} 削除したアイテムの数
    */
   clearItem(type: string): number;
 
   /**
-   * 清除玩家背包中所有指定类型的物品
-   * @param type 要清除的物品对象类型名
-   * @param amount 清除的物品个数
-   * @returns number 清除的物品个数
+   * プレイヤーのバックパックから特定のアイテムタイプを指定の数だけ削除します。
+   * @param type {string} 削除するアイテムタイプ名
+   * @param amount {number} 削除するアイテムの数
+   * @returns {number} 削除したアイテムの数
    */
   clearItem(type: string, amount: number): number;
 
   /**
-   * 刷新玩家物品栏、盔甲栏
-   * @returns boolean 是否成功刷新
+   * プレイヤーのアイテムを再度読み込みます。
+   * @returns {boolean} 成功したかどうか
    */
   refreshItems(): boolean;
 
   /**
-   * 刷新玩家加载的所有区块
-   * @returns boolean 是否成功刷新
+   * プレイヤーが読み込んでいるすべてのチャンクを再読み込みします。
+   * @returns {boolean} 成功したかどうか
    */
   refreshChunks(): boolean;
 
   /**
-   * 修改玩家操作权限
-   * @param level 目标操作权限等级
-   * @returns boolean 是否成功修改
+   * プレイヤーの操作権限を変更します。
+   * @param level {0 | 1 | 4} 目標の操作権限レベル
+   * @returns {boolean} 成功したかどうか
    */
   setPermLevel(level: 0 | 1 | 4): boolean;
 
   /**
-   * 修改玩家游戏模式
-   * @param mode 目标游戏模式，0为生存模式，1为创造模式，2为极限模式
-   * @returns boolean 是否成功修改
+   * プレイヤーのゲームモードを変更します。
+   * @param mode {number} 目標のゲームモード、0がサバイバルモード、1がクリエイティブモード、2がハードコアモードです
+   * @returns {boolean} 成功したかどうか
    */
   setGameMode(mode: number): boolean;
 
   /**
-   * 提高玩家经验等级
-   * @param count 要提高的经验等级
-   * @returns boolean 是否设置成功
+   * プレイヤーの経験レベルを増やします。
+   * @param count {number} 増やす経験レベルの数
+   * @returns {boolean} 設定が成功したかどうか
    */
   addLevel(count: number): boolean;
 
   /**
-   * 降低玩家经验等级
-   * @param count 要降低的经验等级
-   * @returns boolean 是否设置成功
+   * プレイヤーの経験レベルを減らします。
+   * @param count {number} 減らす経験レベルの数
+   * @returns {boolean} 設定が成功したかどうか
    */
   reduceLevel(count: number): boolean;
 
   /**
-   * 获取玩家经验等级
-   * @returns number 玩家的经验等级
+   * プレイヤーの現在の経験レベルを取得します。
+   * @returns {number} プレイヤーの現在の経験レベル
    */
   getLevel(): number;
 
   /**
-   * 设置玩家经验等级
-   * @param count 要设置的经验等级
-   * @returns boolean 是否设置成功
+   * プレイヤーの経験レベルを設定します。
+   * @param count {number} 設定する経験レベル
+   * @returns {boolean} 設定が成功したかどうか
    */
   setLevel(count: number): boolean;
 
   /**
-   * 重置玩家经验
-   * @returns boolean 是否设置成功
+   * プレイヤーの経験をリセットします。
+   * @returns {boolean} 設定が成功したかどうか
    */
   resetLevel(): boolean;
 
   /**
-   * 获取玩家当前经验值
-   * @returns number 玩家当前经验值
+   * プレイヤーの現在の経験値を取得します。
+   * @returns {number} プレイヤーの現在の経験値
    */
   getCurrentExperience(): number;
 
   /**
-   * 设置玩家当前经验值
-   * @param count 要设置的经验值
-   * @returns boolean 是否设置成功
+   * プレイヤーの現在の経験値を設定します。
+   * @param count {number} 設定する経験値
+   * @returns {boolean} 設定が成功したかどうか
    */
   setCurrentExperience(count: number): boolean;
 
   /**
-   * 获取玩家总经验值
-   * @returns number 玩家总经验
+   * プレイヤーの合計経験値を取得します。
+   * @returns {number} プレイヤーの合計経験値
    */
   getTotalExperience(): number;
 
   /**
-   * 设置玩家总经验值
-   * @param count 要设置的经验值
-   * @returns boolean 是否设置成功
-   */
+ * プレイヤーの総経験値を設定します。
+ * @param count {number} 設定する経験値
+ * @returns {boolean} 成功したかどうか
+ */
   setTotalExperience(count: number): boolean;
 
   /**
-   * 提高玩家经验值
-   * @param count 要提高的经验值
-   * @returns boolean 是否设置成功
+   * プレイヤーの経験値を増やします。
+   * @param count {number} 増やす経験値の数
+   * @returns {boolean} 設定が成功したかどうか
    */
   addExperience(count: number): boolean;
 
   /**
-   * 降低玩家经验值
-   * @param count 要降低的经验值
-   * @returns boolean 是否设置成功
+   * プレイヤーの経験値を減らします。
+   * @param count {number} 減らす経験値の数
+   * @returns {boolean} 設定が成功したかどうか
    */
   reduceExperience(count: number): boolean;
 
   /**
-   * 获取玩家升级所需的经验值
-   * @returns number 玩家升级所需的经验值
+   * プレイヤーが次のレベルに必要な経験値を取得します。
+   * @returns {number} プレイヤーが次のレベルに必要な経験値
    */
   getXpNeededForNextLevel(): number;
 
   /**
-   * 传送玩家至指定服务器
-   * @param server 目标服务器IP / 域名
-   * @param port 目标服务器端口
-   * @returns boolean 是否成功传送
+   * プレイヤーを指定のサーバーに転送します。
+   * @param server {string} 目標サーバーのIP / ドメイン名
+   * @param port {number} 目標サーバーのポート
+   * @returns {boolean} 転送が成功したかどうか
    */
   transServer(server: string, port: number): boolean;
 
   /**
-   * 使玩家客户端崩溃
-   * @returns boolean 是否成功崩溃
+   * プレイヤーのクライアントをクラッシュさせます。
+   * @returns {boolean} クラッシュが成功したかどうか
    */
   crash(): boolean;
 
   /**
-   * 设置玩家自定义侧边栏
-   * @param title 侧边栏标题
-   * @param data 侧边栏对象内容对象
-   * @param sortOrder （可选参数）侧边栏内容的排序顺序。`0`为按分数升序，`1`为按分数降序。默认值为`1`
-   * @returns boolean 是否成功设置
+   * プレイヤーのカスタムサイドバーを設定します。
+   * @param title {string} サイドバーのタイトル
+   * @param data {Record<string, number>} サイドバーオブジェクトの内容
+   * @param sortOrder {sidebar | 0 | 1} （オプション）サイドバーコンテンツのソート順序。`0`はスコア昇順、`1`はスコア降順です。デフォルト値は `1` です。
+   * @returns {boolean} 設定が成功したかどうか
    */
   setSidebar(
     title: string,
@@ -555,18 +552,18 @@ declare class Player {
   ): boolean;
 
   /**
-   * 移除玩家自定义侧边栏
-   * @returns boolean 是否成功移除
+   * プレイヤーのカスタムサイドバーを削除します。
+   * @returns {boolean} 削除が成功したかどうか
    */
   removeSidebar(): boolean;
 
   /**
-   * 设置玩家看到的自定义Boss血条
-   * @param uid 唯一标识符，不可冲突重复！一个uid对于一行bar
-   * @param title 自定义血条标题
-   * @param percent 血条中的血量百分比，有效范围为0~100。0为空血条，100为满
-   * @param colour 血条颜色(默认值为2(RED))
-   * @returns boolean 是否设置成功
+   * プレイヤーが見るカスタムボスバーを設定します。
+   * @param uid {number} ユニークな識別子、競合しない必要があります！バーごとに1つのuid
+   * @param title {string} カスタムボスバーのタイトル
+   * @param percent {number} バー内のパーセンテージ、0から100までの有効な範囲です。0は空のバー、100はフルバーです。
+   * @param colour {number} バーの色（デフォルト値は2（赤））
+   * @returns {boolean} 設定が成功したかどうか
    */
   setBossBar(
     uid: number,
@@ -576,154 +573,154 @@ declare class Player {
   ): boolean;
 
   /**
-   * 移除玩家的自定义的指定Boss血条
-   * @param uid 标识符，与setBossBar对应！
-   * @returns boolean 是否成功移除
+   * プレイヤーのカスタムボスバーを削除します。
+   * @param uid {number} 対応するsetBossBarのuid
+   * @returns {boolean} 削除が成功したかどうか
    */
   removeBossBar(uid: number): boolean;
 
   /**
-   * 获取在线玩家对应的NBT对象
-   * @returns NbtCompound 玩家的NBT对象
+   * オンラインプレイヤーに関連するNBTオブジェクトを取得します。
+   * @returns {NbtCompound} プレイヤーのNBTオブジェクト
    */
   getNbt(): NbtCompound;
 
   /**
-   * 写入在线玩家对应的NBT对象
-   * @param nbt NBT对象
-   * @returns boolean 是否成功写入
+   * オンラインプレイヤーに関連するNBTオブジェクトを書き込みます。
+   * @param nbt {NbtCompound} NBTオブジェクト
+   * @returns {boolean} 書き込みが成功したかどうか
    */
   setNbt(nbt: NbtCompound): boolean;
 
   /**
-   * 为玩家增加一个Tag
-   * @param tag 要增加的tag字符串
-   * @returns boolean 是否设置成功
+   * プレイヤーにタグを追加します。
+   * @param tag {string} 追加するタグ文字列
+   * @returns {boolean} 設定が成功したかどうか
    */
   addTag(tag: string): boolean;
 
   /**
-   * 为玩家移除一个Tag
-   * @param tag 要移除的tag字符串
-   * @returns boolean 是否移除成功
+   * プレイヤーからタグを削除します。
+   * @param tag {string} 削除するタグ文字列
+   * @returns {boolean} 削除が成功したかどうか
    */
   removeTag(tag: string): boolean;
 
   /**
-   * 检查玩家是否拥有某个Tag
-   * @param tag 要检查的tag字符串
-   * @returns boolean 是否拥有这个Tag
+   * プレイヤーが特定のタグを持っているかどうかを確認します。
+   * @param tag {string} 確認するタグ文字列
+   * @returns {boolean} そのタグを持っているかどうか
    */
   hasTag(tag: string): boolean;
 
   /**
-   * 玩家所有的 tag 字符串列表
-   * @returns Array<String> 玩家所有的 tag 字符串列表
+   * プレイヤーのすべてのタグ文字列のリストを取得します。
+   * @returns {Array<String>} プレイヤーのすべてのタグ文字列のリスト
    */
   getAllTags(): Array<string>;
 
   /**
-   * 获取玩家的Abilities能力列表（来自玩家NBT）
-   * @returns object<String,any>  玩家所有能力信息的键 - 值对列表对象
+   * プレイヤーのアビリティ情報（プレイヤーNBTから取得）を取得します。
+   * @returns {object<String,any>} プレイヤーのすべてのアビリティ情報のキー - 値リストオブジェクト
    */
   getAbilities(): any;
 
   /**
-   * 获取玩家的Attributes属性列表（来自玩家NBT）
-   * @returns Array<Object> 玩家所有属性对象的数组
+   * プレイヤーの属性情報（プレイヤーNBTから取得）を取得します。
+   * @returns {Array<Object>} プレイヤーのすべての属性オブジェクトの配列
    */
   getAttributes(): Array<any>;
 
   /**
-   * 设置伤害吸收属性
-   * @param value 新的值
-   * @returns 是否成功
+   * ダメージ吸収属性を設定します。
+   * @param value {number} 新しい値
+   * @returns {boolean} 成功したかどうか
    */
   setAbsorption(value: number): boolean;
 
   /**
-   * 设置攻击伤害属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 攻撃ダメージ属性を設定します。
+   * @param value {number} 新しい値
+   * @returns {boolean} 成功したかどうか
    */
   setAttackDamage(value: number): boolean;
 
   /**
-   * 最大攻击伤害属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 最大攻撃ダメージ属性を設定します。
+   * @param value {number} 新しい値
+   * @returns {boolean} 成功したかどうか
    */
   setMaxAttackDamage(value: number): boolean;
 
   /**
-   * 设置跟随范围
-   * @param value 新的值
-   * @returns 是否成功
+   * フォローレンジ属性を設定します。
+   * @param value {number} 新しい値
+   * @returns {boolean} 成功したかどうか
    */
   setFollowRange(value: number): boolean;
 
   /**
-   * 设置击退抵抗属性
-   * @param value 新的值
-   * @returns 是否成功
+   * ノックバック抵抗属性を設定します。
+   * @param value {0 | 1} 新しい値
+   * @returns {boolean} 成功したかどうか
    */
   setKnockbackResistance(value: 0 | 1): boolean;
 
   /**
-   * 设置幸运属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 幸運属性を設定します。
+   * @param value {number} 新しい値
+   * @returns {boolean} 成功したかどうか
    */
   setLuck(value: number): boolean;
 
   /**
-   * 设置移动速度属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 移動速度属性を設定します。
+   * @param value {number} 新しい値
+   * @returns {boolean} 成功したかどうか
    */
   setMovementSpeed(value: number): boolean;
 
   /**
-   * 置水下移动速度属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 水中移動速度属性を設定します。
+   * @param value {number} 新しい値
+   * @returns {boolean} 成功したかどうか
    */
   setUnderwaterMovementSpeed(value: number): boolean;
 
   /**
-   * 设置岩浆上移动速度属性
-   * @param value 新的值
-   * @returns 是否成功
+   * 溶岩上移動速度属性を設定します。
+   * @param value {number} 新しい値
+   * @returns {boolean} 成功したかどうか
    */
   setLavaMovementSpeed(value: number): boolean;
 
   /**
-   * 获取玩家疾跑状态
-   * @returns boolean 玩家疾跑状态
+   * プレイヤーのスプリント状態を取得します。
+   * @returns {boolean} プレイヤーのスプリント状態
    */
   isSprinting(): boolean;
 
   /**
-   * 设置玩家疾跑状态
-   * @param sprinting 是否为疾跑状态
-   * @returns boolean 是否设置成功
+   * プレイヤーのスプリント状態を設定します。
+   * @param sprinting {boolean} スプリント状態かどうか
+   * @returns {boolean} 設定が成功したかどうか
    */
   setSprinting(sprinting: boolean): boolean;
 
   /**
-   * 获取视线方向实体
-   * @param maxDistance 查找最大距离
-   * @returns Entity|null 视线方向实体，如果获取失败，返回 Null
+   * プレイヤーの視線の方向にあるエンティティを取得します。
+   * @param maxDistance {number} 最大距離を検索します
+   * @returns {Entity|null} 視線の方向にあるエンティティ、取得できない場合は Null を返します
    */
   getEntityFromViewVector(maxDistance?: number): Entity | null;
 
   /**
-   * 获取视线方向方块
-   * @param includeLiquid 是否包含液态方块
-   * @param solidOnly 是否仅允许 Solid 类型的方块
-   * @param maxDistance 查找最大距离
-   * @param fullOnly 是否仅允许完整方块
-   * @returns Block|null 视线方向方块，如果获取失败，返回 Null
+   * プレイヤーの視線の方向にあるブロックを取得します。
+   * @param includeLiquid {boolean} 液体ブロックを含めるかどうか
+   * @param solidOnly {boolean} Solid タイプのブロックのみ許可するかどうか
+   * @param maxDistance {number} 検索する最大距離
+   * @param fullOnly {boolean} 完全なブロックのみを許可するかどうか
+   * @returns {Block|null} 視線の方向にあるブロック、取得できない場合は Null を返します
    */
   getBlockFromViewVector(
     includeLiquid?: boolean,
@@ -733,105 +730,105 @@ declare class Player {
   ): Block | null;
 
   /**
-   * 向玩家发送数据包
-   * @param packet 数据包
+   * プレイヤーにデータパケットを送信します。
+   * @param packet {Packet} データパケット
    */
   sendPacket(packet: Packet): boolean | null;
 
   /**
-   * 获取玩家所在群系ID
-   * @returns number 群系ID
+   * プレイヤーが存在するバイオームIDを取得します。
+   * @returns {number} プレイヤーが存在するバイオームID
    */
   getBiomeId(): number;
 
   /**
-   * 获取玩家所在群系名称
-   * @returns string 群系名称
+   * プレイヤーが存在するバイオームの名前を取得します。
+   * @returns {string} プレイヤーが存在するバイオームの名前
    */
   getBiomeName(): string;
 
   /**
-   * 设置玩家Ability属性
-   * @param AbilityID Ability的ID
-   * @param value 是否开启
-   * @returns boolean 无作用
+   * プレイヤーのAbility属性を設定します。
+   * @param AbilityID {number} AbilityのID
+   * @param value {boolean} オンまたはオフ
+   * @returns {boolean} 影響なし
    */
   setAbility(AbilityID: number, value: boolean): boolean;
 
   /**
-   * 判断是否为模拟玩家
-   * @returns boolean 是否是模拟玩家
+   * プレイヤーがボットプレイヤーかどうかを判定します。
+   * @returns {boolean} ボットプレイヤーかどうか
    */
   isSimulatedPlayer(): boolean;
 
   /**
-   * 储存玩家绑定数据
-   * @param name 要储存到绑定数据的名字
-   * @param data 你要储存的绑定数据，可以是`Null`
-   * @returns boolean 是否成功储存
+   * プレイヤーのバインドデータを保存します。
+   * @param name {string} 保存するバインドデータの名前
+   * @param data {any} 保存するバインドデータ、`Null` であっても構いません
+   * @returns {boolean} 保存が成功したかどうか
    */
   setExtraData(name: string, data: any): boolean;
 
   /**
-   * 获取玩家绑定数据
-   * @param name 要读取的绑定数据的名字
-   * @returns any|null 储存的绑定数据
+   * プレイヤーのバインドデータを取得します。
+   * @param name {string} 取得するバインドデータの名前
+   * @returns {any|null} 保存されたバインドデータ
    */
   getExtraData(name: string): any | null;
 
   /**
-   * 删除玩家绑定数据
-   * @param name 要删除的绑定数据的名字
-   * @returns boolean 是否删除成功
+   * プレイヤーのバインドデータを削除します。
+   * @param name {string} 削除するバインドデータの名前
+   * @returns {boolean} 削除が成功したかどうか
    */
   delExtraData(name: string): boolean;
 
   /**
-   * 获取在线玩家计分项的分数（方便函数）
-   * @param name 计分项名称
-   * @returns number 计分板上的数值
+   * オンラインプレイヤーのスコアボードのスコアを取得します（簡易関数）。
+   * @param name {string} スコアボードの名前
+   * @returns {number} スコアボード上の数値
    */
   getScore(name: string): number;
 
   /**
-   * 修改玩家计分项的分数（方便函数）
-   * @param name 计分项名称
-   * @param value 要设置的数值
-   * @returns boolean 是否设置成功
+   * オンラインプレイヤーのスコアボードのスコアを変更します（簡易関数）。
+   * @param name {string} スコアボードの名前
+   * @param value {number} 設定する値
+   * @returns {boolean} 設定が成功したかどうか
    */
   setScore(name: string, value: number): boolean;
 
   /**
-   * 修改玩家计分项的分数（方便函数）
-   * @param name 计分项名称
-   * @param value 要增加的数值
-   * @returns boolean 是否设置成功
+   * オンラインプレイヤーのスコアボードのスコアを増やします（簡易関数）。
+   * @param name {string} スコアボードの名前
+   * @param value {number} 増やす値
+   * @returns {boolean} 設定が成功したかどうか
    */
   addScore(name: string, value: number): boolean;
 
   /**
-   * 修改玩家计分项的分数（方便函数）
-   * @param name 计分项名称
-   * @param value 要设减少的数值
-   * @returns boolean 是否设置成功
+   * オンラインプレイヤーのスコアボードのスコアを減らします（簡易関数）。
+   * @param name {string} スコアボードの名前
+   * @param value {number} 減らす値
+   * @returns {boolean} 設定が成功したかどうか
    */
   reduceScore(name: string, value: number): boolean;
 
   /**
-   * 玩家停止跟踪计分项（方便函数）
-   * @param name 计分项名称
-   * @returns boolean 是否移除成功
+   * オンラインプレイヤーのスコアボードからスコアを削除します（簡易関数）。
+   * @param name {string} スコアボードの名前
+   * @returns {boolean} 削除が成功したかどうか
    */
   deleteScore(name: string): boolean;
 
   /**
-   * 向玩家发送模式表单
-   * @param title 表单标题
-   * @param content 表单内容
-   * @param confirmButton 按钮1文本的字符串
-   * @param cancelButton 按钮2文本的字符串
-   * @param callback 玩家点击按钮之后被调用的回调函数。
-   * @returns number|null 发送的表单ID
+   * プレイヤーにモーダルフォームを送信します。
+   * @param title {string} フォームのタイトル
+   * @param content {string} フォームの内容
+   * @param confirmButton {string} ボタン1のテキスト
+   * @param cancelButton {string} ボタン2のテキスト
+   * @param callback {(player: Player, result: boolean | null) => void} プレイヤーがボタンをクリックした後に呼び出されるコールバック関数
+   * @returns {number|null} 送信されたフォームのID
    */
   sendModalForm(
     title: string,
@@ -842,12 +839,12 @@ declare class Player {
   ): number | null;
 
   /**
-   * 向玩家发送普通表单
-   * @param title 表单标题
-   * @param content 表单内容
-   * @param buttons 各个按钮文本的字符串数组
-   * @param images 各个按钮对应的图片路径
-   * @param callback 玩家点击按钮之后被调用的回调函数。
+   * プレイヤーにシンプルフォームを送信します。
+   * @param title {string} フォームのタイトル
+   * @param content {string} フォームの内容
+   * @param buttons {Array<string>} 各ボタンのテキストの文字列の配列
+   * @param images {Array<string>} 各ボタンに対応する画像のパスの配列
+   * @param callback {(player: Player, id: number | null) => void} プレイヤーがボタンをクリックした後に呼び出されるコールバック関数
    */
   sendSimpleForm(
     title: string,
@@ -858,9 +855,9 @@ declare class Player {
   ): number | null;
 
   /**
-   * 向玩家发送自定义表单（Json格式）
-   * @param json 自定义表单json字符串
-   * @param callback 玩家提交表单之后被调用的回调函数。
+   * プレイヤーにカスタムフォーム（JSON形式）を送信します。
+   * @param json {string} カスタムフォームのJSON文字列
+   * @param callback {(player: Player, data: Array<any> | null) => void} プレイヤーがフォームを提出した後に呼び出されるコールバック関数
    */
   sendCustomForm(
     json: string,
@@ -868,9 +865,9 @@ declare class Player {
   ): number | null;
 
   /**
-   * 发送SimpleForm表单
-   * @param fm 配置好的表单对象
-   * @param callback 玩家与表单元素互动之后被调用的回调函数。
+   * シンプルフォームまたはカスタムフォームをプレイヤーに送信します。
+   * @param fm {SimpleForm | CustomForm} 設定済みのフォームオブジェクト
+   * @param callback {(player: Player, data: number | Array<any> | null) => void} プレイヤーがフォーム要素と対話した後に呼び出されるコールバック関数
    */
   sendForm(
     fm: SimpleForm,
@@ -878,9 +875,9 @@ declare class Player {
   ): number | null;
 
   /**
-   * 发送CustomForm表单
-   * @param fm 配置好的表单对象
-   * @param callback 玩家与表单元素互动之后被调用的回调函数。
+   * カスタムフォームを送信する
+   * @param fm 設定済みのフォームオブジェクト
+   * @param callback {(player: Player, data: Array<any> | null) => void} プレイヤーがフォーム要素と対話した後に呼び出されるコールバック関数
    */
   sendForm(
     fm: CustomForm,
@@ -898,26 +895,26 @@ declare class Player {
   ): number | null;
 
   /**
-   * 函数已弃用
-   * @deprecated 函数已弃用 请使用 getInventory()
+   * 非推奨: 代わりに getInventory() を使用してください。
+   * @deprecated この関数は非推奨です。代わりに getInventory() を使用してください。
    */
   getContainer(): Container;
 
   /**
-   * 缩放玩家
-   * @param scale 新的玩家体积 (整数)
-   * @returns boolean 是否缩放成功
+   * プレイヤーのサイズを変更します。
+   * @param scale {number} 新しいプレイヤーサイズ（整数）
+   * @returns {boolean} サイズ変更が成功したかどうか
    */
   setScale(scale: number): boolean;
 
   /**
-   * 设置玩家显示标题
-   * @param content 欲设置标题内容
-   * @param type 设置的标题类型 默认为2
-   * @param fadeInTime 淡入时间，单位为 Tick ，默认为10
-   * @param stayTime 停留时间，单位为 Tick ，默认为70
-   * @param fadeOutTime 淡出时间，单位为 Tick，默认为20
-   * @returns 是否成功发送
+   * プレイヤーにタイトルを表示します。
+   * @param content {string} 設定するタイトルの内容
+   * @param type {1 | 2 | 3 | 4 | 5 | 6 | 7 | 8} タイトルのタイプ、デフォルトは2
+   * @param fadeInTime {number} フェードイン時間、単位はTick、デフォルトは10
+   * @param stayTime {number} ステイ時間、単位はTick、デフォルトは70
+   * @param fadeOutTime {number} フェードアウト時間、単位はTick、デフォルトは20
+   * @returns {boolean} 送信が成功したかどうか
    */
   setTitle(
     content: string,
@@ -928,67 +925,64 @@ declare class Player {
   ): boolean;
 
   /**
-   * ### 获取玩家到坐标的距离
-   *
-   * @param pos 目标位置
-   *
-   * @returns 到坐标的距离(方块)
-   *
-   * @deprecated
+   * プレイヤーから特定の座標までの距離を取得します。
+   * @param pos {IntPos | FloatPos} ターゲットの位置
+   * @returns {number} 座標までの距離（ブロック）
+   * @deprecated この関数は非推奨です。
    */
   distanceToPos(pos: IntPos | FloatPos): number;
 
   /**
-   * 增加玩家的存款
-   * @param value 要增加的金额
-   * @returns 是否设置成功
+   * プレイヤーの所持金を増やします。
+   * @param value {number} 増やす金額
+   * @returns {boolean} 設定が成功したかどうか
    */
   addMoney(value: number): boolean;
 
   /**
-   * 获取玩家全部药水效果
-   * @returns 玩家所有的药水效果id
+   * プレイヤーのすべてのエフェクトを取得します。
+   * @returns {number[]} プレイヤーのすべてのエフェクトID
    */
   getAllEffects(): number[];
-  
+
   /**
-   * 为玩家添加一个药水效果
-   * @param id 药水效果的id
-   * @param tick 持续时间
-   * @param level 等级
-   * @param showParticles 是否显示粒子
-   * @returns 是否成功
+   * プレイヤーにエフェクトを追加します。
+   * @param id {number} エフェクトのID
+   * @param tick {number} 持続時間
+   * @param level {number} レベル
+   * @param showParticles {boolean} パーティクルを表示するかどうか
+   * @returns {boolean} 設定が成功したかどうか
    */
   addEffect(id: number, tick: number, level: number, showParticles: boolean): boolean;
 
   /**
-   * 为玩家移除一个药水效果
-   * @param id 药水效果的id
-   * @returns 是否成功
+   * プレイヤーからエフェクトを削除します。
+   * @param id {number} エフェクトのID
+   * @returns {boolean} 設定が成功したかどうか
    */
   removeEffect(id: number): boolean;
 }
 
 declare namespace mc {
   /**
-   * 广播一个文本消息给所有玩家
-   * @param msg 待发送的文本
-   * @param type （可选参数）发送的文本消息类型，默认为0
-   * @returns boolean 是否成功发送
+   * すべてのプレイヤーにテキストメッセージをブロードキャストします。
+   * @param msg 待機中のテキストメッセージ
+   * @param type （オプション）テキストメッセージのタイプ、デフォルトは0
+   * @returns boolean 送信に成功したかどうか
    */
   function broadcast(msg: string, type?: sendTextType | number): boolean;
 
   /**
-   * 修改玩家的重生坐标
-   * @param pos 重生坐标（或者使用x, y, z, dimid来确定重生位置）
-   * @returns boolean 是否成功修改
+   * プレイヤーのリスポーン位置を変更します。
+   * @param pos リスポーン位置（または x, y, z, dimid で指定可能）
+   * @returns boolean 修正に成功したかどうか
    */
   function setRespawnPosition(pos: IntPos): boolean;
 
   /**
-   * 修改玩家的重生坐标
-   * @param pos 重生坐标（或者使用x, y, z, dimid来确定重生位置）
-   * @returns boolean 是否成功修改
+   * プレイヤーのリスポーン位置を変更します。
+   * @param pos リスポーン位置（または x, y, z, dimid で指定可能）
+   * @returns boolean 修正に成功したかどうか
    */
   function setRespawnPosition(
     x: number,
@@ -998,10 +992,10 @@ declare namespace mc {
   ): boolean;
 
   /**
-   * 创建一个模拟玩家
-   * @param name 模拟玩家名
-   * @param pos 生成生物的位置的坐标对象（或者使用x, y, z, dimid来确定生成位置）
-   * @returns SimulatedPlayer 模拟玩家对象
+   * モックプレイヤーを生成します。
+   * @param name モックプレイヤーの名前
+   * @param pos エンティティの生成位置の座標オブジェクト（または x, y, z, dimid で指定可能）
+   * @returns SimulatedPlayer モックプレイヤーオブジェクト、または null
    */
   function spawnSimulatedPlayer(
     name: string,
@@ -1010,11 +1004,11 @@ declare namespace mc {
 
   /**
    *
-   * @param name 模拟玩家名
-   * @param x x坐标
-   * @param y y坐标
-   * @param z z坐标
-   * @param dimId 维度Id
+   * @param name モックプレイヤーの名前
+   * @param x x座標
+   * @param y y座標
+   * @param z z座標
+   * @param dimId ディメンションID
    */
   function spawnSimulatedPlayer(
     name: string,
@@ -1025,41 +1019,41 @@ declare namespace mc {
   ): SimulatedPlayer | null;
 
   /**
-   * 从现有玩家获取
-   * @param info 玩家的名字或者Xuid
-   * @returns Player 生成的玩家对象
+   * 既存のプレイヤーから情報を取得します。
+   * @param info プレイヤーの名前またはXuid
+   * @returns Player 生成されたプレイヤーオブジェクト
    */
   function getPlayer(info: string): Player;
 
   /**
-   * 获取所有在线玩家
-   * @returns Array<Player> 玩家对象的数组
+   * オンラインのすべてのプレイヤーを取得します。
+   * @returns Array<Player> プレイヤーオブジェクトの配列
    */
   function getOnlinePlayers(): Array<Player>;
 
   /**
-   * 获取玩家对应的NBT对象
-   * @param uuid 玩家的UUID
-   * @returns 玩家的NBT对象
-   * **可获取离线玩家的nbt**
+   * プレイヤーに関連するNBTオブジェクトを取得します。
+   * @param uuid プレイヤーのUUID
+   * @returns 玩家のNBTオブジェクト
+   * **オフラインプレイヤーのNBTも取得可能**
    */
   function getPlayerNbt(uuid: string): NbtCompound;
 
   /**
-   * 写入玩家对应的NBT对象
-   * @param uuid 玩家的UUID
-   * @param nbt NBT对象
-   * @returns 是否成功写入
-   * **可操作离线玩家的nbt**
+   * プレイヤーに関連するNBTオブジェクトを書き込みます。
+   * @param uuid プレイヤーのUUID
+   * @param nbt NBTオブジェクト
+   * @returns 是否成功書き込み
+   * **オフラインプレイヤーのNBTも操作可能**
    */
   function setPlayerNbt(uuid: string, nbt: NbtCompound): boolean;
 
   /**
-   * 覆盖玩家对应的NBT对象的特定NbtTag
-   * @param uuid 玩家的UUID
-   * @param nbt NBT对象
-   * @param tags 需要覆盖的NbtTag (String)
-   * @returns boolean 是否成功覆盖对应的Tag
+   * プレイヤーに関連するNBTオブジェクトの特定のNbtTagを上書きします。
+   * @param uuid プレイヤーのUUID
+   * @param nbt NBTオブジェクト
+   * @param tags 上書きするNbtTag (String)
+   * @returns boolean 対応するタグの上書きが成功したかどうか
    */
   function setPlayerNbtTags(
     uuid: string,
@@ -1068,114 +1062,114 @@ declare namespace mc {
   ): boolean;
 
   /**
-   * 从存档中删除玩家对应的NBT对象的全部内容
-   * @param uuid 玩家的UUID
-   * @returns boolean 是否删除成功
+   * アーカイブからプレイヤーに関連するNBTオブジェクトのすべての内容を削除します。
+   * @param uuid プレイヤーのUUID
+   * @returns boolean 削除に成功したかどうか
    */
   function deletePlayerNbt(uuid: string): boolean;
 }
 
 declare enum sidebar {
-  /** 降序 */
+  /** 降順 */
   Descending = 1,
-  /** 升序 */
+  /** 昇順 */
   Ascending = 0,
 }
 
-declare class LLSE_Player extends Player {}
+declare class LLSE_Player extends Player { }
 
 /**
- * 模拟玩家
- * @see [🏃‍♂️ 玩家对象](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Player?id=%e6%a8%a1%e6%8b%9f%e7%8e%a9%e5%ae%b6%ef%bc%88%e7%94%b1%e4%ba%8e%e4%b8%8e%e7%8e%a9%e5%ae%b6api%e9%87%8d%e5%90%88%e8%bf%87%e5%a4%9a%ef%bc%8c%e6%9c%aa%e7%94%9f%e6%88%90%e6%96%b0%e7%9a%84%e6%a8%a1%e6%8b%9f%e7%8e%a9%e5%ae%b6%e7%b1%bb%ef%bc%89)
- * @see [mojang-gametest docs](https://docs.microsoft.com/zh-cn/minecraft/creator/scriptapi/mojang-gametest/simulatedplayer)
+ * シミュレートされたプレイヤー
+ * @see [🏃‍♂️ プレイヤーオブジェクト](https://docs.litebds.com/zh-Hans/#/LLSEPluginDevelopment/GameAPI/Player?id=%e6%a8%a1%e6%8b%9f%e7%8e%a9%e5%ae%b6%ef%bc%88%e7%94%b3%e3%81%b8%e3%81%a8%e3%81%97%e3%81%86%e3%82%92%e5%8f%8a%e3%81%a8%e3%81%97%e3%82%88%e3%81%86%e3%81%a8%e3%81%8e%e3%82%87%ef%bc%8c%e6%9c%aa%e7%94%9f%e6%88%90%e3%81%ae%e6%a8%a1%e6%8b%9f%e7%8e%a9%e5%ae%b6%e3%82%af%e3%83%a9%e3%82%b9%ef%bc%89)
+ * @see [mojang-gametestドキュメント](https://docs.microsoft.com/zh-cn/minecraft/creator/scriptapi/mojang-gametest/simulatedplayer)
  */
 declare class SimulatedPlayer extends Player {
   /**
-   * 模拟攻击
-   * @param target （可选参数）攻击目标，默认为视线方向上的实体
-   * @returns boolean 是否成功模拟操作
+   * シミュレート攻撃
+   * @param target （オプション）攻撃対象、デフォルトは視線の中のエンティティ
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateAttack(target?: Entity): boolean;
 
   /**
-   * 模拟破坏
-   * @param target （可选参数）要破坏的方块的坐标或方块，默认为视线方向上的方块
-   * @param face （可选参数）从哪面破坏，
-   * @returns boolean 是否成功模拟操作
+   * シミュレート破壊
+   * @param target （オプション）破壊対象の座標またはブロック、デフォルトは視線の中のブロック
+   * @param face （オプション）どの面から破壊するか
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateDestroy(target: IntPos | Block, face: number): boolean;
 
   /**
-   * 模拟断开连接
-   * @returns boolean 是否成功模拟操作
+   * シミュレート接続断
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateDisconnect(): boolean;
 
   /**
-   * 模拟交互
-   * @param target （可选参数）模拟交互目标，默认为视线方向上的方块或实体
-   * @returns boolean 是否成功模拟操作
+   * シミュレート相互作用
+   * @param target （オプション）シミュレート対象、デフォルトは視線の中のブロックまたはエンティティ
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateInteract(target?: Entity): boolean;
 
   /**
-   * 模拟交互
-   * @param target （可选参数）模拟交互目标，默认为视线方向上的方块或实体
-   * @param face （可选参数）模拟交互目标方块的面
-   * @returns boolean 是否成功模拟操作
+   * シミュレート相互作用
+   * @param target （オプション）シミュレート対象、デフォルトは視線の中のブロックまたはエンティティ
+   * @param face （オプション）シミュレート対象ブロックの面
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateInteract(target?: IntPos | Block, face?: number): boolean;
 
   /**
-   * 模拟跳跃
-   * @returns boolean 是否成功模拟操作
+   * シミュレートジャンプ
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateJump(): boolean;
 
   /**
-   * 模拟看向某方块或实体
-   * @param target 要看向的目标(实体|坐标|方块)
-   * @returns boolean 是否成功模拟操作
+   * シミュレートブロックまたはエンティティを見る
+   * @param target 見る対象（エンティティ、座標、ブロック）
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateLookAt(target: Entity | IntPos | FloatPos | Block): boolean;
 
   /**
-   * 模拟设置身体角度
-   * @param rot 要设置的角度
-   * @returns boolean 是否成功模拟操作
+   * シミュレート身体の回転を設定
+   * @param rot 設定する角度
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateSetBodyRotation(rot: number): boolean;
 
   /**
-   * 相对玩家坐标系移动
-   * @param pos 移动方向
-   * @param speed （可选参数）移动速度，默认为1
-   * @returns boolean 是否请求移动成功
+   * プレイヤー座標系での相対移動
+   * @param pos 移動方向
+   * @param speed （オプション）移動速度、デフォルトは1
+   * @returns boolean 移動リクエストが成功したかどうか
    */
   simulateLocalMove(pos: IntPos | FloatPos, speed?: number): boolean;
 
   /**
-   * 相对世界坐标系移动
-   * @param pos 移动方向
-   * @param speed （可选参数）移动速度，默认为1
-   * @returns boolean 是否请求移动成功
+   * ワールド座標系での相対移動
+   * @param pos 移動方向
+   * @param speed （オプション）移動速度、デフォルトは1
+   * @returns boolean 移動リクエストが成功したかどうか
    */
   simulateWorldMove(pos: IntPos | FloatPos, speed?: number): boolean;
 
   /**
-   * 直线移动到坐标
-   * @param pos 移动方向
-   * @param speed （可选参数）移动速度，默认为1
-   * @returns boolean 是否请求移动成功
-   * **注：如需自动寻路，请考虑使用 模拟导航移动{@linkcode simulateNavigateTo}**
+   * 座標まで直線移動
+   * @param pos 移動方向
+   * @param speed （オプション）移動速度、デフォルトは1
+   * @returns boolean 移動リクエストが成功したかどうか
+   * **注：自動経路探索が必要な場合、simulateNavigateTo を考慮してください{@linkcode simulateNavigateTo}**
    */
   simulateMoveTo(pos: IntPos | FloatPos, speed?: number): boolean;
 
   /**
-   * 模拟导航移动
-   * @param target 导航目标
-   * @param speed （可选参数）移动速度，默认为1
-   * @returns Object 是否能到达指定位置以及导航路径
+   * シミュレート経路移動
+   * @param target 移動対象
+   * @param speed （オプション）移動速度、デフォルトは1
+   * @returns Object 指定した位置に到達できるかどうかと経路
    */
   simulateNavigateTo(
     target: Entity | IntPos | FloatPos,
@@ -1186,10 +1180,10 @@ declare class SimulatedPlayer extends Player {
   };
 
   /**
-   * 模拟导航移动（多目标）
-   * @param target 导航目标
-   * @param speed （可选参数）移动速度，默认为1
-   * @returns boolean 是否成功模拟操作
+   * シミュレート経路移動（複数の目標）
+   * @param target 移動対象
+   * @param speed （オプション）移動速度、デフォルトは1
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateNavigateTo(
     target: Array<IntPos> | Array<FloatPos>,
@@ -1197,11 +1191,11 @@ declare class SimulatedPlayer extends Player {
   ): boolean;
 
   /**
-   * 模拟使用物品
-   * @param target （可选参数）要使用的物品(或物品所在的槽)，默认为选中物品
-   * @param pos （可选参数）目标坐标，默认为朝向方块坐标
-   * @param face （可选参数）目标方块的面，默认为0
-   * @param relative （可选参数）相对方块偏移坐标，默认为{0.5,0.5,0.5}
+   * アイテムの使用をシミュレート
+   * @param target （オプション）使用するアイテム（またはスロット内のアイテム）、デフォルトは選択したアイテム
+   * @param pos （オプション）対象座標、デフォルトはブロックの方向
+   * @param face （オプション）対象ブロックの面、デフォルトは0
+   * @param relative （オプション）ブロックからの相対オフセット座標、デフォルトは{0.5,0.5,0.5}
    */
   simulateUseItem(
     target?: Item | number,
@@ -1211,26 +1205,26 @@ declare class SimulatedPlayer extends Player {
   ): boolean;
 
   /**
-   * 模拟停止破坏方块
-   * @returns boolean 是否成功模拟操作
+   * ブロック破壊のシミュレート停止
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateStopDestroyingBlock(): boolean;
 
   /**
-   * 模拟停止交互
-   * @returns boolean 是否成功模拟操作
+   * シミュレート相互作用の停止
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateStopInteracting(): boolean;
 
   /**
-   * 模拟停止移动
-   * @returns boolean 是否成功模拟操作
+   * シミュレート移動の停止
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateStopMoving(): boolean;
 
   /**
-   * 模拟停止使用物品
-   * @returns boolean 是否成功模拟操作
+   * アイテムの使用のシミュレート停止
+   * @returns boolean 操作のシミュレーションが成功したかどうか
    */
   simulateStopUsingItem(): boolean;
 }
